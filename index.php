@@ -6,9 +6,11 @@ $nomsite = "Dice & Pixels";
 function boucle($string, $number)
 {
    for($i = 1; $i <= $number; $i++) {
-                 ?><li><?php echo $string." ".$i ?></li><?php
+                 ?><li> <img src="images/Meeple.png" alt="icone">
+                   <a href=""><?php echo $string." ".$i ?></a></li><?php
        }
 }
+
 ?>
 
 
@@ -20,18 +22,19 @@ function boucle($string, $number)
 <head>
 <meta charset="UTF-8">
 <title><?php echo $nomsite ?></title>
-<link rel="stylesheet" href="./Styles/style.css"> 
+<link rel="stylesheet" href="./Styles/style.css">
+<link rel="icon" href="images/icone.png">
 </head>
 
 <body>
 
 <!-- Bandeau du site contenant le nom du site, le moyen d'authentification et une barre de recherche -->
 
-<div id="bandeau">
+<header>
 
 <!-- Nom du site -->
 
-	<p id="Nom_Site" class="police"><?php echo $nomsite ?></p>
+	<h1 id="Nom_Site" class="police"><?php echo $nomsite ?></h1>
 
     <!-- Barre de recherche -->
 
@@ -43,21 +46,16 @@ function boucle($string, $number)
 
     <!-- Bouton de connexion -->
     <div id="Connexion">
-        <img src="images/Meeple.png" alt="icone">
+        <a href="" > <img src="images/Meeple.png" alt="icone"> </a>
         <a class="police" href="">Se Connecter</a>
     </div>
 
 
-</div>
-
-
-
-
-
+</header>
 
 
 <div id="utilisateurs" class="main">
-	<h1>Liste de quelques utilisateurs</h1>
+	<h1>Joueurs</h1>
 	<ul>
         <?php boucle("Utilisateur", 20) ?>
 	</ul>
