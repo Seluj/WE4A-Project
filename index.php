@@ -31,7 +31,7 @@ function boucle($string, $number)
 
 <!-- Nom du site -->
 
-	<p id="Nom_Site"><?php echo $nomsite ?></p>
+	<p id="Nom_Site" class="police"><?php echo $nomsite ?></p>
 
     <!-- Barre de recherche -->
 
@@ -44,7 +44,7 @@ function boucle($string, $number)
     <!-- Bouton de connexion -->
     <div id="Connexion">
         <img src="images/Meeple.png" alt="icone">
-        <a href="">Se Connecter</a>
+        <a class="police" href="">Se Connecter</a>
     </div>
 
 
