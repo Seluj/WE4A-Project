@@ -30,29 +30,9 @@ function boucle($string, $number)
 
 <!-- Bandeau du site contenant le nom du site, le moyen d'authentification et une barre de recherche -->
 
-<header>
+<?php include('./PageParts/header.php') ?>
 
-<!-- Nom du site -->
-
-	<h1 id="Nom_Site" class="police"><?php echo $nomsite ?></h1>
-
-    <!-- Barre de recherche -->
-
-
-    <form action="#" method="post">
-        <input type="text" name="recherche" placeholder="Rechercher">
-        <input type="image" src="images/Loupe.png" alt="icone">
-    </form>
-
-    <!-- Bouton de connexion -->
-    <div id="Connexion">
-        <a href="" > <img src="images/Meeple.png" alt="icone"> </a>
-        <a class="police" href="">Se Connecter</a>
-    </div>
-
-
-</header>
-
+<!-- Reste de la page -->
 
 <div id="utilisateurs" class="main">
 	<h1>Joueurs</h1>
