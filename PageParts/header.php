@@ -1,5 +1,6 @@
 <?php
 session_start();
+$typejeu = "Jeux Vidéos";
 ?>
 
 <header>

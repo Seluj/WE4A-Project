@@ -25,6 +25,8 @@ h1{
 }
 
 header {
+	min-width: 850px;
+	min-height:63px;
 	margin-top: 5px;
 	display: flex;
 	justify-content: space-between;
@@ -32,13 +34,13 @@ header {
 	background-color: #333;
 	border: 5px solid #2B2B2B;
 	color: #fff;
-	padding: 10px;
+	padding: 5px;
 }
 
 header h1 {
+	white-space: nowrap;
 	font-size: 30px;
 	margin: 0;
-	margin-right: 700px;
 }
 
 header a {
@@ -47,10 +49,25 @@ header a {
 	text-decoration:none;
 }
 
+
 header img {
 	width: 35px;
 	height: 35px;
 	margin-right: 5px;
+}
+
+#formulaires {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#Direction {
+	margin-left:60px;
+	white-space: nowrap;
+}
+#Changement_jeu {
+	margin-left:10px;
 }
 
 #Recherche_generale {
@@ -69,6 +86,7 @@ header img {
 }
 
 #Recherche_generale  {
+	margin-left: 20px;
 	padding: 5px 10px;
 	border-radius: 3px;
 	border: none;
@@ -79,17 +97,26 @@ header img {
 }
 
 #Connexion {
+	padding: 5px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-}
-
-#Connexion a img:hover {
 	margin-left: 20px;
 }
 
-#Connexion a:hover {
-	font-size: 20px;
+#Connexion:hover {
+	background-color: #6C6477;
+	border: #494254 solid 4px;
+	margin-left: 12px;
+}
+
+#Connexion img {
+	margin-top: 5px;
+}
+
+#se_connecter {
+	margin-bottom: 2px;
+	white-space: nowrap;
 }
 
 .main{
