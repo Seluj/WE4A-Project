@@ -1,6 +1,5 @@
 <?php
 include ('./PageParts/databaseFunctions.php');
-$configs = include('config.php');
 ConnectDatabase();
 
 ?>
@@ -12,9 +11,6 @@ ConnectDatabase();
         <title>Test</title>
     </head>
     <body>
-        <h1><?php echo $configs['host']?></h1>
-        <h1><?php echo $configs['username']?></h1>
-        <h1><?php echo $configs['dbname']?></h1>
         <p>Test</p>
         <?php
 
