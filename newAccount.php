@@ -23,36 +23,36 @@ if(isset($_SESSION['id'])){
 
 <body>
 
-<!-- Bandeau du site contenant le nom du site, le moyen d'authentification et une barre de recherche -->
+    <!-- Bandeau du site contenant le nom du site, le moyen d'authentification et une barre de recherche -->
 
-<?php include('./PageParts/header.php') ?>
-
-<hr>
-<?php
-include("./PageParts/signinForm.php");
-include("./PageParts/loginForm.php");
-?>
-<script>
-    window.onload = function() {
-        var log = document.getElementById("login");
-        var sign = document.getElementById("signin");
-        log.style.display = "block";
-        sign.style.display = "none";
-    }
-    function myFunction() {
-        var log = document.getElementById("login");
-        var sign = document.getElementById("signin");
-        if (log.style.display === "none") {
-            log.style.display = "block";
-            sign.style.display = "none";
-        } else {
-            log.style.display = "none";
-            sign.style.display = "block";
-        }
-    }
-</script>
-<hr>
-<p><a href="./index.php" class="backlink"><< Revenir à l'accueil</a><br><br></p>
-
+    <?php include('./PageParts/header.php') ?>
+    <div class="main_container">
+        <hr>
+        <?php
+        include("./PageParts/signinForm.php");
+        include("./PageParts/loginForm.php");
+        ?>
+        <script>
+            window.onload = function() {
+                var log = document.getElementById("login");
+                var sign = document.getElementById("signin");
+                log.style.display = "block";
+                sign.style.display = "none";
+            }
+            function myFunction() {
+                var log = document.getElementById("login");
+                var sign = document.getElementById("signin");
+                if (log.style.display === "none") {
+                    log.style.display = "block";
+                    sign.style.display = "none";
+                } else {
+                    log.style.display = "none";
+                    sign.style.display = "block";
+                }
+            }
+        </script>
+        <hr>
+        <p><a href="./index.php" class="backlink"><< Revenir à l'accueil</a><br><br></p>
+    </div>
 </body>
 </html>

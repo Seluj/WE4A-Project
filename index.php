@@ -19,40 +19,43 @@ include('./PageParts/databaseFunctions.php');
 
 <body>
 
+
     <!-- Bandeau du site contenant le nom du site, le moyen d'authentification et une barre de recherche -->
 
     <?php include('./PageParts/header.php') ?>
 
     <!-- Reste de la page -->
-    <div>
-    <div id="utilisateurs" class="main">
-        <h1>Joueurs</h1>
-        <ul>
-            <?php boucle("Utilisateur", 20) ?>
-        </ul>
-
-    </div class="main_container">
-        <div id="messages" class="main">
-            <h1>Liste des messages de la discussion</h1>
+    <div class="main_container">
+        <div id="utilisateurs" class="main">
+            <h1>Joueurs</h1>
             <ul>
-                <?php boucle("Message", 20) ?>
+                <?php boucle("Utilisateur", 20) ?>
             </ul>
         </div>
 
-        <div id="jeux" class="main">
-
-            <div class="liste_jeux" id="jeux_visites">
-                <h1>Liste des jeux visités</h1>
+        <div class="container">
+            <div id="messages" class="main">
+                <h1>Liste des messages de la discussion</h1>
                 <ul>
-                    <?php boucle("Jeu", 20) ?>
+                    <?php boucle("Message", 20) ?>
                 </ul>
             </div>
 
-            <div class="liste_jeux" id="jeux_proposes">
-                <h1>Liste des jeux proposés</h1>
-                <ul>
-                    <?php boucle("Jeu", 20) ?>
-                </ul>
+            <div id="jeux" class="main">
+
+                <div class="liste_jeux" id="jeux_visites">
+                    <h1>Liste des jeux visités</h1>
+                    <ul>
+                        <?php boucle("Jeu", 20) ?>
+                    </ul>
+                </div>
+
+                <div class="liste_jeux" id="jeux_proposes">
+                    <h1>Liste des jeux proposés</h1>
+                    <ul>
+                        <?php boucle("Jeu", 20) ?>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
