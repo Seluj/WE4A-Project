@@ -11,8 +11,6 @@ function ConnectDatabase(){
 
     $config = include('./config.php');
 
-    echo $config['host'];
-
     global $conn;
 
     $conn = new mysqli($config['host'], $config['username'], $config['password'], $config['dbname']);
@@ -21,5 +19,4 @@ function ConnectDatabase(){
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    echo $config['host'];
 }

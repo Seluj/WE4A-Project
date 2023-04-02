@@ -14,7 +14,6 @@ ConnectDatabase();
     <body>
         <h1><?php echo $configs['host']?></h1>
         <h1><?php echo $configs['username']?></h1>
-        <h1><?php echo $configs['password']?></h1>
         <h1><?php echo $configs['dbname']?></h1>
         <p>Test</p>
         <?php
