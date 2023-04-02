@@ -1,9 +1,5 @@
 <?php
 
-
-
-
-
 // Function to open connection to database
 //--------------------------------------------------------------------------------
 function ConnectDatabase(){
@@ -20,3 +16,13 @@ function ConnectDatabase(){
         die("Connection failed: " . $conn->connect_error);
     }
 }
+
+function boucle($string, $number)
+{
+    for($i = 1; $i <= $number; $i++) {
+        ?><li> <img src="images/Meeple.png" alt="icone">
+        <a href=""><?php echo $string." ".$i ?></a></li><?php
+    }
+}
+
+?>

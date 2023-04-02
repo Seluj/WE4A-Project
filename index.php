@@ -1,16 +1,8 @@
 
 <?php
-
 $nomsite = "Dice & Pixels";
 
-function boucle($string, $number)
-{
-   for($i = 1; $i <= $number; $i++) {
-                 ?><li> <img src="images/Meeple.png" alt="icone">
-                   <a href=""><?php echo $string." ".$i ?></a></li><?php
-       }
-}
-
+include('./PageParts/databaseFunctions.php')
 ?>
 
 

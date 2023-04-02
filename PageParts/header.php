@@ -6,8 +6,11 @@
 
     <!-- Barre de recherche -->
 
+    <!-- <form action="#" method="post">
+        <input type="submit" value="Jeu">
+    </form> -->
 
-    <form action="#" method="post">
+    <form id="Recherche_generale" action="#" method="post">
         <input type="text" name="recherche" placeholder="Rechercher">
         <input type="image" src="images/Loupe.png" alt="icone">
     </form>
