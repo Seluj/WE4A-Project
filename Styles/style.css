@@ -20,8 +20,18 @@ body {
 	background-color: #D0C2ED;
 }
 
-h1{
-	font-size: 16px;
+.main_container {
+	margin-top: 5px;
+	display: flex;
+	justify-content: space-between;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 0;
+	color: #221146;
+	text-shadow: 1px 1px #B1B1B1;
 }
 
 header {
@@ -127,14 +137,6 @@ header img {
 	font-family: 'Press Start 2P', cursive;
 }
 
-.main h1 {
-	font-size: 24px;
-	font-weight: bold;
-	margin-top: 0;
-	color: #221146;
-	text-shadow: 1px 1px #B1B1B1;
-}
-
 .main ul {
 	list-style: none;
 	padding: 0;
@@ -199,4 +201,43 @@ header img {
 	max-height: none;
 	overflow: visible;
 }
+
+/* Page d'ajout */
+
+.fenetre_interaction {
+	min-height: 85%;
+	text-align: center;
+	margin: 10px 200px;
+	padding: 10px;
+	border: 2px solid black;
+	background-color:white;
+	font-family: 'Press Start 2P', cursive;
+}
+
+.fenetre_interaction h1 {
+	font-size: 25px;
+	margin: 10px;
+	padding: 10px;
+	margin-bottom: 0px;
+	display: inline-block;
+}
+
+.fenetre_interaction form {
+	display: inline-block;
+	text-align: center;
+	margin: 10px 10px;
+	width: 75%;
+}
+
+.fenetre_interaction input, #message{
+	font-family: 'Press Start 2P', cursive;
+	border: #2B2B2B solid 2px;
+}
+#message {
+	text-align: start;
+	width: 700px;
+	min-height: 300px;
+}
+
+
 
