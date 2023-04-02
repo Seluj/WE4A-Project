@@ -1,0 +1,3 @@
+<?php
+$nomsite = "Dice & Pixels";
+?>

@@ -1,7 +1,6 @@
 <?php
 session_start();
 $nomsite = "Dice & Pixels";
-
 include('./PageParts/databaseFunctions.php')
 ?>
 
