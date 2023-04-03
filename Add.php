@@ -3,8 +3,34 @@ session_start();
 include('./PageParts/variables.php');
 include('./PageParts/databaseFunctions.php');
 
-$posttype = "Message";
-$titreTopic = "Gagner des points";
+if (!isset($_SESSION['id'])) {
+    header("Location: ./index.php");
+}
+
+$posttype   = "";
+$titreTopic = "";
+$topicID    = "";
+if(isset($_GET['topicID'])){
+    $topicID = $_GET['topicID'];
+    ConnectDatabase();
+    $query = "SELECT `topics`.*
+        FROM `topics`
+        WHERE `topics`.`id_post` = '$topicID'";
+
+    global $conn;
+    $result = $conn->query($query);
+
+    if (mysqli_num_rows($result) != 0) {
+        $row = mysqli_fetch_assoc($result);
+        $titreTopic = $row['titre'];
+        $posttype = "Message";
+    } else {
+        $posttype = "Topic";
+    }
+} else {
+    $posttype = "Topic";
+}
+checkEntry();
 ?>
 
 
@@ -62,7 +88,7 @@ $titreTopic = "Gagner des points";
                     </label>
                 </div>
 
-                <br><input class="Boutons" type="button" value="<?php if($posttype == "Topic"){echo "Créer Topic";}
+                <br><input class="Boutons" name="newMessage" type="submit" value="<?php if($posttype == "Topic"){echo "Créer Topic";}
 
                 else{echo "Envoyer Message";}?>">
 

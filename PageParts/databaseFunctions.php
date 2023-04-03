@@ -24,6 +24,65 @@ function boucle($string, $number) {
     }
 }
 
+function checkEntry() {
+    if ($_POST['newMessage'] == "Créer Topic") {
+        checkNewTopic();
+    } else if ($_POST['newMessage'] == "Envoyer Message") {
+        checkNewMessage();
+    }
+}
+
+
+function checkNewMessage() {
+    global $conn;
+
+    $message = SecurizeString_ForSQL($_POST['choix_message']);
+    $idAuteur = $_SESSION['id'];
+    $idtopic = $_GET['topicID'];
+
+    $query = "INSERT INTO messages (id, contenu, user_id, topics_id) VALUES (NULL, '$message', '$idAuteur', '$idtopic')";
+
+    if ($conn->query($query) === TRUE) {
+        header("Location: ./Topic.php?topicID=".$idtopic);
+    } else {
+        echo "Error: " . $query . "<br>" . $conn->error;
+    }
+}
+
+function checkNewTopic() {
+    global $conn;
+
+    $titre = SecurizeString_ForSQL($_POST['choix_titre']);
+    $message = SecurizeString_ForSQL($_POST['choix_message']);
+    $idAuteur = $_SESSION['id'];
+    $idjeux = $_GET['jeux'];
+
+    $insert_topic = "INSERT INTO `topics` (`id_post`, `date_edit`, `titre`, `user_id`, `jeux_id`) VALUES (NULL, current_timestamp(), '$titre', '$idAuteur', '$idjeux')";
+
+    $query_topic = "SELECT `topics`.*
+            FROM `topics`
+            WHERE `topics`.`jeux_id` = '$idjeux' AND `topics`.`titre` = '$titre' AND `topics`.`user_id` = '$idAuteur';";
+
+
+    $result = $conn->query($insert_topic);
+
+    $result = $conn->query($query_topic);
+
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+        $idtopic = $row['id_post'];
+        $insert_message =
+            "INSERT INTO `messages` (`id`, `contenu`, `user_id`, `topics_id`) 
+            VALUES (NULL, '$message', '$idAuteur', '$idtopic')";
+        $result = $conn->query($insert_message);
+        header("Location: ./Topic.php?topicID=".$idtopic);
+    } else {
+        echo "Error: " . $insert_topic . "<br>" . $conn->error;
+    }
+
+
+}
+
 function checkAccount() {
     if (!isset($_SESSION['id'])) {
         if (isset($_POST['connecter'])) {
