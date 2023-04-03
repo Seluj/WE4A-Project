@@ -1,21 +1,17 @@
 /* Fichier intercation.css contenant le style des fenêtres d'interaction avec l'utilisateur */
 
-/* Div situé dans un main_container permettant de se placer dans la page et d'organiser les éléments utilisés
-lors d'interactions avec l'utilisateur (ajout/modification de topics/messages, inscription/connexion) */
-.fenetre_interaction {
-    position: relative;
-    max-width: 1000px;
-    min-width: 770px;
-    text-align: center;
-    margin-top: 20px;
-    margin-right: 200px;
-    margin-left: auto;
-    padding: 10px;
-    border: 2px solid black;
-    background-color: white;
+.main_interaction_container {
+    display: inline;
+    margin:5px;
 }
 
-/* Images située dans le cion supérieur gauche des divs de classe fenetre_interaction */
+.interaction_container{
+    margin: 0 auto;
+    max-width: 1000px;
+    min-width: 770px;
+}
+
+/* Images située dans le coin supérieur gauche des divs de classe fenetre_interaction */
 .image_commentaire {
     position: absolute;
     left:20px;
@@ -23,7 +19,7 @@ lors d'interactions avec l'utilisateur (ajout/modification de topics/messages, i
 }
 
 /* Titre du type d'interaction */
-.fenetre_interaction h1 {
+.titre_interaction {
     font-size: 50px;
     margin: 10px;
     padding: 10px;
@@ -91,4 +87,18 @@ lors d'interactions avec l'utilisateur (ajout/modification de topics/messages, i
     background-color: #B5A4CD;
     border: #494254 solid 3px;
     margin-top:27px;
+}
+
+#Revenir_accueil {
+    background-color: #333;
+    width:200px;
+    margin:20px auto;
+    border-radius: 3px;
+
+}
+
+#Revenir_accueil a {
+    color: white;
+    text-shadow: none;
+    margin-left: 7px;
 }

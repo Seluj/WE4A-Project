@@ -6,7 +6,7 @@ $typejeu = "Jeux Vidéos";
 
     <!-- Nom du site -->
 
-    <h1 id="Nom_Site"><?php echo $nomsite ?></h1>
+    <h1 id="Nom_Site" class="police"><?php echo $nomsite ?></h1>
 
     <!-- Barre de recherche -->
 
@@ -29,7 +29,7 @@ $typejeu = "Jeux Vidéos";
         <!-- Bouton de connexion -->
         <div id="Connexion" class="linkBox">
             <a href="./newAccount.php" > <img src="images/Meeple.png" alt="icone"> </a>
-            <a id="se_connecter" class="link" href="./newAccount.php">Se Connecter</a>
+            <a class="police" href="./newAccount.php">Se Connecter</a>
         </div>
         <?php
         } else {

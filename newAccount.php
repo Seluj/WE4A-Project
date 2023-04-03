@@ -19,6 +19,8 @@ checkAccount();
     <meta charset="UTF-8">
     <title><?php echo $nomsite ?></title>
     <link rel="stylesheet" href="./Styles/style.css">
+    <link rel="stylesheet" href="./Styles/header.css">
+    <link rel="stylesheet" href="./Styles/interaction.css">
     <link rel="icon" href="images/icone.png">
 </head>
 
@@ -27,8 +29,8 @@ checkAccount();
     <!-- Bandeau du site contenant le nom du site, le moyen d'authentification et une barre de recherche -->
 
     <?php include('./PageParts/header.php') ?>
-    <div class="main_container">
-        <hr>
+
+    <div class="main_container main_interaction_container">
         <?php
         include("./PageParts/signinForm.php");
         include("./PageParts/loginForm.php");
@@ -52,8 +54,10 @@ checkAccount();
                 }
             }
         </script>
-        <hr>
-        <p class="linkBox"><a href="./index.php" class="backlink"><< Revenir à l'accueil</a><br><br></p>
+
+        <div id="Revenir_accueil" class="linkBox">
+            <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
+        </div>
     </div>
 </body>
 </html>

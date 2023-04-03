@@ -44,6 +44,8 @@ checkEntry();
     <meta charset="UTF-8">
     <title><?php echo $nomsite ?></title>
     <link rel="stylesheet" href="./Styles/style.css">
+    <link rel="stylesheet" href="./Styles/header.css">
+    <link rel="stylesheet" href="./Styles/interaction.css">
     <link rel="icon" href="images/icone.png">
 </head>
 
@@ -56,11 +58,11 @@ checkEntry();
     <!-- Reste de la page -->
     <div class="main_container">
 
-        <div class="fenetre_interaction">
+        <div class="container interaction_container">
 
             <img class="image_commentaire" src="./images/Start_game.png" alt="Start a new Game">
 
-            <h1>Nouveau <?php echo $posttype ?></h1>
+            <h1 class="titre_interaction">Nouveau <?php echo $posttype ?></h1>
             <br><p>________________________________________</p><br>
 
             <form class="formulaire" action="#" method="post">

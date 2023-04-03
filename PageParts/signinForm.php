@@ -1,9 +1,9 @@
 
-<div id="signin" class="fenetre_interaction">
+<div id="signin" class="container interaction_container">
 
     <img class="image_commentaire" src="./images/NewPlayer.png" alt="New Player !">
 
-    <h1>Créer un compte</h1>
+    <h1 class="titre_interaction">Créer un compte</h1>
 
     <br><p>________________________________________</p><br>
 

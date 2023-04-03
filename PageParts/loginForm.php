@@ -1,8 +1,8 @@
-<div id="login" class="fenetre_interaction">
+<div id="login" class="container interaction_container">
 
     <img class="image_commentaire" src="./images/You_re_back.png" alt="You're Back !">
 
-    <h1>Connexion</h1>
+    <h1 class="titre_interaction">Connexion</h1>
 
     <br><p>________________________________________</p><br>
 

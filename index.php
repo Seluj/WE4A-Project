@@ -14,11 +14,12 @@ include('./PageParts/databaseFunctions.php');
 <meta charset="UTF-8">
 <title><?php echo $nomsite ?></title>
 <link rel="stylesheet" href="./Styles/style.css">
+<link rel="stylesheet" href="./Styles/header.css">
+<link rel="stylesheet" href="./Styles/interaction.css">
 <link rel="icon" href="images/icone.png">
 </head>
 
 <body>
-
 
     <!-- Bandeau du site contenant le nom du site, le moyen d'authentification et une barre de recherche -->
 
@@ -26,21 +27,27 @@ include('./PageParts/databaseFunctions.php');
 
     <!-- Reste de la page -->
     <div class="main_container">
-        <div id="utilisateurs" class="main">
-            <h1>Joueurs</h1>
+
+        <div id="utilisateurs" class="container">
+
+            <div id="profil">
+                <img class="avatar" src="images/Avatar.jpg" alt="avatar">
+                <h1>Profil "rzjviezhviuezhvifv</h1>
+            </div>
+
             <ul>
                 <?php boucle("Utilisateur", 20) ?>
             </ul>
         </div>
 
-        <div id="messages" class="main">
+        <div id="messages" class="container">
             <h1>Liste des messages de la discussion</h1>
             <ul>
                 <?php boucle("Message", 20) ?>
             </ul>
         </div>
 
-        <div id="jeux" class="main">
+        <div id="jeux" class="container">
 
             <div class="liste_jeux" id="jeux_visites">
                 <h1>Liste des jeux visités</h1>

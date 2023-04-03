@@ -3,7 +3,7 @@
 header {
     min-width: 850px;
     min-height:63px;
-    margin-top: 5px;
+    margin: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
