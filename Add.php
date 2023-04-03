@@ -55,22 +55,22 @@ checkEntry();
     <!-- Reste de la page -->
     <div class="main_container">
 
-        <div id="Ajout" class="fenetre_interaction">
+        <div class="fenetre_interaction">
 
-            <img id="Start_game" src="./images/Start_game.png" alt="Start a new Game">
+            <img class="image_commentaire" src="./images/Start_game.png" alt="Start a new Game">
 
             <h1>Nouveau <?php echo $posttype ?></h1>
             <br><p>________________________________________</p><br>
 
-            <form id="saisir_titre" action="#" method="post">
+            <form class="formulaire" action="#" method="post">
 
 
                 <div id="entrer_titre" class="entrees">
 
                     <?php if($posttype == "Topic"){?>
-                        <label>Saisissez un titre pour votre Topic :
-                            <br><input type="text" name="choix_titre" placeholder="Titre">
-                        </label>
+                        <label for="choix_titre">Saisissez un titre pour votre Topic :</label>
+                        <br><input type="text" name="choix_titre" placeholder="Titre"/>
+
 
                     <?php }else{?>
 
@@ -82,10 +82,10 @@ checkEntry();
                 <br><br>
 
                 <div id="saisir_message" class="entrees">
-                    <label>Saisissez votre <?php if($posttype == "Topic"){ echo "premier "; }?>message :
-                        <br>
-                        <textarea id="message" name="choix_message" placeholder="Message"></textarea>
-                    </label>
+                    <label for="choix_message">Saisissez votre <?php if($posttype == "Topic"){ echo "premier "; }?>message :</label>
+                    <br>
+                    <textarea id="message" name="choix_message" placeholder="Message"></textarea>
+
                 </div>
 
                 <br><input class="Boutons" name="newMessage" type="submit" value="<?php if($posttype == "Topic"){echo "Créer Topic";}

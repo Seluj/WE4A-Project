@@ -6,7 +6,7 @@ $typejeu = "Jeux Vidéos";
 
     <!-- Nom du site -->
 
-    <h1 id="Nom_Site" class="police"><?php echo $nomsite ?></h1>
+    <h1 id="Nom_Site"><?php echo $nomsite ?></h1>
 
     <!-- Barre de recherche -->
 
@@ -22,7 +22,7 @@ $typejeu = "Jeux Vidéos";
         </form>
 
         <form id="Recherche_generale" action="#" method="post">
-            <input type="text" name="recherche" placeholder="Rechercher">
+            <input class="saisie" type="text" name="recherche" placeholder="Rechercher">
             <input type="image" src="images/Loupe.png" alt="icone">
         </form>
 
@@ -31,17 +31,17 @@ $typejeu = "Jeux Vidéos";
         if (!isset($_SESSION['id'])) {
         ?>
         <!-- Bouton de connexion -->
-        <div id="Connexion">
+        <div id="Connexion" class="linkBox">
             <a href="./newAccount.php" > <img src="images/Meeple.png" alt="icone"> </a>
-            <a id="se_connecter" class="police" href="./newAccount.php">Se Connecter</a>
+            <a id="se_connecter" class="link" href="./newAccount.php">Se Connecter</a>
         </div>
         <?php
         } else {
         ?>
          <!-- Bouton de déconnexion -->
-        <div id="Deconnexion">
+        <div id="Deconnexion" class="linkBox">
             <a href="" > <img src="<?php $_SESSION['avatar'] ?>>" alt="icone"> </a>
-            <a class="police" href="./stopSession.php">Se Déconnecter</a>
+            <a href="./stopSession.php">Se Déconnecter</a>
         </div>
         <?php
         }

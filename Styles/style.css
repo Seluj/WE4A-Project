@@ -1,36 +1,24 @@
+/* Éléments généraux présents dans tout le site */
+
+/* Liens */
 a {
 	color: black;
 	text-decoration:none;
 }
 
-.police {
-	font-family: 'Press Start 2P', cursive;
-	font-weight: bold;
-	color: #FFFFFF;
-	text-shadow: 2px 2px #B1B1B1;
-}
-
+/* Listes */
 ul {
 	list-style: none;
 }
 
+/* Corps de toutes les pages */
 body {
 	margin-top: 0;
 	margin-bottom:0;
 	background-color: #F3EEDF;
 }
 
-.main_container {
-	text-align: center;
-	border: black solid 2px;
-}
-
-.container {
-	margin-top: 5px;
-	display: flex;
-	justify-content: space-between;
-}
-
+/* Titres de la page */
 h1 {
 	font-size: 24px;
 	font-weight: bold;
@@ -39,8 +27,7 @@ h1 {
 	text-shadow: 1px 1px #B1B1B1;
 }
 
-/* CSS concernant le header et ses composants */
-
+/* Header */
 header {
 	min-width: 850px;
 	min-height:63px;
@@ -55,30 +42,25 @@ header {
 	word-wrap: normal;
 }
 
+/* Titre du header, nom du site */
 header h1 {
 	white-space: nowrap;
 	font-size: 30px;
 	margin: 0;
+	font-family: 'Press Start 2P', cursive;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-shadow: 2px 2px #B1B1B1;
 }
 
-header a {
-	font-size: 17px;
-	color: white;
-	text-decoration:none;
-}
-
+/* Icônes, images du header */
 header img {
 	width: 35px;
 	height: 35px;
 	margin-right: 5px;
 }
 
-#formulaires {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
+/* Texte du header indiquant  */
 #Direction {
 	margin-left:60px;
 	white-space: nowrap;
@@ -102,7 +84,7 @@ header img {
 	box-shadow: 0 2px 2px #000000;
 }
 
-#Recherche_generale input[type="text"] {
+.saisie{
 	margin-right: 10px;
 	padding: 5px;
 	border-radius: 3px;
@@ -110,7 +92,41 @@ header img {
 	box-shadow: inset 0 0 2px #000000;
 }
 
-#Connexion {
+input[type="checkbox"]{
+	width: 20px;
+	height: 20px;
+}
+
+/* Conteneur principal contenant le reste de la page */
+.main_container {
+	text-align: center;
+	border: black solid 2px;
+}
+
+.container {
+	margin-top: 5px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#formulaires {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.linkBox a {
+	font-family: 'Press Start 2P', cursive;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-shadow: 2px 2px #B1B1B1;
+	margin-bottom: 2px;
+	white-space: nowrap;
+	font-size: 17px;
+	text-decoration:none;
+}
+
+.linkBox {
 	padding: 5px;
 	display: flex;
 	justify-content: space-between;
@@ -118,7 +134,7 @@ header img {
 	margin-left: 20px;
 }
 
-#Connexion:hover {
+.linkBox:hover {
 	background-color: #6C6477;
 	border: #494254 solid 4px;
 	margin-left: 12px;
@@ -126,11 +142,6 @@ header img {
 
 #Connexion img {
 	margin-top: 5px;
-}
-
-#se_connecter {
-	margin-bottom: 2px;
-	white-space: nowrap;
 }
 
 .main{
@@ -222,7 +233,7 @@ header img {
 	background-color: white;
 }
 
-#Start_game {
+.image_commentaire {
 	position: absolute;
 	left:20px;
 	top:20px
@@ -236,11 +247,23 @@ header img {
 	font-family: 'Times New Roman', cursive;
 }
 
-.fenetre_interaction form {
+.formulaire {
+	padding-top: 30px;
 	display: inline-block;
 	text-align: center;
 	margin: 10px 10px;
+	background-color: white;
 }
+
+/*.formulaire {
+	padding: 50px;
+	padding-top: 30px;
+	display: inline-block;
+	text-align: center;
+	margin: 10px 10px;
+	background-color: #333;
+}*/
+
 #message {
 	margin-top:20px;
 	width: 720px;
@@ -261,11 +284,24 @@ header img {
 	padding: 15px 15px;
 	border-radius: 5px;
 	border: none;
-	background-color: #333;
 	color: white;
+	background-color: #333;
 	cursor: pointer;
 	box-shadow: 0 5px 5px #E1D9F4;
 }
+
+/*.entrees {
+	font-family: 'Press Start 2P', cursive;
+	font-size: 25px;
+	display:inline-block;
+	padding: 15px 15px;
+	border-radius: 5px;
+	border: none;
+	color: black;
+	background-color: white;
+	cursor: pointer;
+	box-shadow: 0 5px 5px #E1D9F4;
+}*/
 
 .Boutons {
 	white-space: nowrap;

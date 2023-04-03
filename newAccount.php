@@ -53,7 +53,7 @@ checkAccount();
             }
         </script>
         <hr>
-        <p><a href="./index.php" class="backlink"><< Revenir à l'accueil</a><br><br></p>
+        <p class="linkBox"><a href="./index.php" class="backlink"><< Revenir à l'accueil</a><br><br></p>
     </div>
 </body>
 </html>
