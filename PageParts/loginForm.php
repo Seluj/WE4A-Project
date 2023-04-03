@@ -11,6 +11,6 @@
         <label for="mdp">Mot de passe</label>
     </div>
 
-    <input type="submit" name="inscrire" value="Se connecter" />
+    <input type="submit" name="connecter" value="Se connecter" />
     <button type="button" id="button1" onClick="myFunction()">S'inscrire</button>
 </form>

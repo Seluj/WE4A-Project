@@ -41,7 +41,7 @@ $typejeu = "Jeux Vidéos";
          <!-- Bouton de déconnexion -->
         <div id="Deconnexion">
             <a href="" > <img src="<?php $_SESSION['avatar'] ?>>" alt="icone"> </a>
-            <a class="police" href="">Se Déconnecter</a>
+            <a class="police" href="./stopSession.php">Se Déconnecter</a>
         </div>
         <?php
         }
