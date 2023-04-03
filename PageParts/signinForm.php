@@ -1,3 +1,6 @@
+
+<div id="Ajout" class="fenetre_interaction">
+
     <form method="post" action="#" id="signin">
 
         <div>
@@ -43,3 +46,4 @@
         <input type="submit" name="inscrire" value="S'inscrire" />
         <button type="button" id="button2"  onClick="myFunction()">Se connecter</button>
     </form>
+</div>
