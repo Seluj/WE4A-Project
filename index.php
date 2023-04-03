@@ -2,8 +2,20 @@
 session_start();
 include('./PageParts/variables.php');
 include('./PageParts/databaseFunctions.php');
-?>
 
+$affichage_nom = 0;
+$pseudo = "Goodman";
+$prenom = "Jean";
+$nom = "Menton";
+$description = "blabla";
+$avatar = "images/Avatar.jpg";
+
+if($affichage_nom == 0){
+    $utilisateur = $pseudo;
+}else{
+    $utilisateur = $prenom." ".$nom;
+}
+?>
 
 <!DOCTYPE html>
 
@@ -31,8 +43,14 @@ include('./PageParts/databaseFunctions.php');
         <div id="utilisateurs" class="container">
 
             <div id="profil">
-                <img class="avatar" src="images/Avatar.jpg" alt="avatar">
-                <h1>Profil "rzjviezhviuezhvifv</h1>
+                <h1><a href="">Profil</a></h1>
+                <div>
+                    <img class="avatar" src=<?php echo $avatar ?> alt="avatar">
+                    <h2><?php echo $utilisateur ?></h2>
+                </div>
+                <div>
+                    <?php echo $description ?>
+                </div>
             </div>
 
             <ul>

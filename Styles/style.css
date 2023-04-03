@@ -94,10 +94,10 @@ input[type="checkbox"]{
 }
 
 #utilisateurs {
-	padding: 20px;
+	padding: 15px 0 0 10px;
 	left: 0;
-	min-width: 200px;
-	width: 250px;
+	min-width: 250px;
+	width: 260px;
 }
 
 #messages {
@@ -114,9 +114,10 @@ input[type="checkbox"]{
 }
 
 #profil {
+	max-width: 250px;
+	flex-direction: column;
 	display: flex;
-	margin: auto;
-	text-align: center;
+	margin: 0 auto;
 }
 
 .avatar {
@@ -127,9 +128,34 @@ input[type="checkbox"]{
 }
 
 #profil h1 {
-	margin: auto 20px;
+	font-size: 30px;
+	text-align: center;
+	margin: 0 20px;
+}
+
+#profil h1 a {
+	text-decoration:none;
+	color: black;
+}
+
+#profil div {
+	max-width: 250px;
+	padding-top: 10px;
+	display: flex;
+	margin: 10px auto 0 auto;
+	text-align: center;
+	border-top: black solid 2px;
+}
+
+#profil h2 {
 	display: inline-block;
-	max-width: 50px;
+	text-align: center;
+	width: 110px;
+	max-width: 130px;
+	max-height: 100px;
+	font-size: 17px;
+	margin: auto 20px auto 20px;
+	overflow-wrap: break-word;
 }
 
 .container ul {
