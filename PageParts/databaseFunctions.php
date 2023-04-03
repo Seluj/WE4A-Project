@@ -38,12 +38,12 @@ function checkNewMessage() {
 
     $message = SecurizeString_ForSQL($_POST['choix_message']);
     $idAuteur = $_SESSION['id'];
-    $idtopic = $_GET['topicID'];
+    $idtopic = $_GET['topic'];
 
     $query = "INSERT INTO messages (id, contenu, user_id, topics_id) VALUES (NULL, '$message', '$idAuteur', '$idtopic')";
 
     if ($conn->query($query) === TRUE) {
-        header("Location: ./Topic.php?topicID=".$idtopic);
+        header("Location: ./index.php?topic=".$idtopic);
     } else {
         echo "Error: " . $query . "<br>" . $conn->error;
     }
@@ -75,7 +75,7 @@ function checkNewTopic() {
             "INSERT INTO `messages` (`id`, `contenu`, `user_id`, `topics_id`) 
             VALUES (NULL, '$message', '$idAuteur', '$idtopic')";
         $result = $conn->query($insert_message);
-        header("Location: ./Topic.php?topicID=".$idtopic);
+        header("Location: ./index.php?topic=".$idtopic);
     } else {
         echo "Error: " . $insert_topic . "<br>" . $conn->error;
     }
@@ -111,7 +111,7 @@ function checkConnectionForm() {
         $_SESSION['nom'] = $row['nom'];
         $_SESSION['prenom'] = $row['prenom'];
         $_SESSION['pseudo'] = $row['pseudo'];
-        $_SESSION['avatar'] = $row['avatar'];
+        $_SESSION['avatar'] = ($row['avatar']);
         $_SESSION['affichage_nom'] = $row['affichage_nom'];
         $_SESSION['administrateur'] = $row['administrateur'];
         header("Location: ./index.php");
@@ -163,7 +163,7 @@ function checkNewAccountForm() {
         } else if (mysqli_num_rows($result_nom_prenom) != 0) {
             ?>
             <script>
-                alert("Ce nom et prénom sont déjà utilisés.");
+                alert("Ces nom et prénom sont déjà utilisés.");
             </script>
             <?php
         } else {

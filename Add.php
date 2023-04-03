@@ -9,9 +9,10 @@ if (!isset($_SESSION['id'])) {
 
 $posttype   = "";
 $titreTopic = "";
+$jeuID     = "";
 $topicID    = "";
-if(isset($_GET['topicID'])){
-    $topicID = $_GET['topicID'];
+if(isset($_GET['topic'])){
+    $topicID = $_GET['topic'];
     ConnectDatabase();
     $query = "SELECT `topics`.*
         FROM `topics`
