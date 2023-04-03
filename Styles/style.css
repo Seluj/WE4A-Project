@@ -1,4 +1,4 @@
-/* Éléments généraux présents dans tout le site */
+/* Fichier style.css contenant les éléments généraux utilisés dans toutes les pages */
 
 /* Liens */
 a {
@@ -27,63 +27,7 @@ h1 {
 	text-shadow: 1px 1px #B1B1B1;
 }
 
-/* Header */
-header {
-	min-width: 850px;
-	min-height:63px;
-	margin-top: 5px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: #333;
-	border: 5px solid #2B2B2B;
-	color: #fff;
-	padding: 5px;
-	word-wrap: normal;
-}
-
-/* Titre du header, nom du site */
-header h1 {
-	white-space: nowrap;
-	font-size: 30px;
-	margin: 0;
-	font-family: 'Press Start 2P', cursive;
-	font-weight: bold;
-	color: #FFFFFF;
-	text-shadow: 2px 2px #B1B1B1;
-}
-
-/* Icônes, images du header */
-header img {
-	width: 35px;
-	height: 35px;
-	margin-right: 5px;
-}
-
-/* Texte du header indiquant  */
-#Direction {
-	margin-left:60px;
-	white-space: nowrap;
-}
-
-#Changement_jeu {
-	margin-left:10px;
-}
-
-#Recherche_generale {
-	display: flex;
-	align-items: center;
-	margin-right: auto;
-	margin-left: 20px;
-	padding: 5px 10px;
-	border-radius: 3px;
-	border: none;
-	background-color: #fff;
-	color: #333;
-	cursor: pointer;
-	box-shadow: 0 2px 2px #000000;
-}
-
+/* Boîtes de saisie de données*/
 .saisie{
 	margin-right: 10px;
 	padding: 5px;
@@ -92,29 +36,27 @@ header img {
 	box-shadow: inset 0 0 2px #000000;
 }
 
+/* Style des checkboxes */
 input[type="checkbox"]{
 	width: 20px;
 	height: 20px;
 }
 
-/* Conteneur principal contenant le reste de la page */
+/* Conteneur principal abritant le contenu de la page */
 .main_container {
 	text-align: center;
-	border: black solid 2px;
 }
 
-.container {
-	margin-top: 5px;
-	display: flex;
-	justify-content: space-between;
-}
-
-#formulaires {
+/* Div contenant un lien */
+.linkBox {
+	padding: 5px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-left: 20px;
 }
 
+/* Lien contenu dans une div de classe linkBox */
 .linkBox a {
 	font-family: 'Press Start 2P', cursive;
 	font-weight: bold;
@@ -126,23 +68,13 @@ input[type="checkbox"]{
 	text-decoration:none;
 }
 
-.linkBox {
-	padding: 5px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-left: 20px;
-}
-
+/* Style des liens contenus dans une div de classe linkBox quand l'utilisateur passe sa souris dessus */
 .linkBox:hover {
 	background-color: #6C6477;
 	border: #494254 solid 4px;
 	margin-left: 12px;
 }
 
-#Connexion img {
-	margin-top: 5px;
-}
 
 .main{
 	margin: 5px;
@@ -216,109 +148,4 @@ input[type="checkbox"]{
 #jeux_proposes:hover{
 	max-height: none;
 	overflow: visible;
-}
-
-/* Page Add.php */
-
-.fenetre_interaction {
-	position: relative;
-	max-width: 1000px;
-	min-width: 770px;
-	text-align: center;
-	margin-top: 20px;
-	margin-right: 200px;
-	margin-left: auto;
-	padding: 10px;
-	border: 2px solid black;
-	background-color: white;
-}
-
-.image_commentaire {
-	position: absolute;
-	left:20px;
-	top:20px
-}
-.fenetre_interaction h1 {
-	font-size: 50px;
-	margin: 10px;
-	padding: 10px;
-	margin-bottom: 0px;
-	display: inline-block;
-	font-family: 'Times New Roman', cursive;
-}
-
-.formulaire {
-	padding-top: 30px;
-	display: inline-block;
-	text-align: center;
-	margin: 10px 10px;
-	background-color: white;
-}
-
-/*.formulaire {
-	padding: 50px;
-	padding-top: 30px;
-	display: inline-block;
-	text-align: center;
-	margin: 10px 10px;
-	background-color: #333;
-}*/
-
-#message {
-	margin-top:20px;
-	width: 720px;
-	max-width: 720px;
-	min-width: 720px;
-	min-height: 300px;
-	max-height: 500px;
-}
-
-#entrer_titre {
-	max-width:600px;
-}
-
-.entrees {
-	font-family: 'Press Start 2P', cursive;
-	font-size: 25px;
-	display:inline-block;
-	padding: 15px 15px;
-	border-radius: 5px;
-	border: none;
-	color: white;
-	background-color: #333;
-	cursor: pointer;
-	box-shadow: 0 5px 5px #E1D9F4;
-}
-
-/*.entrees {
-	font-family: 'Press Start 2P', cursive;
-	font-size: 25px;
-	display:inline-block;
-	padding: 15px 15px;
-	border-radius: 5px;
-	border: none;
-	color: black;
-	background-color: white;
-	cursor: pointer;
-	box-shadow: 0 5px 5px #E1D9F4;
-}*/
-
-.Boutons {
-	white-space: nowrap;
-	font-size: 20px;
-	font-weight: bold;
-	margin: 28px;
-	padding: 10px;
-	margin-bottom: 10px;
-	display: inline-block;
-	background-color: #F3EEDF;
-	border-radius: 5px;
-	border: #EADAAB solid 2px;
-	font-family: 'Times New Roman', cursive;
-}
-
-.Boutons:hover {
-	background-color: #B5A4CD;
-	border: #494254 solid 3px;
-	margin-top:27px;
 }

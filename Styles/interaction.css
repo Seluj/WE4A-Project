@@ -1,0 +1,94 @@
+/* Fichier intercation.css contenant le style des fenêtres d'interaction avec l'utilisateur */
+
+/* Div situé dans un main_container permettant de se placer dans la page et d'organiser les éléments utilisés
+lors d'interactions avec l'utilisateur (ajout/modification de topics/messages, inscription/connexion) */
+.fenetre_interaction {
+    position: relative;
+    max-width: 1000px;
+    min-width: 770px;
+    text-align: center;
+    margin-top: 20px;
+    margin-right: 200px;
+    margin-left: auto;
+    padding: 10px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+/* Images située dans le cion supérieur gauche des divs de classe fenetre_interaction */
+.image_commentaire {
+    position: absolute;
+    left:20px;
+    top:20px
+}
+
+/* Titre du type d'interaction */
+.fenetre_interaction h1 {
+    font-size: 50px;
+    margin: 10px;
+    padding: 10px;
+    margin-bottom: 0px;
+    display: inline-block;
+    font-family: 'Times New Roman', cursive;
+}
+
+/* Formulaires des fenêtres d'interaction */
+.formulaire {
+    padding: 50px;
+    padding-top: 30px;
+    display: inline-block;
+    text-align: center;
+    margin: 10px 10px;
+    background-color: #333;
+}
+
+/* Zone de texte dans laquelle l'utilisateur peut saisir un message */
+#message {
+    margin-top:20px;
+    width: 720px;
+    max-width: 720px;
+    min-width: 720px;
+    min-height: 300px;
+    max-height: 500px;
+}
+
+/* Div contenant les éléments permettant à l'utilisateur de saisir le titre d'un topic */
+#entrer_titre {
+    max-width:600px;
+}
+
+/* Div contenant les éléments permettant à l'utilisateur de saisir des données */
+.entrees {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 25px;
+    display:inline-block;
+    padding: 15px 15px;
+    border-radius: 5px;
+    border: none;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 5px #E1D9F4;
+}
+
+/* Style des boutons */
+.Boutons {
+    white-space: nowrap;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 28px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    background-color: #F3EEDF;
+    border-radius: 5px;
+    border: #EADAAB solid 2px;
+    font-family: 'Times New Roman', cursive;
+}
+
+/* Style des boutons quand l'utilisateur passe la souris dessus */
+.Boutons:hover {
+    background-color: #B5A4CD;
+    border: #494254 solid 3px;
+    margin-top:27px;
+}

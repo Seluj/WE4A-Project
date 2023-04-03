@@ -1,0 +1,71 @@
+/* Fichier header.css contenant le style du header et des éléments contenus dans le header */
+
+header {
+    min-width: 850px;
+    min-height:63px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    border: 5px solid #2B2B2B;
+    color: #fff;
+    padding: 5px;
+    word-wrap: normal;
+}
+
+/* Titre du header, nom du site */
+header h1 {
+    white-space: nowrap;
+    font-size: 30px;
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: 2px 2px #B1B1B1;
+}
+
+/* Icônes, images du header */
+header img {
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+}
+
+/* Div contenant les éléments permettant l'interaction de l'utlisateur avec le header */
+#formulaires {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Image sur laquelle cliquer pour changer de type de jeux (de société ou vidéos) */
+#Changement_jeu {
+    margin-left:10px;
+}
+
+/* Texte du header indiquant  vers quel type de jeu se diriger*/
+#Direction {
+    margin-left:60px;
+    white-space: nowrap;
+}
+
+/* Div contenant le form de recherche du header */
+#Recherche_generale {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    margin-left: 20px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: none;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 2px #000000;
+}
+
+/* Div contenant le lien de connexion */
+#Connexion img {
+    margin-top: 5px;
+}
