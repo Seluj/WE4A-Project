@@ -7,7 +7,7 @@
 
     <br><p>________________________________________</p><br>
 
-    <form class="formulaire" method="post" action="#">
+    <form class="formulaire" method="post" action="#" enctype="multipart/form-data">
 
         <div class="entrees">
             <label for="nom">Nom</label>

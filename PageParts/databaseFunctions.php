@@ -138,8 +138,151 @@ function checkNewAccountForm() {
         $email = $_POST["email"];
         $mdp = md5($_POST["mdp"]);
         $pseudo = SecurizeString_ForSQL($_POST["pseudo"]);
-        $avatar = $_POST["avatar"];
 
+        $image = $_POST['avatar'];
+        //Stores the filename as it was on the client computer.
+        $imagename = $_FILES['avatar']['name'];
+        //Stores the filetype e.g image/jpeg
+        $imagetype = $_FILES['avatar']['type'];
+        //Stores any error codes from the upload.
+        $imageerror = $_FILES['avatar']['error'];
+        //Stores the tempname as it is given by the host when uploaded.
+        $imagetemp = $_FILES['avatar']['tmp_name'];
+
+
+        try {
+
+            // Undefined | Multiple Files | $_FILES Corruption Attack
+            // If this request falls under any of them, treat it invalid.
+            if (
+                !isset($_FILES['avatar']['error']) ||
+                is_array($_FILES['avatar']['error'])
+            ) {
+                ?>
+                <script>
+                    alert("Invalid parameters.");
+                </script>
+                <?php
+                throw new RuntimeException('Invalid parameters.');
+            }
+
+            // Check $_FILES['avatar']['error'] value.
+            switch ($_FILES['avatar']['error']) {
+                case UPLOAD_ERR_OK:
+                    break;
+                case UPLOAD_ERR_NO_FILE:
+                    ?>
+                    <script>
+                        alert("No file sent.");
+                    </script>
+                    <?php
+                    throw new RuntimeException('No file sent.');
+                case UPLOAD_ERR_INI_SIZE:
+                case UPLOAD_ERR_FORM_SIZE:
+                    ?>
+                    <script>
+                        alert("Exceeded filesize limit.");
+                    </script>
+                    <?php
+                    throw new RuntimeException('Exceeded filesize limit.');
+                default:
+                    ?>
+                    <script>
+                        alert("Unknown errors..");
+                    </script>
+                    <?php
+                    throw new RuntimeException('Unknown errors.');
+            }
+
+            // You should also check filesize here.
+            if ($_FILES['avatar']['size'] > 1000000) {
+                ?>
+                <script>
+                    alert("Exceeded filesize limit.");
+                </script>
+                <?php
+                throw new RuntimeException('Exceeded filesize limit.');
+            }
+
+            // DO NOT TRUST $_FILES['avatar']['mime'] VALUE !!
+            // Check MIME Type by yourself.
+            $finfo = new finfo(FILEINFO_MIME_TYPE);
+            if (false === $ext = array_search(
+                    $finfo->file($_FILES['avatar']['tmp_name']),
+                    array(
+                        'jpg' => 'image/jpeg',
+                        'png' => 'image/png',
+                        'gif' => 'image/gif',
+                    ),
+                    true
+                )) {
+                ?>
+                <script>
+                    alert("Invalid file format.");
+                </script>
+                <?php
+                throw new RuntimeException('Invalid file format.');
+            }
+            $imagePath = "./data/users/images";
+            // You should name it uniquely.
+            // DO NOT USE $_FILES['avatar']['name'] WITHOUT ANY VALIDATION !!
+            // On this example, obtain safe unique name from its binary data.
+            if (!move_uploaded_file(
+                $_FILES['avatar']['tmp_name'],
+                sprintf($imagePath.'/%s.%s',
+                    sha1_file($_FILES['avatar']['tmp_name']),
+                    $ext
+                )
+            )) {
+                ?>
+                <script>
+                    alert("Failed to upload your image.");
+                </script>
+                <?php
+                throw new RuntimeException('Failed to move uploaded file.');
+            }
+
+            echo 'File is uploaded successfully.';
+            ?>
+            <script>
+                alert("Successfully uploaded your image.");
+            </script>
+            <?php
+        } catch (RuntimeException $e) {
+
+            echo $e->getMessage();
+
+        }
+
+
+
+        /*
+        if(is_uploaded_file($imagetemp)) {
+            if(move_uploaded_file($imagetemp, $imagePath . $imagename)) {
+                //echo "Successfully uploaded your image.";
+                ?>
+                <script>
+                    alert("Successfully uploaded your image.");
+                </script>
+                <?php
+            }
+            else {
+                echo "Failed to move your image.";
+                ?>
+                <script>
+                    alert("Failed to move your image.");
+                </script>
+                <?php
+            }
+        } else {
+            echo "Failed to upload your image.";
+            ?>
+            <script>
+                alert("Failed to upload your image.");
+            </script>
+            <?php
+        }
+*/
         $query_email = "SELECT * FROM utilisateurs WHERE mail = '$email'";
         $query_pseudo = "SELECT * FROM utilisateurs WHERE pseudo = '$pseudo'";
         $query_nom_prenom = "SELECT * FROM utilisateurs WHERE nom = '$nom' AND prenom = '$prenom'";
@@ -170,7 +313,7 @@ function checkNewAccountForm() {
 
             $query_insert =
                 "INSERT INTO `utilisateurs` (`id`, `mail`, `mdp`, `nom`, `prenom`, `pseudo`, `avatar`, `affichage_nom`, `administrateur`) 
-                VALUES (NULL, '$email', '$mdp', '$nom', '$prenom', '$pseudo', '$avatar', '0', '0')
+                VALUES (NULL, '$email', '$mdp', '$nom', '$prenom', '$pseudo', '$image', '0', '0')
                 ";
 
             $result = $conn->query($query_insert);
@@ -192,7 +335,7 @@ function checkNewAccountForm() {
     }
 }
 
-//Function to clean up an user input for safety reasons
+//Function to clean up an users input for safety reasons
 //--------------------------------------------------------------------------------
 function SecurizeString_ForSQL($string) {
     $string = trim($string);

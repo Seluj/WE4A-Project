@@ -1,6 +1,7 @@
 <?php
 $nomsite = "Dice & Pixels";
-$index = "../index.php";
-$imagetype="images/Loupe.png"
+$imagetype = "images/Loupe.png";
+$imagePathLink = "http://chris.ferlin.fr:90/Projet/data/users/images/";
+$imagePath = "./data/users/images/";
 ?>
 

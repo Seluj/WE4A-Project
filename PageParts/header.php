@@ -10,10 +10,6 @@ $typejeu = "Jeux Vidéos";
 
     <!-- Barre de recherche -->
 
-    <!-- <form action="#" method="post">
-        <input type="submit" value="Jeu">
-    </form> -->
-
     <div id="formulaires">
 
         <p id="Direction"> Vers <?php echo $typejeu?> </p>
@@ -40,13 +36,12 @@ $typejeu = "Jeux Vidéos";
         ?>
          <!-- Bouton de déconnexion -->
         <div id="Deconnexion" class="linkBox">
-            <a href="" > <img src="<?php echo $_SESSION['avatar'] ?>" alt="icone"> </a>
+            <a href="" > <img src="<?php echo $imagePathLink.$_SESSION['avatar'] ?>" alt="icone"> </a>
             <a href="./stopSession.php">Se Déconnecter</a>
         </div>
         <?php
         }
         ?>
     </div>
-
 
 </header>
