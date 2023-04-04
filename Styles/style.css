@@ -78,37 +78,75 @@ input[type="checkbox"]{
 	padding: 5px 0;
 	display: flex;
 	text-align: center;
-	border: none;
 }
 
 /* Sous-partie d'un main_container */
 .container{
-	position: relative;
-	display: inline-block;
+	padding: 15px 0 0 10px;
 	text-align: center;
 	margin: 5px;
 	border: 2px solid black;
-	padding: 0px 10px;
 	background-color:white;
 	font-family: 'Press Start 2P', cursive;
 }
 
 #utilisateurs {
-	padding: 15px 0 0 10px;
 	left: 0;
 	min-width: 250px;
 	width: 260px;
 }
 
-#messages {
+#central {
+
+	text-align: justify;
+	position:relative;
 	min-width: 500px;
-	width: 780px;
-	margin-left: auto;
-	margin-right: auto;
+	width: 850px;
+	margin: 6px auto;
+	padding: 20px 10px;
+}
+
+#central h1{
+	width: auto;
+	position:absolute;
+	font-size: 30px;
+	text-align: center;
+	margin: auto;
+	left:10%;
+	right:10%;
+}
+
+#central h2 {
+	margin-top: 60px;
+	margin-right:20px;
+	padding-top:10px;
+	border-top: black solid 2px;
+}
+
+#central h3{
+
+}
+
+#image_jeu {
+	float:left;
+	min-height: 50px;
+	min-width: 50px;
+	width: 20%;
+	border-radius: 50px;
+	margin: 0 20px 20px 0;
+}
+
+
+#description_jeu {
+	margin: 20px 20px 20px 20px;
+	padding-bottom: 25px;
+	border-bottom: black solid 2px;
+	max-height:300px;
+
 }
 
 #jeux{
-	right: 0;
+	margin-right: 0;
 	min-width: 200px;
 	width: 320px;
 }

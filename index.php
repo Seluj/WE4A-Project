@@ -10,6 +10,24 @@ $nom = "Menton";
 $description = "blabla";
 $avatar = "images/Avatar.jpg";
 
+$imagejeu = "images/carcassonne.jpg";
+$nomJeu = "Carcassonne";
+$descriptionJeu ="Retrouvez l’ambiance médiévale en partant à la conquête des terres et villes du sud de la France avec le jeu Carcassonne. Arpentez chemins et champs pour asseoir votre puissance, bloquez vos adversaires et triomphez par votre stratégie sur le tableau des scores.
+
+Grâce à ses parties courtes, son mécanisme mêlant tactique et opportunisme, ce petit jeu a tout pour séduire et permettre de grands moments de jeu en famille.
+
+Primé en Allemagne - « Spiel des Jahres 2001 » (Jeu de société de l’année) - Carcassonne est un jeu d’une très grande simplicité, accessible à tous et original.
+
+Votre but : Obtenir le plus de points lors du décompte final.
+
+A la manière des célèbres Dominos, le plateau de jeu se construit peu à peu au gré de la pose de « tuiles paysage » où l’on retrouve de morceaux de routes, champs et forteresses.
+
+En plaçant judicieusement vos partisans sur le paysage constitué, vous pourrez acquérir des points grâce à la longueur des routes, la grandeur des villes ou des champs. Les points sont en effet décomptés dès qu’un élément (route, ville etc.) est achevé par la pose d’une tuile.
+
+Le jeu s’achève lorsque toutes les tuiles ont été posées. Le paysage est constitué et le vainqueur est le joueur le plus avancé sur le tableau des points.
+
+Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles et possibilités tactiques.";
+
 if($affichage_nom == 0){
     $utilisateur = $pseudo;
 }else{
@@ -45,7 +63,7 @@ if($affichage_nom == 0){
             <div id="profil">
                 <h1><a href="">Profil</a></h1>
                 <div>
-                    <img class="avatar" src=<?php echo $avatar ?> alt="avatar">
+                    <img class="avatar" src="<?php echo $avatar ?>" alt="avatar">
                     <h2><?php echo $utilisateur ?></h2>
                 </div>
                 <div>
@@ -58,12 +76,21 @@ if($affichage_nom == 0){
             </ul>
         </div>
 
-        <div id="messages" class="container">
-            <h1>Liste des messages de la discussion</h1>
+
+
+        <div id="central" class="container">
+
+            <h1>Jeu : <?php echo $nomJeu ?></h1>
+            <img id="image_jeu" src="<?php echo $imagejeu ?>" alt="avatar">
+            <h2>Description :</h2>
+            <p id="description_jeu"><?php echo $descriptionJeu ?></p>
+            <h3>Règles :</h3>
             <ul>
                 <?php boucle("Message", 20) ?>
             </ul>
         </div>
+
+
 
         <div id="jeux" class="container">
 
