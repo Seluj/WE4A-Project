@@ -116,13 +116,6 @@ input[type="checkbox"]{
 	right:10%;
 }
 
-#central h2 {
-	margin-top: 60px;
-	margin-right:20px;
-	padding-top:10px;
-	border-top: black solid 2px;
-}
-
 #central h3{
 
 }
@@ -133,16 +126,23 @@ input[type="checkbox"]{
 	min-width: 50px;
 	width: 20%;
 	border-radius: 50px;
-	margin: 0 20px 20px 0;
+	margin: 0 20px 10px 0;
 }
 
+#description_jeu{
+	border-top: black solid 2px;
+	border-bottom: black solid 2px;
+	margin: 60px 20px 0 20px;
+}
 
-#description_jeu {
+#description_jeu p {
 	margin: 20px 20px 20px 20px;
 	padding-bottom: 25px;
-	border-bottom: black solid 2px;
-	max-height:300px;
+	display: none;
+}
 
+#description_jeu:hover p {
+	display: block;
 }
 
 #jeux{

@@ -82,8 +82,10 @@ if($affichage_nom == 0){
 
             <h1>Jeu : <?php echo $nomJeu ?></h1>
             <img id="image_jeu" src="<?php echo $imagejeu ?>" alt="avatar">
-            <h2>Description :</h2>
-            <p id="description_jeu"><?php echo $descriptionJeu ?></p>
+            <div id="description_jeu">
+                <h2>Description :</h2>
+                <p><?php echo $descriptionJeu ?></p>
+            </div>
             <h3>Règles :</h3>
             <ul>
                 <?php boucle("Message", 20) ?>
