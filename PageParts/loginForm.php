@@ -18,7 +18,9 @@
         </div>
         <br>
         <input class="Boutons" type="submit" name="connecter" value="Se connecter" />
-        <button class="Boutons" type="button" id="button1" onClick="myFunction()">S'inscrire</button>
+        <button class="Boutons" type="button" id="bouton_inscription" onClick="FunctionInscription()">S'inscrire</button>
+
+        <!-- <button class="Boutons" type="button" id="button1" onClick="myFunction()">S'inscrire</button> -->
     </form>
 
     <div id="Revenir_accueil" class="linkBox">

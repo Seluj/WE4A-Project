@@ -1,5 +1,9 @@
 /* Fichier intercation.css contenant le style des fenêtres d'interaction avec l'utilisateur */
 
+#signin{
+    display:none;
+}
+
 .interaction_container{
     position:relative;
     margin: 0 20px 0 20px;
@@ -30,7 +34,7 @@
     padding-top: 30px;
     display: inline-block;
     text-align: center;
-    margin: 10px 10px;
+    margin: 100px 10px 0 10px;
     background-color: #333;
 }
 

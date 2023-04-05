@@ -27,6 +27,7 @@ body {
 
 /* Titres de la page */
 h1 {
+	max-width: 400px;
 	font-size: 24px;
 	font-weight: bold;
 	margin-top: 0;
@@ -113,17 +114,15 @@ input[type="checkbox"]{
 	padding: 20px 10px;
 }
 
-#main_title {
-	position:absolute;
-	left:10%;
-	right:10%;
-}
 .central h1{
 	display: inline-block;
 	width: auto;
 	font-size: 30px;
 	text-align: center;
 	margin: auto;
+	position:absolute;
+	left:10%;
+	right:10%;
 }
 
 .central h2 a{
@@ -159,6 +158,10 @@ input[type="checkbox"]{
 }
 
 #BoutonModifierJeu a{
+	color:black;
+}
+
+#BoutonModifierProfil a{
 	color:black;
 }
 

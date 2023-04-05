@@ -3,7 +3,7 @@
 
     <img class="image_commentaire" src="<?php echo $littleImagePathLink."New_Player.png" ?>" alt="New Player !">
 
-    <h1 class="titre_interaction">Créer un compte</h1>
+    <h1 class="titre_interaction"><?php if(!$connecte){?>Créer un compte<?php }else{?>Modifier Profil<?php } ?></h1>
 
 
     <form class="formulaire" method="post" action="#" enctype="multipart/form-data">
@@ -50,8 +50,8 @@
         </div>
         <br><br>
         <?php if(!$connecte){ ?>
+            <button class="Boutons" type="button" id="button2"  onClick="FunctionReturnConnect()">Retour</button>
             <input class="Boutons" type="submit" name="inscrire" value="S'inscrire" />
-            <button class="Boutons" type="button" id="button2"  onClick="myFunction()">Se connecter</button>
         <?php } else {?>
             <input class="Boutons" type="submit" name="modifier_profil" value="Modifier Profil" />
         <?php } ?>

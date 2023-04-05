@@ -9,6 +9,11 @@
             <div>
                 <?php echo "Hello c'est moi" ?>
             </div>
+            <?php if(!$PagenewAccount){ ?>
+                <div id="BoutonModifierProfil" class="linkBox">
+                    <a class="police" href="./newAccount.php">Modifier Profil</a>
+                </div>
+            <?php } ?>
         </div>
     <?php } ?>
 

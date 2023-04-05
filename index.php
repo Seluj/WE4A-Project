@@ -21,6 +21,8 @@ Le jeu s’achève lorsque toutes les tuiles ont été posées. Le paysage est c
 
 Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles et possibilités tactiques.";
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +53,7 @@ Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles 
 
         <div class="container central">
 
-            <h1 id="main_title">Jeu : <?php echo $nomJeu ?></h1>
+            <h1>Jeu : <?php echo $nomJeu ?></h1>
             <img id="image_jeu" src="<?php echo $imagejeu ?>" alt="avatar">
             <?php if($administrateur){?>
                 <div id="BoutonModifierJeu" class="linkBox">
@@ -69,24 +71,7 @@ Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles 
             </ul>
         </div>
 
-
-
-        <div id="jeux" class="container">
-
-            <div class="liste_jeux" id="jeux_visites">
-                <h1>Liste des jeux visités</h1>
-                <ul>
-                    <?php boucle("Jeu", 20) ?>
-                </ul>
-            </div>
-
-            <div class="liste_jeux" id="jeux_proposes">
-                <h1>Liste des jeux proposés</h1>
-                <ul>
-                    <?php boucle("Jeu", 20) ?>
-                </ul>
-            </div>
-        </div>
+        <?php include('./PageParts/games.php')?>
 
     </div>
 </body>

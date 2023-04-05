@@ -102,6 +102,7 @@ if(!$createNewGame){
         </div>
     </div>
 
+     <?php include('./PageParts/games.php')?>
 
 </div>
 </body>
