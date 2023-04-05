@@ -147,6 +147,17 @@ input[type="checkbox"]{
 	margin: 0 20px 10px 0;
 }
 
+#BoutonModifierJeu {
+	position:absolute;
+	padding:10px;
+	right:25px;
+	top:20px;
+}
+
+#BoutonModifierJeu a{
+	color:black;
+}
+
 #description_jeu{
 	border-top: black solid 2px;
 	border-bottom: black solid 2px;

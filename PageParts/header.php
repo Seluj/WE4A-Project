@@ -1,5 +1,37 @@
 <?php
 $typejeu = "Jeux Vidéos";
+
+
+$connecte = false;
+$nom = "";
+$prenom = "";
+$email = "";
+$pseudo = "";
+$avatar = "";
+$affichage_nom = false;
+$administrateur=false;
+
+if(isset($_SESSION['id'])){
+    $connecte = true;
+    $nom = $_SESSION['nom'];
+    $prenom = $_SESSION['prenom'];
+    $email = $_SESSION['mail'];
+    $pseudo = $_SESSION['pseudo'];
+    $avatar = $_SESSION['avatar'];
+   if($_SESSION['affichage_nom'] == 0){
+       $affichage_nom = false;
+       $utilisateur = $pseudo;
+   }else{
+       $affichage_nom = true;
+       $utilisateur = $prenom." ".$nom;
+   }
+    if($_SESSION['administrateur'] == 0){
+        $administrateur = false;
+    }else{
+        $administrateur = true;
+    }
+
+}
 ?>
 
 <header>
@@ -26,19 +58,19 @@ $typejeu = "Jeux Vidéos";
         <?php
         if (!isset($_SESSION['id'])) {
         ?>
-        <!-- Bouton de connexion -->
-        <div id="Connexion" class="linkBox">
-            <a href="./newAccount.php" > <img src="images/Meeple.png" alt="icone"> </a>
-            <a class="police" href="./newAccount.php">Se Connecter</a>
-        </div>
+            <!-- Bouton de connexion -->
+            <div id="Connexion" class="linkBox">
+                <a href="./newAccount.php" > <img src="<?php echo $littleImagePathLink."Meeple.png" ?>" alt="icone"> </a>
+                <a class="police" href="./newAccount.php">Se Connecter</a>
+            </div>
         <?php
         } else {
         ?>
-         <!-- Bouton de déconnexion -->
-        <div id="Deconnexion" class="linkBox">
-            <a href="" > <img src="<?php echo $imagePathLink.$_SESSION['avatar'] ?>" alt="icone"> </a>
-            <a href="./stopSession.php">Se Déconnecter</a>
-        </div>
+             <!-- Bouton de déconnexion -->
+            <div id="Deconnexion" class="linkBox">
+                <a href="" > <img src="<?php echo $littleImagePathLink."Meeple.png" ?>" alt="icone"> </a>
+                <a class="police" href="./stopSession.php">Se Déconnecter</a>
+            </div>
         <?php
         }
         ?>

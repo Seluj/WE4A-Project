@@ -3,12 +3,8 @@ session_start();
 include('./PageParts/variables.php');
 include('./PageParts/databaseFunctions.php');
 
-$affichage_nom = 0;
-$pseudo = "Goodman";
-$prenom = "Jean";
 $nom = "Menton";
 $description = "blabla";
-$avatar = "images/Avatar.jpg";
 
 $imagejeu = "images/carcassonne.jpg";
 $nomJeu = "Carcassonne";
@@ -28,11 +24,6 @@ Le jeu s’achève lorsque toutes les tuiles ont été posées. Le paysage est c
 
 Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles et possibilités tactiques.";
 
-if($affichage_nom == 0){
-    $utilisateur = $pseudo;
-}else{
-    $utilisateur = $prenom." ".$nom;
-}
 ?>
 
 <!DOCTYPE html>
@@ -53,23 +44,24 @@ if($affichage_nom == 0){
 
     <!-- Bandeau du site contenant le nom du site, le moyen d'authentification et une barre de recherche -->
 
-    <?php include('./PageParts/header.php') ?>
+    <?php include('./PageParts/header.php')?>
 
     <!-- Reste de la page -->
     <div class="main_container">
 
         <div id="utilisateurs" class="container">
-
-            <div id="profil">
-                <h1><a href="">Profil</a></h1>
-                <div>
-                    <img class="avatar" src="<?php echo $avatar ?>" alt="avatar">
-                    <h2><?php echo $utilisateur ?></h2>
+            <?php if($connecte){?>
+                <div id="profil">
+                    <h1><a href="">Profil</a></h1>
+                    <div>
+                        <img class="avatar" src="<?php echo $imagePathLink.$_SESSION['avatar'] ?>" alt="avatar">
+                        <h2><?php echo $utilisateur ?></h2>
+                    </div>
+                    <div>
+                        <?php echo $description ?>
+                    </div>
                 </div>
-                <div>
-                    <?php echo $description ?>
-                </div>
-            </div>
+            <?php } ?>
 
             <ul>
                 <?php boucle("Utilisateur", 20) ?>
@@ -82,6 +74,11 @@ if($affichage_nom == 0){
 
             <h1>Jeu : <?php echo $nomJeu ?></h1>
             <img id="image_jeu" src="<?php echo $imagejeu ?>" alt="avatar">
+            <?php if($administrateur){?>
+                <div id="BoutonModifierJeu" class="linkBox">
+                    <a class="police" href="./newGame.php">Modifier Jeu</a>
+                </div>
+            <?php } ?>
             <div id="description_jeu">
                 <h2>Description :</h2>
                 <p><?php echo $descriptionJeu ?></p>

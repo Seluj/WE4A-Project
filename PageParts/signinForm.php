@@ -47,7 +47,7 @@
         <br><br>
         <div class="entrees">
             <label for="affichage_nom">Afficher mon nom</label>
-            <input id="affichage_nom" class="saisie" name="affichage_nom" type="checkbox" <?php if($affichage_nom!=0){echo "checked";} ?>>
+            <input id="affichage_nom" class="saisie" name="affichage_nom" type="checkbox" <?php if($affichage_nom){echo "checked";} ?>>
         </div>
         <br><br>
         <?php if(!$connecte){ ?>
