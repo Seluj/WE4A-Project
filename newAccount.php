@@ -28,8 +28,9 @@ checkAccount();
 
     <?php include('./PageParts/header.php') ?>
 
-    <div class="main_container main_interaction_container">
+    <div class="main_container">
         <?php
+        include('./PageParts/profile.php');
         include("./PageParts/signinForm.php");
         include("./PageParts/loginForm.php");
         ?>
@@ -53,9 +54,6 @@ checkAccount();
             }
         </script>
 
-        <div id="Revenir_accueil" class="linkBox">
-            <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
-        </div>
     </div>
 </body>
 </html>

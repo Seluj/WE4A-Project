@@ -83,6 +83,7 @@ input[type="checkbox"]{
 	padding: 5px 0;
 	display: flex;
 	text-align: center;
+	position:relative;
 }
 
 /* Sous-partie d'un main_container */
@@ -97,14 +98,14 @@ input[type="checkbox"]{
 }
 
 #utilisateurs {
+	position:relative;
 	left: 0;
 	min-width: 250px;
 	width: 260px;
 }
 
-#central {
-
-	text-align: justify;
+.central {
+	text-align: center;
 	position:relative;
 	min-width: 500px;
 	width: 850px;
@@ -112,17 +113,20 @@ input[type="checkbox"]{
 	padding: 20px 10px;
 }
 
-#central h1{
-	width: auto;
+#main_title {
 	position:absolute;
-	font-size: 30px;
-	text-align: center;
-	margin: auto;
 	left:10%;
 	right:10%;
 }
+.central h1{
+	display: inline-block;
+	width: auto;
+	font-size: 30px;
+	text-align: center;
+	margin: auto;
+}
 
-#central h2 a{
+.central h2 a{
 	margin: 0 auto;
 }
 
@@ -131,7 +135,7 @@ input[type="checkbox"]{
 	margin-bottom: 0;
 }
 
-#central h3 {
+.central h3 {
 
 	padding: 10px 0 0 10px;
 	border-top: black solid 2px;
@@ -165,6 +169,7 @@ input[type="checkbox"]{
 }
 
 #description_jeu p {
+	text-align: justify;
 	margin: 0 20px 20px 20px;
 	padding: 10px 0;
 	display: none;

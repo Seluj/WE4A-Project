@@ -1,10 +1,9 @@
-<div id="login" class="container interaction_container">
+<div id="login" class="container central">
 
-    <img class="image_commentaire" src="./images/You_re_back.png" alt="You're Back !">
+    <img class="image_commentaire" src="<?php echo $littleImagePathLink."You_re_back.png" ?>" alt="You're Back !">
 
     <h1 class="titre_interaction">Connexion</h1>
 
-    <br><p>________________________________________</p><br>
 
     <form class="formulaire" method="post" action="#">
 
@@ -21,4 +20,8 @@
         <input class="Boutons" type="submit" name="connecter" value="Se connecter" />
         <button class="Boutons" type="button" id="button1" onClick="myFunction()">S'inscrire</button>
     </form>
+
+    <div id="Revenir_accueil" class="linkBox">
+        <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
+    </div>
 </div>

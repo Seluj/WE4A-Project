@@ -1,11 +1,10 @@
 
-<div id="signin" class="container interaction_container">
+<div id="signin" class="container central">
 
-    <img class="image_commentaire" src="./images/NewPlayer.png" alt="New Player !">
+    <img class="image_commentaire" src="<?php echo $littleImagePathLink."New_Player.png" ?>" alt="New Player !">
 
     <h1 class="titre_interaction">Créer un compte</h1>
 
-    <br><p>________________________________________</p><br>
 
     <form class="formulaire" method="post" action="#" enctype="multipart/form-data">
 
@@ -57,4 +56,8 @@
             <input class="Boutons" type="submit" name="modifier_profil" value="Modifier Profil" />
         <?php } ?>
     </form>
+
+    <div id="Revenir_accueil" class="linkBox">
+        <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
+    </div>
 </div>
