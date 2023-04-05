@@ -139,16 +139,7 @@ function checkNewAccountForm() {
         $mdp = md5($_POST["mdp"]);
         $pseudo = SecurizeString_ForSQL($_POST["pseudo"]);
 
-        $image = $_POST['avatar'];
-        //Stores the filename as it was on the client computer.
-        $imagename = $_FILES['avatar']['name'];
-        //Stores the filetype e.g image/jpeg
-        $imagetype = $_FILES['avatar']['type'];
-        //Stores any error codes from the upload.
-        $imageerror = $_FILES['avatar']['error'];
-        //Stores the tempname as it is given by the host when uploaded.
-        $imagetemp = $_FILES['avatar']['tmp_name'];
-
+        //$image = $_POST['avatar'];
 
         try {
 
@@ -223,14 +214,14 @@ function checkNewAccountForm() {
                 <?php
                 throw new RuntimeException('Invalid file format.');
             }
-            $imagePath = "./data/users/images";
+            $imagePath = "data/users/images";
             // You should name it uniquely.
             // DO NOT USE $_FILES['avatar']['name'] WITHOUT ANY VALIDATION !!
             // On this example, obtain safe unique name from its binary data.
             if (!move_uploaded_file(
                 $_FILES['avatar']['tmp_name'],
                 sprintf($imagePath.'/%s.%s',
-                    sha1_file($_FILES['avatar']['tmp_name']),
+                    $img = sha1_file($_FILES['avatar']['tmp_name']),
                     $ext
                 )
             )) {
@@ -248,6 +239,61 @@ function checkNewAccountForm() {
                 alert("Successfully uploaded your image.");
             </script>
             <?php
+
+            $image = sprintf('/%s.%s',
+                $img,
+                $ext
+            );
+
+            $query_email = "SELECT * FROM utilisateurs WHERE mail = '$email'";
+            $query_pseudo = "SELECT * FROM utilisateurs WHERE pseudo = '$pseudo'";
+            $query_nom_prenom = "SELECT * FROM utilisateurs WHERE nom = '$nom' AND prenom = '$prenom'";
+
+
+            $result_email = $conn->query($query_email);
+            $result_pseudo = $conn->query($query_pseudo);
+            $result_nom_prenom = $conn->query($query_nom_prenom);
+            if (mysqli_num_rows($result_email) != 0) {
+                ?>
+                <script>
+                    alert("Cet email est déjà utilisé.");
+                </script>
+                <?php
+            } else if (mysqli_num_rows($result_pseudo) != 0) {
+                ?>
+                <script>
+                    alert("Ce pseudo est déjà utilisé.");
+                </script>
+                <?php
+            } else if (mysqli_num_rows($result_nom_prenom) != 0) {
+                ?>
+                <script>
+                    alert("Ces nom et prénom sont déjà utilisés.");
+                </script>
+                <?php
+            } else {
+
+                $query_insert =
+                    "INSERT INTO `utilisateurs` (`id`, `mail`, `mdp`, `nom`, `prenom`, `pseudo`, `avatar`, `affichage_nom`, `administrateur`) 
+                VALUES (NULL, '$email', '$mdp', '$nom', '$prenom', '$pseudo', '$image', '0', '0')
+                ";
+
+                $result = $conn->query($query_insert);
+
+                if ($result) {
+                    ?>
+                    <script>
+                        alert("Votre compte a bien été créé.\nVous pouvez maintenant vous connecter.");
+                    </script>
+                    <?php
+                } else {
+                    ?>
+                    <script>
+                        alert("Une erreur est survenue lors de la création de votre compte.");
+                    </script>
+                    <?php
+                }
+            }
         } catch (RuntimeException $e) {
 
             echo $e->getMessage();
@@ -283,55 +329,7 @@ function checkNewAccountForm() {
             <?php
         }
 */
-        $query_email = "SELECT * FROM utilisateurs WHERE mail = '$email'";
-        $query_pseudo = "SELECT * FROM utilisateurs WHERE pseudo = '$pseudo'";
-        $query_nom_prenom = "SELECT * FROM utilisateurs WHERE nom = '$nom' AND prenom = '$prenom'";
 
-
-        $result_email = $conn->query($query_email);
-        $result_pseudo = $conn->query($query_pseudo);
-        $result_nom_prenom = $conn->query($query_nom_prenom);
-        if (mysqli_num_rows($result_email) != 0) {
-            ?>
-            <script>
-                alert("Cet email est déjà utilisé.");
-            </script>
-            <?php
-        } else if (mysqli_num_rows($result_pseudo) != 0) {
-            ?>
-            <script>
-                alert("Ce pseudo est déjà utilisé.");
-            </script>
-            <?php
-        } else if (mysqli_num_rows($result_nom_prenom) != 0) {
-            ?>
-            <script>
-                alert("Ces nom et prénom sont déjà utilisés.");
-            </script>
-            <?php
-        } else {
-
-            $query_insert =
-                "INSERT INTO `utilisateurs` (`id`, `mail`, `mdp`, `nom`, `prenom`, `pseudo`, `avatar`, `affichage_nom`, `administrateur`) 
-                VALUES (NULL, '$email', '$mdp', '$nom', '$prenom', '$pseudo', '$image', '0', '0')
-                ";
-
-            $result = $conn->query($query_insert);
-
-            if ($result) {
-                ?>
-                <script>
-                    alert("Votre compte a bien été créé.\nVous pouvez maintenant vous connecter.");
-                </script>
-                <?php
-            } else {
-                ?>
-                <script>
-                    alert("Une erreur est survenue lors de la création de votre compte.");
-                </script>
-                <?php
-            }
-        }
     }
 }
 
