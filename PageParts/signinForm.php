@@ -42,7 +42,6 @@
         <br><br>
         <div class="entrees">
             <label for="avatar">Avatar</label>
-            <input type="hidden" name="MAX_FILE_SIZE" value="16777215" />
             <input id="avatar" name="avatar" type="file">
         </div>
         <br><br>

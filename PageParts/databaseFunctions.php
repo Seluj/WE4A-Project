@@ -1,7 +1,6 @@
 <?php
 
-// Function to open connection to database
-//--------------------------------------------------------------------------------
+// Fonction permettant de se connecter à la base de données
 function ConnectDatabase() {
     // Create connection
 
@@ -24,6 +23,7 @@ function boucle($text, $number) {
     }
 }
 
+// Fonction permettant de répartir la création d'un nouveau topic ou un nouveau message
 function checkEntry() {
     if ($_POST['newMessage'] == "Créer Topic") {
         checkNewTopic();
@@ -32,16 +32,20 @@ function checkEntry() {
     }
 }
 
-
+// Fonction permettant de créer un nouveau message
 function checkNewMessage() {
     global $conn;
 
+    // récupération des données et sécurisation
     $message = SecurizeString_ForSQL($_POST['choix_message']);
     $idAuteur = $_SESSION['id'];
     $idtopic = $_GET['topic'];
 
+    // Creation de la requete
     $query = "INSERT INTO messages (id, contenu, user_id, topics_id) VALUES (NULL, '$message', '$idAuteur', '$idtopic')";
 
+
+    // Execution de la requete, verification et redirection
     if ($conn->query($query) === TRUE) {
         header("Location: ./index.php?topic=".$idtopic);
     } else {
@@ -49,25 +53,29 @@ function checkNewMessage() {
     }
 }
 
+// Fonction permettant de créer un nouveau topic
 function checkNewTopic() {
     global $conn;
 
+    // récupération des données et sécurisation
     $titre = SecurizeString_ForSQL($_POST['choix_titre']);
     $message = SecurizeString_ForSQL($_POST['choix_message']);
     $idAuteur = $_SESSION['id'];
     $idjeux = $_GET['jeux'];
 
+    // Création des requetes
     $insert_topic = "INSERT INTO `topics` (`id_post`, `date_edit`, `titre`, `user_id`, `jeux_id`) VALUES (NULL, current_timestamp(), '$titre', '$idAuteur', '$idjeux')";
 
     $query_topic = "SELECT `topics`.*
             FROM `topics`
             WHERE `topics`.`jeux_id` = '$idjeux' AND `topics`.`titre` = '$titre' AND `topics`.`user_id` = '$idAuteur';";
 
-
+    // Execution des requetes et verification
     $result = $conn->query($insert_topic);
 
     $result = $conn->query($query_topic);
 
+    // Si la requete a fonctionné, on récupère l'id du topic créé et on crée le message
     if ($result) {
         $row = mysqli_fetch_assoc($result);
         $idtopic = $row['id_post'];
@@ -83,6 +91,7 @@ function checkNewTopic() {
 
 }
 
+// Fonction permettant de répartir la création d'un nouveau compte ou la connexion
 function checkAccount() {
     if (!isset($_SESSION['id'])) {
         if (isset($_POST['connecter'])) {
@@ -95,16 +104,21 @@ function checkAccount() {
     }
 }
 
+// Fonction permettant de valider le formulaire de connexion
 function checkConnectionForm() {
     global $conn;
 
+    // récupération des données et sécurisation
     $email = SecurizeString_ForSQL($_POST["email"]);
     $mdp = md5($_POST["mdp"]);
 
+    // Création de la requete
     $query = "SELECT * FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
 
+    // Execution de la requete et verification
     $result = $conn->query($query);
     if (mysqli_num_rows($result) != 0) {
+        // Si la requete a fonctionné, on récupère les données de l'utilisateur et on enregistre les données dans les variables de session
         $row = mysqli_fetch_assoc($result);
         $_SESSION['id'] = $row['id'];
         $_SESSION['mail'] = $row['mail'];
@@ -116,6 +130,7 @@ function checkConnectionForm() {
         $_SESSION['administrateur'] = $row['administrateur'];
         header("Location: ./index.php");
     } else {
+
         ?>
         <script>
             alert("Email ou mot de passe incorrect.");
@@ -186,7 +201,7 @@ function checkNewAccountForm() {
             }
 
             // You should also check filesize here.
-            if ($_FILES['avatar']['size'] > 1000000) {
+            if ($_FILES['avatar']['size'] > 10000000) {
                 ?>
                 <script>
                     alert("Exceeded filesize limit.");
