@@ -86,7 +86,7 @@ if($affichage_nom == 0){
                 <h2>Description :</h2>
                 <p><?php echo $descriptionJeu ?></p>
             </div>
-            <h3>Règles :</h3>
+            <a href="./images/regles_carcassonne.pdf" download="Regles_carcassonne.pdf">Télécharger les règles de <?php echo $nomJeu ?>:</a>
             <ul>
                 <?php boucle("Message", 20) ?>
             </ul>
