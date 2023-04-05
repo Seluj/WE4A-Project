@@ -17,10 +17,10 @@ function ConnectDatabase() {
     }
 }
 
-function boucle($string, $number) {
+function boucle($text, $number) {
     for($i = 1; $i <= $number; $i++) {
         ?><li> <img src="images/Meeple.png" alt="icone">
-        <a href=""><?php echo $string." ".$i ?></a></li><?php
+        <a href=""><?php echo $text." ".$i ?></a></li><?php
     }
 }
 
@@ -91,7 +91,7 @@ function checkAccount() {
             checkNewAccountForm();
         }
     } else {
-        header("Location: ./index.php");
+        /*header("Location: ./index.php");*/
     }
 }
 

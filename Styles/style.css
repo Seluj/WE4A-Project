@@ -9,6 +9,7 @@
 }
 
 a {
+	color:black;
 	text-decoration:none;
 }
 
@@ -72,6 +73,10 @@ input[type="checkbox"]{
 	border-radius: 10px;
 }
 
+.linkBox:hover a{
+	color:white;
+}
+
 /* Conteneur principal abritant le contenu de la page */
 .main_container {
 	margin: 10px auto;
@@ -82,6 +87,7 @@ input[type="checkbox"]{
 
 /* Sous-partie d'un main_container */
 .container{
+	position:relative;
 	padding: 15px 0 0 10px;
 	text-align: center;
 	margin: 5px;
@@ -116,7 +122,19 @@ input[type="checkbox"]{
 	right:10%;
 }
 
-#central h3{
+#central h2 a{
+	margin: 0 auto;
+}
+
+#telecharger_regle:hover{
+	margin-top: 5px;
+	margin-bottom: 0;
+}
+
+#central h3 {
+
+	padding: 10px 0 0 10px;
+	border-top: black solid 2px;
 
 }
 
@@ -132,12 +150,12 @@ input[type="checkbox"]{
 #description_jeu{
 	border-top: black solid 2px;
 	border-bottom: black solid 2px;
-	margin: 60px 20px 0 20px;
+	margin: 60px 20px 20px 20px;
 }
 
 #description_jeu p {
-	margin: 20px 20px 20px 20px;
-	padding-bottom: 25px;
+	margin: 0 20px 20px 20px;
+	padding: 10px 0;
 	display: none;
 }
 

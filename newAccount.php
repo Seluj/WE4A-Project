@@ -3,8 +3,22 @@ include("./PageParts/databaseFunctions.php");
 include("./PageParts/variables.php");
 
 session_start();
+$connecte = false;
+$nom = "";
+$prenom = "";
+$email = "";
+$pseudo = "";
+$avatar = "";
+$affichage_nom = "";
+
 if(isset($_SESSION['id'])){
-    header("Location: ./index.php");
+    $connecte = true;
+    $nom = $_SESSION['nom'];
+    $prenom = $_SESSION['prenom'];
+    $email = $_SESSION['mail'];
+    $pseudo = $_SESSION['pseudo'];
+    $avatar = $_SESSION['avatar'];
+    $affichage_nom = $_SESSION['affichage_nom'];
 }
 ConnectDatabase();
 checkAccount();
