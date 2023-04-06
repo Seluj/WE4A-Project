@@ -102,8 +102,6 @@ function checkAccount() {
         } else if (isset($_POST['inscrire'])) {
             checkNewAccountForm();
         }
-    } else {
-        /*header("Location: ./index.php");*/
     }
 }
 
