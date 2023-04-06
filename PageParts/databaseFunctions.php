@@ -27,9 +27,9 @@ function boucle($text, $number) {
 
 // Fonction permettant de répartir la création d'un nouveau topic ou un nouveau message
 function checkEntry() {
-    if ($_POST['newMessage'] == "Créer Topic") {
+    if ($_POST['createNewMessage'] == "Créer Topic") {
         checkNewTopic();
-    } else if ($_POST['newMessage'] == "Envoyer Message") {
+    } else if ($_POST['createNewMessage'] == "Envoyer Message") {
         checkNewMessage();
     }
 }

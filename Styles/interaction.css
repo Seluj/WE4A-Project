@@ -1,13 +1,12 @@
 /* Fichier intercation.css contenant le style des fenêtres d'interaction avec l'utilisateur */
 
-.main_interaction_container {
-    display: inline;
-    margin:5px;
+#signin{
+    display:none;
 }
 
 .interaction_container{
     position:relative;
-    margin: 0 auto;
+    margin: 0 20px 0 20px;
     max-width: 1000px;
     min-width: 770px;
 }
@@ -24,9 +23,9 @@
     font-size: 50px;
     margin: 10px;
     padding: 10px;
-    margin-bottom: 0px;
     display: inline-block;
     font-family: 'Times New Roman', cursive;
+    border-bottom: black solid 2px;
 }
 
 /* Formulaires des fenêtres d'interaction */
@@ -35,7 +34,7 @@
     padding-top: 30px;
     display: inline-block;
     text-align: center;
-    margin: 10px 10px;
+    margin: 100px 10px 0 10px;
     background-color: #333;
 }
 
@@ -56,16 +55,36 @@
 
 /* Div contenant les éléments permettant à l'utilisateur de saisir des données */
 .entrees {
+    width:350px;
     font-family: 'Press Start 2P', cursive;
-    font-size: 25px;
+    font-size: 20px;
+    position: relative;
     display:inline-block;
-    padding: 15px 15px;
+    padding: 6px 15px;
     border-radius: 5px;
     border: none;
     color: black;
     background-color: white;
     cursor: pointer;
     box-shadow: 0 5px 5px #E1D9F4;
+    text-align: right;
+}
+.saisie {
+    float:right;
+}
+
+input[type="checkbox"]{
+    margin-top:15px;
+}
+
+.entrees input{
+    margin-left:15px;
+}
+
+.input_center{
+    color:transparent;
+    width:125px;
+    margin:0 60px 0 15px;
 }
 
 /* Style des boutons */

@@ -3,9 +3,6 @@ session_start();
 include('./PageParts/variables.php');
 include('./PageParts/databaseFunctions.php');
 
-$nom = "Menton";
-$description = "blabla";
-
 $imagejeu = "images/carcassonne.jpg";
 $nomJeu = "Carcassonne";
 $descriptionJeu ="Retrouvez l’ambiance médiévale en partant à la conquête des terres et villes du sud de la France avec le jeu Carcassonne. Arpentez chemins et champs pour asseoir votre puissance, bloquez vos adversaires et triomphez par votre stratégie sur le tableau des scores.
@@ -23,6 +20,8 @@ En plaçant judicieusement vos partisans sur le paysage constitué, vous pourrez
 Le jeu s’achève lorsque toutes les tuiles ont été posées. Le paysage est constitué et le vainqueur est le joueur le plus avancé sur le tableau des points.
 
 Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles et possibilités tactiques.";
+
+
 
 ?>
 
@@ -49,28 +48,10 @@ Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles 
     <!-- Reste de la page -->
     <div class="main_container">
 
-        <div id="utilisateurs" class="container">
-            <?php if($connecte){?>
-                <div id="profil">
-                    <h1><a href="">Profil</a></h1>
-                    <div>
-                        <img class="avatar" src="<?php echo $imagePathLink.$_SESSION['avatar'] ?>" alt="avatar">
-                        <h2><?php echo $utilisateur ?></h2>
-                    </div>
-                    <div>
-                        <?php echo $description ?>
-                    </div>
-                </div>
-            <?php } ?>
-
-            <ul>
-                <?php boucle("Utilisateur", 20) ?>
-            </ul>
-        </div>
+        <?php include('./PageParts/profile.php')?>
 
 
-
-        <div id="central" class="container">
+        <div class="container central">
 
             <h1>Jeu : <?php echo $nomJeu ?></h1>
             <img id="image_jeu" src="<?php echo $imagejeu ?>" alt="avatar">
@@ -84,30 +65,18 @@ Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles 
                 <p><?php echo $descriptionJeu ?></p>
             </div>
             <h2 id="telecharger_regle" class="linkBox"><a href="./images/regles_carcassonne.pdf" download="Regles_carcassonne.pdf">Télécharger les règles de <?php echo $nomJeu ?></a></h2>
+            <?php if($connecte){?>
+            <div id="BoutonCreerTopic" class="linkBox">
+                <a class="police" href="./newMessage.php">Créer Topic</a>
+            </div>
+            <?php } ?>
             <h3>Topics associés</h3>
             <ul>
                 <?php boucle("Message", 20) ?>
             </ul>
         </div>
 
-
-
-        <div id="jeux" class="container">
-
-            <div class="liste_jeux" id="jeux_visites">
-                <h1>Liste des jeux visités</h1>
-                <ul>
-                    <?php boucle("Jeu", 20) ?>
-                </ul>
-            </div>
-
-            <div class="liste_jeux" id="jeux_proposes">
-                <h1>Liste des jeux proposés</h1>
-                <ul>
-                    <?php boucle("Jeu", 20) ?>
-                </ul>
-            </div>
-        </div>
+        <?php include('./PageParts/games.php')?>
 
     </div>
 </body>

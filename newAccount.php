@@ -6,6 +6,8 @@ session_start();
 
 ConnectDatabase();
 checkAccount();
+
+$PagenewAccount = true;
 ?>
 
 <!DOCTYPE html>
@@ -28,34 +30,42 @@ checkAccount();
 
     <?php include('./PageParts/header.php') ?>
 
-    <div class="main_container main_interaction_container">
-        <?php
-        include("./PageParts/signinForm.php");
-        include("./PageParts/loginForm.php");
-        ?>
+    <div class="main_container">
+        <?php include('./PageParts/profile.php') ?>
+        <?php include('./PageParts/signinForm.php') ?>
+        <?php include('./PageParts/loginForm.php') ?>
         <script>
-            window.onload = function() {
-                var log = document.getElementById("login");
-                var sign = document.getElementById("signin");
-                log.style.display = "block";
-                sign.style.display = "none";
+            window.onload = function(){
+                FunctionReturnConnect();
             }
-            function myFunction() {
+
+            function FunctionReturnConnect(){
                 var log = document.getElementById("login");
                 var sign = document.getElementById("signin");
-                if (log.style.display === "none") {
-                    log.style.display = "block";
-                    sign.style.display = "none";
-                } else {
+                var connecte = <?php echo json_encode($connecte); ?>;
+
+                if(connecte){
                     log.style.display = "none";
-                    sign.style.display = "block";
+                    sign.style.display = "inline";
+                }else{
+                    log.style.display = "inline-block";
+                    sign.style.display = "none";
                 }
+
+            }
+            function FunctionInscription() {
+                var log = document.getElementById("login");
+                var sign = document.getElementById("signin");
+
+                log.style.display = "none";
+                sign.style.display = "inline-block";
+
             }
         </script>
 
-        <div id="Revenir_accueil" class="linkBox">
-            <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
-        </div>
+        <?php include('./PageParts/games.php') ?>
     </div>
+
 </body>
 </html>
+<?php $PagenewAccount = false;?>

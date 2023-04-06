@@ -57,13 +57,11 @@ checkEntry();
 
     <!-- Reste de la page -->
     <div class="main_container">
-
-        <div class="container interaction_container">
-
-            <img class="image_commentaire" src="./images/Start_game.png" alt="Start a new Game">
+        <?php include('./PageParts/profile.php')?>
+        <div class="container central">
+            <img class="image_commentaire" src="./images/Welcome_in_the_chat.png" alt="Start a new Game">
 
             <h1 class="titre_interaction">Nouveau <?php echo $posttype ?></h1>
-            <br><p>________________________________________</p><br>
 
             <form class="formulaire" action="#" method="post">
 
@@ -91,12 +89,16 @@ checkEntry();
 
                 </div>
 
-                <br><input class="Boutons" name="newMessage" type="submit" value="<?php if($posttype == "Topic"){echo "Créer Topic";}
+                <br><input class="Boutons" name="createNewMessage" type="submit" value="<?php if($posttype == "Topic"){echo "Créer Topic";}
 
                 else{echo "Envoyer Message";}?>">
 
             </form>
+            <div id="Revenir_accueil" class="linkBox">
+                <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
+            </div>
         </div>
+        <?php include('./PageParts/games.php')?>
     </div>
 </body>
 </html>
