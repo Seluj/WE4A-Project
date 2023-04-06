@@ -77,3 +77,10 @@ if(isset($_SESSION['id'])){
     </div>
 
 </header>
+
+<script>
+    function addFile(){
+        var file = document.getElementsByClassName("input_center");
+        file.style.
+    }
+</script>

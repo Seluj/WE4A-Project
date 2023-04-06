@@ -55,16 +55,36 @@
 
 /* Div contenant les éléments permettant à l'utilisateur de saisir des données */
 .entrees {
+    width:350px;
     font-family: 'Press Start 2P', cursive;
-    font-size: 25px;
+    font-size: 20px;
+    position: relative;
     display:inline-block;
-    padding: 15px 15px;
+    padding: 6px 15px;
     border-radius: 5px;
     border: none;
     color: black;
     background-color: white;
     cursor: pointer;
     box-shadow: 0 5px 5px #E1D9F4;
+    text-align: right;
+}
+.saisie {
+    float:right;
+}
+
+input[type="checkbox"]{
+    margin-top:15px;
+}
+
+.entrees input{
+    margin-left:15px;
+}
+
+.input_center{
+    color:transparent;
+    width:125px;
+    margin:0 60px 0 15px;
 }
 
 /* Style des boutons */

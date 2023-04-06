@@ -157,10 +157,19 @@ input[type="checkbox"]{
 	top:20px;
 }
 
+#BoutonCreerTopic{
+	position:absolute;
+	padding:10px;
+	left:0;
+	top:235px;
+}
+
 #BoutonModifierJeu a{
 	color:black;
 }
-
+#BoutonCreerTopic a{
+	color:black;
+}
 #BoutonModifierProfil a{
 	color:black;
 }

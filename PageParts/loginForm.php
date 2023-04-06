@@ -8,12 +8,12 @@
     <form class="formulaire" method="post" action="#">
 
         <div class="entrees">
-            <label for="email">Email</label>
+            <label for="email">Email :</label>
             <input id="email" class="saisie" name="email" type="email" required="required"/>
         </div>
         <br><br>
         <div class="entrees">
-            <label for="mdp">Mot de passe</label>
+            <label for="mdp">Mot de passe :</label>
             <input id="mdp" class="saisie" name="mdp" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
         </div>
         <br>

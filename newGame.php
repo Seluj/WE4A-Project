@@ -72,13 +72,13 @@ if(!$createNewGame){
 
             <div class="entrees">
                 <label for="saisie_regles_jeu">Règles du Jeu</label>
-                <input id="saisie_regles_jeu" name="saisie_regles_jeu" type="file">
+                <input id="saisie_regles_jeu" class="input_center" name="saisie_regles_jeu" type="file">
             </div>
             <br><br>
 
             <div class="entrees">
                 <label for="saisie_image_jeu">Image du Jeu</label>
-                <input id="saisie_image_jeu" name="saisie_image_jeu" type="file">
+                <input id="saisie_image_jeu" class="input_center" name="saisie_image_jeu" type="file">
             </div>
             <br><br>
 
