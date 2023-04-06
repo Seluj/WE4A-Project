@@ -64,7 +64,7 @@ Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles 
                 <h2>Description :</h2>
                 <p><?php echo $descriptionJeu ?></p>
             </div>
-            <h2 id="telecharger_regle" class="linkBox"><a href="./images/regles_carcassonne.pdf" download="Regles_carcassonne.pdf">Télécharger les règles de <?php echo $nomJeu ?></a></h2>
+            <h2 id="telecharger_regle" class="linkBox"><a href="data/games/rules/regles_carcassonne.pdf" download="Regles_carcassonne.pdf">Télécharger les règles de <?php echo $nomJeu ?></a></h2>
             <?php if($connecte){?>
             <div id="BoutonCreerTopic" class="linkBox">
                 <a class="police" href="./newMessage.php">Créer Topic</a>
