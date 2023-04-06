@@ -16,7 +16,7 @@ if(isset($_GET['topic'])){
     ConnectDatabase();
     $query = "SELECT `topics`.*
         FROM `topics`
-        WHERE `topics`.`id_post` = '$topicID'";
+        WHERE `topics`.`id` = '$topicID'";
 
     global $conn;
     $result = $conn->query($query);

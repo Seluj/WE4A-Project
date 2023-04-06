@@ -66,7 +66,7 @@ function checkNewTopic() {
     $idjeux = $_GET['jeux'];
 
     // Création des requetes
-    $insert_topic = "INSERT INTO `topics` (`id_post`, `date_edit`, `titre`, `user_id`, `jeux_id`) VALUES (NULL, current_timestamp(), '$titre', '$idAuteur', '$idjeux')";
+    $insert_topic = "INSERT INTO `topics` (`id`, `date_edit`, `titre`, `user_id`, `jeux_id`) VALUES (NULL, current_timestamp(), '$titre', '$idAuteur', '$idjeux')";
 
     $query_topic = "SELECT `topics`.*
             FROM `topics`
