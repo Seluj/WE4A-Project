@@ -1,0 +1,10 @@
+id
+pseudo
+prenom
+nom
+email
+avatar
+affichage_nom
+administrateur
+
+$_SESSION['variable']
