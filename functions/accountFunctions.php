@@ -1,100 +1,5 @@
 <?php
 
-// Fichier contenant les fonctions permettant de se connecter à la base de données et de faire des requêtes
-
-
-
-// Fonction permettant de se connecter à la base de données
-function ConnectDatabase() {
-
-    $config = include('./config.php');
-
-    global $conn;
-
-    $conn = new mysqli($config['host'], $config['username'], $config['password'], $config['dbname']);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-}
-
-function boucle($text, $number) {
-    for($i = 1; $i <= $number; $i++) {
-        ?><li> <img src="images/Meeple.png" alt="icone">
-        <a href=""><?php echo $text." ".$i ?></a></li><?php
-    }
-}
-
-// Fonction permettant de répartir la création d'un nouveau topic ou un nouveau message
-function checkEntry() {
-    if(!isset($_POST["createNewMessage"]))
-        return;
-    if ($_POST["createNewMessage"] == "Créer Topic") {
-        checkNewTopic();
-    } else if ($_POST["createNewMessage"] == "Envoyer Message") {
-        checkNewMessage();
-    }
-}
-
-// Fonction permettant de créer un nouveau message
-function checkNewMessage() {
-    global $conn;
-
-    // récupération des données et sécurisation
-    $message = SecurizeString_ForSQL($_POST['choix_message']);
-    $idAuteur = $_SESSION['id'];
-    $idtopic = $_GET['topic'];
-
-    // Creation de la requete
-    $query = "INSERT INTO messages (id, contenu, user_id, topics_id) VALUES (NULL, '$message', '$idAuteur', '$idtopic')";
-
-
-    // Execution de la requete, verification et redirection
-    if ($conn->query($query) === TRUE) {
-        header("Location: ./index.php?topic=".$idtopic);
-    } else {
-        echo "Error: " . $query . "<br>" . $conn->error;
-    }
-}
-
-// Fonction permettant de créer un nouveau topic
-function checkNewTopic() {
-    global $conn;
-
-    // récupération des données et sécurisation
-    $titre = SecurizeString_ForSQL($_POST['choix_titre']);
-    $message = SecurizeString_ForSQL($_POST['choix_message']);
-    $idAuteur = $_SESSION['id'];
-    $idjeux = $_GET['jeux'];
-
-    // Création des requetes
-    $insert_topic = "INSERT INTO `topics` (`id`, `date_edit`, `titre`, `user_id`, `jeux_id`) VALUES (NULL, current_timestamp(), '$titre', '$idAuteur', '$idjeux')";
-
-    $query_topic = "SELECT `topics`.*
-            FROM `topics`
-            WHERE `topics`.`jeux_id` = '$idjeux' AND `topics`.`titre` = '$titre' AND `topics`.`user_id` = '$idAuteur';";
-
-    // Execution des requetes et verification
-    $result = $conn->query($insert_topic);
-
-    $result = $conn->query($query_topic);
-
-    // Si la requete a fonctionné, on récupère l'id du topic créé et on crée le message
-    if ($result) {
-        $row = mysqli_fetch_assoc($result);
-        $idtopic = $row['id_post'];
-        $insert_message =
-            "INSERT INTO `messages` (`id`, `contenu`, `user_id`, `topics_id`) 
-            VALUES (NULL, '$message', '$idAuteur', '$idtopic')";
-        $result = $conn->query($insert_message);
-        header("Location: ./index.php?topic=".$idtopic);
-    } else {
-        echo "Error: " . $insert_topic . "<br>" . $conn->error;
-    }
-
-
-}
-
 // Fonction permettant de répartir la création d'un nouveau compte ou la connexion
 function checkAccount() {
     // Si l'utilisateur n'est pas connecté, on vérifie si il a cliqué sur le bouton de connexion ou d'inscription
@@ -142,7 +47,6 @@ function checkConnectionForm() {
     }
 }
 
-
 // Fonction permettant de valider le formulaire d'inscription
 function checkNewAccountForm() {
     global $conn;
@@ -183,7 +87,7 @@ function checkNewAccountForm() {
         // Check MIME Type
         $finfo = new finfo(FILEINFO_MIME_TYPE);
         if (false === $ext = array_search(
-            $finfo->file($_FILES['avatar']['tmp_name']),
+                $finfo->file($_FILES['avatar']['tmp_name']),
                 array(
                     'jpg' => 'image/jpeg',
                     'png' => 'image/png',
@@ -259,79 +163,6 @@ function checkNewAccountForm() {
     } catch (RuntimeException $e) {
         echo $e->getMessage();
     }
-}
-
-// Fonction permettant de récupérer un message ou l'ensemble des messages d'un topic
-function getMessage($id, $type) {
-    global $conn;
-
-    if ($type == "all") {
-        $query = "SELECT * FROM messages WHERE topics_id = '$id'";
-    } else if ($type == "one") {
-        $query = "SELECT * FROM messages WHERE id = '$id'";
-    } else {
-        return false;
-    }
-    $result = $conn->query($query);
-    if (mysqli_num_rows($result) != 0) {
-        return mysqli_fetch_assoc($result);
-    } else {
-        return false;
-    }
-}
-
-// Fonction permettant de récupérer un topic ou l'ensemble des topics d'un jeu
-function getTopic($id, $type) {
-    global $conn;
-
-    if ($type == "all") {
-        $query = "SELECT * FROM topics WHERE jeux_id = '$id'";
-    } else if ($type == "one") {
-        $query = "SELECT * FROM topics WHERE id = '$id'";
-    } else {
-        return false;
-    }
-    $result = $conn->query($query);
-    if (mysqli_num_rows($result) != 0) {
-        return mysqli_fetch_assoc($result);
-    } else {
-        return false;
-    }
-}
-
-// Fonction permettant de récupérer un jeu ou l'ensemble des jeux
-function getJeux($id, $type) {
-    global $conn;
-
-    if ($type == "all") {
-        $query = "SELECT * FROM jeux";
-    } else if ($type == "one") {
-        $query = "SELECT * FROM jeux WHERE id = '$id'";
-    } else {
-        return false;
-    }
-    $result = $conn->query($query);
-    if (mysqli_num_rows($result) != 0) {
-        return mysqli_fetch_assoc($result);
-    } else {
-        return false;
-    }
-}
-
-
-// Fonction permettant de transformer les caractères spéciaux en entités HTML et éviter les injections SQL
-function SecurizeString_ForSQL($string) {
-    $string = trim($string);
-    $string = stripcslashes($string);
-    $string = addslashes($string);
-    $string = htmlspecialchars($string);
-    return $string;
-}
-
-// Fonction permettant de se déconnecter de la base de données
-function DisconnectDatabase() {
-    global $conn;
-    $conn->close();
 }
 
 ?>
