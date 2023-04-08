@@ -19,15 +19,12 @@ if(isset($_SESSION['id'])){
     $pseudo = $_SESSION['pseudo'];
     $avatar = $_SESSION['avatar'];
    if($_SESSION['affichage_nom'] == 0){
-       $affichage_nom = false;
        $utilisateur = $pseudo;
    }else{
        $affichage_nom = true;
        $utilisateur = $prenom." ".$nom;
    }
-    if($_SESSION['administrateur'] == 0){
-        $administrateur = false;
-    }else{
+    if ($_SESSION['administrateur'] != 0) {
         $administrateur = true;
     }
 
