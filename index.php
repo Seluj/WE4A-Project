@@ -27,6 +27,66 @@ Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles 
 $regles = "data/games/rules/regles_carcassonne.pdf";
 
 
+if (isset($_GET['jeu'])) {
+    $idJeu = $_GET['jeu'];
+    $jeu = getJeux($idJeu, "one");
+
+    if (!$jeu) {
+        ?>
+        <script>
+            alert("Le jeu n'existe pas");
+        </script>
+
+        <?php
+        header("Location: ./index.php");
+    } else {
+        $nomJeu = $jeu['nom'];
+        $descriptionJeu = $jeu['description'];
+        $imagejeu = $imagesGamesPathLink.$jeu['image'];
+        $regles = $rulesGamesPathLink.$jeu['regles'];
+    }
+} else if (isset($_GET['topic'])) {
+    $idTopic = $_GET['topic'];
+    $topic = getTopics($idTopic, "one");
+
+    if (!$topic) {
+        ?>
+        <script>
+            alert("Le topic n'existe pas");
+        </script>
+
+        <?php
+        header("Location: ./index.php");
+    } else {
+        $nomTopic = $topic['titre'];
+        $idJeu = $topic['jeu'];
+        $jeu = getJeux($idJeu, "one");
+    }
+} else if (isset($_GET['message'])) {
+    $idMessage = $_GET['message'];
+    $message = getMessages($idMessage, "one");
+
+    if (!$message) {
+        ?>
+        <script>
+            alert("Le message n'existe pas");
+        </script>
+
+        <?php
+        header("Location: ./index.php");
+    } else {
+        $idTopic = $message['topic'];
+        $topic = getTopics($idTopic, "one");
+        $idJeu = $topic['jeu'];
+        $jeu = getJeux($idJeu, "one");
+    }
+} else if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+    // TODO : Recherche
+} else {
+    $jeux = getJeux(0, "all");
+}
+
 ?>
 
 <!DOCTYPE html>
