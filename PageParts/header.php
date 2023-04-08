@@ -64,8 +64,15 @@ if(isset($_SESSION['id'])){
             <input type="image" src="<?php echo $imagetype ?>" alt="icone">
         </form>
 
-        <form id="Recherche_generale" action="#" method="post">
-            <input class="saisie" type="text" name="recherche" placeholder="Rechercher">
+        <form id="Recherche_generale" action="#" method="get">
+            <?php
+            foreach($_GET as $name => $value) {
+                $name = htmlspecialchars($name);
+                $value = htmlspecialchars($value);
+                echo '<input type="hidden" name="'. $name .'" value="'. $value .'">';
+            }
+            ?>
+            <input class="saisie" type="text" name="search" placeholder="Rechercher">
             <input type="image" src="images/Loupe.png" alt="icone">
         </form>
 
