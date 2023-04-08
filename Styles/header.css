@@ -1,5 +1,8 @@
 /* Fichier header.css contenant le style du header et des éléments contenus dans le header */
 
+input[type="submit"]:hover {
+    cursor: pointer;
+}
 header {
     min-width: 850px;
     min-height:63px;
@@ -44,7 +47,7 @@ header img {
     margin-left:10px;
 }
 
-#formulaires form input[type="button"]{
+#formulaires form input[type="submit"]{
     height: 30px;
     width: 30px;
     border: none;

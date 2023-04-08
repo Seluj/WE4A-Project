@@ -58,7 +58,7 @@ if (isset($_SESSION['id'])) {
             }
             ?>
             <input type="hidden" name="site" value="<?php echo $site;?>">
-            <input type="button" style="background-image: url(./images/Loupe.png)">
+            <input type="submit" style="background-image: url(./images/Loupe.png)" value="">
         </form>
 
         <form id="Recherche_generale" action="#" method="get">
@@ -70,7 +70,7 @@ if (isset($_SESSION['id'])) {
             }
             ?>
             <input class="saisie" type="text" name="search" placeholder="Rechercher">
-            <input type="button" style="background-image: url(./images/Loupe.png)">
+            <input type="submit" style="background-image: url(./images/Loupe.png)" value="">
         </form>
 
 
