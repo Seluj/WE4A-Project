@@ -45,8 +45,23 @@ if(isset($_SESSION['id'])){
     <div id="formulaires">
 
         <p id="Direction"> Vers <?php echo $typejeu?> </p>
-        <form id="Changement_jeu" action="#" method="post">
-                <input type="image" src="<?php echo $imagetype ?>" alt="icone">
+        <form id="Changement_jeu" action="#" method="get">
+            <?php
+            switch ($_GET['site']) {
+                case 0:
+                    $site = 1;
+                    //$imagetype = "images/icone.png";
+                    break;
+                case 1:
+                    $site = 0;
+                    //$imagetype = "images/icone.png";
+                    break;
+                default:
+                    break;
+            }
+            ?>
+            <input type="hidden" name="site" value="<?php echo $site;?>">
+            <input type="image" src="<?php echo $imagetype ?>" alt="icone">
         </form>
 
         <form id="Recherche_generale" action="#" method="post">

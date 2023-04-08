@@ -27,6 +27,15 @@ Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles 
 $regles = "data/games/rules/regles_carcassonne.pdf";
 
 
+if (!isset($_GET['site'])) {
+    header("Location: ./index.php?site=0");
+}
+
+$site = $_GET['site'];
+if ($site != 0 && $site != 1) {
+    header("Location: ./index.php?site=0");
+}
+
 if (isset($_GET['jeu'])) {
     $idJeu = $_GET['jeu'];
     $jeu = getJeux($idJeu, "one");
