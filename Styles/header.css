@@ -44,6 +44,11 @@ header img {
     margin-left:10px;
 }
 
+#formulaires form input[type="button"]{
+    height: 30px;
+    width: 30px;
+    border: none;
+}
 /* Texte du header indiquant  vers quel type de jeu se diriger*/
 #Direction {
     margin-left:60px;
