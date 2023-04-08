@@ -6,6 +6,8 @@ include('./functions/accessFunctions.php');
 
 ConnectDatabase();
 
+$type = "";
+
 $imagejeu = "images/carcassonne.jpg";
 $nomJeu = "Carcassonne";
 $descriptionJeu ="Retrouvez l’ambiance médiévale en partant à la conquête des terres et villes du sud de la France avec le jeu Carcassonne. Arpentez chemins et champs pour asseoir votre puissance, bloquez vos adversaires et triomphez par votre stratégie sur le tableau des scores.
@@ -53,6 +55,7 @@ if (isset($_GET['jeu'])) {
         $descriptionJeu = $jeu['description'];
         $imagejeu = $imagesGamesPathLink.$jeu['image'];
         $regles = $rulesGamesPathLink.$jeu['regles'];
+        $type = "jeu";
     }
 } else if (isset($_GET['topic'])) {
     $idTopic = $_GET['topic'];
@@ -70,6 +73,7 @@ if (isset($_GET['jeu'])) {
         $nomTopic = $topic['titre'];
         $idJeu = $topic['jeu'];
         $jeu = getJeux($idJeu, "one");
+        $type = "topic";
     }
 } else if (isset($_GET['message'])) {
     $idMessage = $_GET['message'];
@@ -88,12 +92,14 @@ if (isset($_GET['jeu'])) {
         $topic = getTopics($idTopic, "one");
         $idJeu = $topic['jeu'];
         $jeu = getJeux($idJeu, "one");
+        $type = "message";
     }
 } else if (isset($_GET['search'])) {
     $search = $_GET['search'];
     // TODO : Recherche
 } else {
     $jeux = getJeux(0, "all");
+    $type = "default";
 }
 
 ?>
@@ -122,6 +128,29 @@ if (isset($_GET['jeu'])) {
     <div class="main_container">
 
         <?php include('./PageParts/profile.php')?>
+
+        <?php
+        /*
+        switch ($type) {
+            case "jeu":
+                include('./PageParts/jeu.php');
+                break;
+            case "topic":
+                include('./PageParts/topic.php');
+                break;
+            case "message":
+                include('./PageParts/message.php');
+                break;
+            case "default":
+                include('./PageParts/default.php');
+                break;
+            default:
+                break;
+        }
+        */
+        ?>
+
+
 
 
         <div class="container central">
