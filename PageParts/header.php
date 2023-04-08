@@ -29,6 +29,22 @@ if (isset($_SESSION['id'])) {
     }
 
 }
+
+switch ($_GET['site']) {
+    case 0:
+        $site = 1;
+        //$imagetype = "images/icone.png";
+        $typejeu = "Jeux Vidéos";
+        break;
+    case 1:
+        $site = 0;
+        //$imagetype = "images/icone.png";
+        $typejeu = "Jeux de Société";
+        break;
+    default:
+        break;
+}
+
 ?>
 
 <header>
@@ -42,30 +58,21 @@ if (isset($_SESSION['id'])) {
     <div id="formulaires">
 
         <p id="Direction"> Vers <?php echo $typejeu?> </p>
-        <form id="Changement_jeu" action="#" method="get">
-            <?php
-            switch ($_GET['site']) {
-                case 0:
-                    $site = 1;
-                    //$imagetype = "images/icone.png";
-                    break;
-                case 1:
-                    $site = 0;
-                    //$imagetype = "images/icone.png";
-                    break;
-                default:
-                    break;
-            }
-            ?>
+        <form id="Changement_jeu" action="" method="get">
+
             <input type="hidden" name="site" value="<?php echo $site;?>">
             <input type="submit" style="background-image: url(./images/Loupe.png)" value="">
         </form>
 
-        <form id="Recherche_generale" action="#" method="get">
+        <form id="Recherche_generale" action="" method="get">
             <?php
-            foreach($_GET as $name => $value) {
+            $keys = array('site', 'topic', 'jeu', 'message');
+            foreach($keys as $name) {
+                if(!isset($_GET[$name])) {
+                    continue;
+                }
+                $value = htmlspecialchars($_GET[$name]);
                 $name = htmlspecialchars($name);
-                $value = htmlspecialchars($value);
                 echo '<input type="hidden" name="'. $name .'" value="'. $value .'">';
             }
             ?>
