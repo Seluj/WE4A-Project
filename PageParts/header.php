@@ -9,18 +9,18 @@ $email = "";
 $pseudo = "";
 $avatar = "";
 $affichage_nom = false;
-$administrateur=false;
+$administrateur = false;
 
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     $connecte = true;
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
     $email = $_SESSION['mail'];
     $pseudo = $_SESSION['pseudo'];
     $avatar = $_SESSION['avatar'];
-   if($_SESSION['affichage_nom'] == 0){
+   if ($_SESSION['affichage_nom'] == 0) {
        $utilisateur = $pseudo;
-   }else{
+   } else {
        $affichage_nom = true;
        $utilisateur = $prenom." ".$nom;
    }
