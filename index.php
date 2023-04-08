@@ -47,7 +47,7 @@ if (isset($_GET['jeu'])) {
         </script>
 
         <?php
-        header("Location: ./index.php");
+        header("Location: ./index.php".$site);
     } else {
         $nomJeu = $jeu['nom'];
         $descriptionJeu = $jeu['description'];
@@ -65,7 +65,7 @@ if (isset($_GET['jeu'])) {
         </script>
 
         <?php
-        header("Location: ./index.php");
+        header("Location: ./index.php".$site);
     } else {
         $nomTopic = $topic['titre'];
         $idJeu = $topic['jeu'];
