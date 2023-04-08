@@ -15,16 +15,9 @@ $jeuID     = "";
 $topicID    = "";
 if(isset($_GET['topic'])){
     $topicID = $_GET['topic'];
-    ConnectDatabase();
-    $query = "SELECT `topics`.*
-        FROM `topics`
-        WHERE `topics`.`id` = '$topicID'";
+    $row = getTopics($topicID, "one");
 
-    global $conn;
-    $result = $conn->query($query);
-
-    if (mysqli_num_rows($result) != 0) {
-        $row = mysqli_fetch_assoc($result);
+    if ($row) {
         $titreTopic = $row['titre'];
         $posttype = "Message";
     } else {
