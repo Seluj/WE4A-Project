@@ -1,5 +1,5 @@
 <?php
-include ('./PageParts/databaseFunctions.php');
+include('./functions/databaseFunctions.php');
 ConnectDatabase();
 
 ?>

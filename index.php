@@ -1,7 +1,10 @@
 <?php
 session_start();
 include('./PageParts/variables.php');
-include('./PageParts/databaseFunctions.php');
+include('./functions/databaseFunctions.php');
+include('./functions/accessFunctions.php');
+
+ConnectDatabase();
 
 $imagejeu = "images/carcassonne.jpg";
 $nomJeu = "Carcassonne";

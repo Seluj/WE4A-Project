@@ -1,6 +1,7 @@
 <?php
-include("./PageParts/databaseFunctions.php");
 include("./PageParts/variables.php");
+include("./functions/databaseFunctions.php");
+include("./functions/accountFunctions.php");
 
 session_start();
 

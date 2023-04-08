@@ -1,7 +1,9 @@
 <?php
 session_start();
 include('./PageParts/variables.php');
-include('./PageParts/databaseFunctions.php');
+include('./functions/databaseFunctions.php');
+include('./functions/accessFunctions.php');
+include("./functions/postFunctions.php");
 
 if (!isset($_SESSION['id'])) {
     header("Location: ./index.php");
