@@ -35,7 +35,7 @@ function securizeString_ForSQL($string) {
 }
 
 
-function securizeFile_ForSQL($file, $name, $type) {
+function securizeFile_ForSQL($file, $name, $type, $savePath) {
 
     $image = false;
 
@@ -102,7 +102,7 @@ function securizeFile_ForSQL($file, $name, $type) {
         // You should name it uniquely.
         // DO NOT USE $_FILES[$name]['name'] WITHOUT ANY VALIDATION !!
         // Obtain safe unique name from its binary data.
-        if (!move_uploaded_file($file[$name]['tmp_name'], sprintf($imagePath.'/%s.%s', $img = sha1_file($file[$name]['tmp_name']), $ext))) {
+        if (!move_uploaded_file($file[$name]['tmp_name'], sprintf($savePath.'/%s.%s', $img = sha1_file($file[$name]['tmp_name']), $ext))) {
             throw new RuntimeException('Failed to move uploaded file.');
         }
 

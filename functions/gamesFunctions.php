@@ -14,7 +14,7 @@ function checkNewGame() {
     $nom = securizeString_ForSQL($_POST["nom"]);
     $description = securizeString_ForSQL($_POST["choix_description"]);
 
-    $image = securizeFile_ForSQL($_FILES, "saisie_image_jeu", 'img');
+    $image = securizeFile_ForSQL($_FILES, "saisie_image_jeu", 'img', $imagesGamesPath);
 
     if (!$image) {
         ?>
@@ -25,7 +25,7 @@ function checkNewGame() {
         return;
     }
 
-    $regle = securizeFile_ForSQL($_FILES, "saisie_regles_jeu", 'pdf');
+    $regle = securizeFile_ForSQL($_FILES, "saisie_regles_jeu", 'pdf', $rulesGamesPath);
 
     if (!$regle) {
         ?>

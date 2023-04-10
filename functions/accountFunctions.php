@@ -62,7 +62,7 @@ function checkNewAccountForm() {
 
 
     // On récupère le nom de l'image final en vérifiant ses données pour l'insérer dans la base de données
-    $image = securizeFile_ForSQL($_FILES, "avatar", 'img');
+    $image = securizeFile_ForSQL($_FILES, "avatar", 'img', $imagePath);
 
     if (!$image) {
         ?>
