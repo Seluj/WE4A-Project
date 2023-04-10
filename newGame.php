@@ -2,6 +2,7 @@
 include("./PageParts/variables.php");
 include("./functions/databaseFunctions.php");
 include("./functions/accountFunctions.php");
+include("./functions/gamesFunctions.php");
 
 session_start();
 
@@ -23,6 +24,9 @@ if(!$createNewGame){
     $regles_jeu="regles_carcassonne.pdf";
     $type_jeu = "societe";
 }
+
+checkNewGame();
+
 ?>
 
 <!DOCTYPE html>
