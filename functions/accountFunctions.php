@@ -58,110 +58,70 @@ function checkNewAccountForm() {
     $mdp = md5($_POST["mdp"]);
     $pseudo = securizeString_ForSQL($_POST["pseudo"]);
 
-    // Vérification de l'avatar
-    try {
 
-        // Undefined | Multiple Files | $_FILES Corruption Attack
-        // If this request falls under any of them, treat it invalid.
-        if (!isset($_FILES['avatar']['error']) || is_array($_FILES['avatar']['error'])) {
-            throw new RuntimeException('Invalid parameters.');
-        }
-        // Check $_FILES['avatar']['error'] value.
-        switch ($_FILES['avatar']['error']) {
-            case UPLOAD_ERR_OK:
-                break;
-            case UPLOAD_ERR_NO_FILE:
-                throw new RuntimeException('No file sent.');
-            case UPLOAD_ERR_INI_SIZE:
-            case UPLOAD_ERR_FORM_SIZE:
-                throw new RuntimeException('Exceeded filesize limit.');
-            default:
-                throw new RuntimeException('Unknown errors.');
-        }
 
-        // You should also check filesize here.
-        if ($_FILES['avatar']['size'] > 10000000) {
-            throw new RuntimeException('Exceeded filesize limit.');
-        }
 
-        // Check MIME Type
-        $finfo = new finfo(FILEINFO_MIME_TYPE);
-        if (false === $ext = array_search(
-                $finfo->file($_FILES['avatar']['tmp_name']),
-                array(
-                    'jpg' => 'image/jpeg',
-                    'png' => 'image/png',
-                    'gif' => 'image/gif',
-                ),
-                true
-            )) {
-            throw new RuntimeException('Invalid file format.');
-        }
-        $imagePath = "data/users/images";
-        // You should name it uniquely.
-        // DO NOT USE $_FILES['avatar']['name'] WITHOUT ANY VALIDATION !!
-        // Obtain safe unique name from its binary data.
-        if (!move_uploaded_file($_FILES['avatar']['tmp_name'], sprintf($imagePath.'/%s.%s', $img = sha1_file($_FILES['avatar']['tmp_name']), $ext))) {
-            throw new RuntimeException('Failed to move uploaded file.');
-        }
+    // On récupère le nom de l'image final en vérifiant ses données pour l'insérer dans la base de données
+    $image = securizeFile_ForSQL($_FILES, "avatar", 'img');
 
-        // echo 'File is uploaded successfully.';
+    if (!$image) {
+        ?>
+        <script>
+            alert("Problème avec l'image.");
+        </script>
+        <?php
+        return;
+    }
 
-        // On récupère le nom de l'image final pour l'insérer dans la base de données
-        $image = sprintf('/%s.%s', $img, $ext);
+    // Création des requetes
+    $query_email = "SELECT * FROM utilisateurs WHERE mail = '$email'";
+    $query_pseudo = "SELECT * FROM utilisateurs WHERE pseudo = '$pseudo'";
+    $query_nom_prenom = "SELECT * FROM utilisateurs WHERE nom = '$nom' AND prenom = '$prenom'";
 
-        // Création des requetes
-        $query_email = "SELECT * FROM utilisateurs WHERE mail = '$email'";
-        $query_pseudo = "SELECT * FROM utilisateurs WHERE pseudo = '$pseudo'";
-        $query_nom_prenom = "SELECT * FROM utilisateurs WHERE nom = '$nom' AND prenom = '$prenom'";
-
-        // Execution des requetes et verification
-        $result_email = $conn->query($query_email);
-        $result_pseudo = $conn->query($query_pseudo);
-        $result_nom_prenom = $conn->query($query_nom_prenom);
-        if (mysqli_num_rows($result_email) != 0) {
-            ?>
-            <script>
-                alert("Cet email est déjà utilisé.");
-            </script>
-            <?php
-        } else if (mysqli_num_rows($result_pseudo) != 0) {
-            ?>
-            <script>
-                alert("Ce pseudo est déjà utilisé.");
-            </script>
-            <?php
-        } else if (mysqli_num_rows($result_nom_prenom) != 0) {
-            ?>
-            <script>
-                alert("Ces nom et prénom sont déjà utilisés.");
-            </script>
-            <?php
-        } else {
-            // Si aucune erreur n'a été trouvé, on insère les données de l'utilisateur dans la base de données
-            $query_insert =
-                "INSERT INTO `utilisateurs` (`id`, `mail`, `mdp`, `nom`, `prenom`, `pseudo`, `avatar`, `affichage_nom`, `administrateur`) 
+    // Execution des requetes et verification
+    $result_email = $conn->query($query_email);
+    $result_pseudo = $conn->query($query_pseudo);
+    $result_nom_prenom = $conn->query($query_nom_prenom);
+    if (mysqli_num_rows($result_email) != 0) {
+        ?>
+        <script>
+            alert("Cet email est déjà utilisé.");
+        </script>
+        <?php
+    } else if (mysqli_num_rows($result_pseudo) != 0) {
+        ?>
+        <script>
+            alert("Ce pseudo est déjà utilisé.");
+        </script>
+        <?php
+    } else if (mysqli_num_rows($result_nom_prenom) != 0) {
+        ?>
+        <script>
+            alert("Ces nom et prénom sont déjà utilisés.");
+        </script>
+        <?php
+    } else {
+        // Si aucune erreur n'a été trouvé, on insère les données de l'utilisateur dans la base de données
+        $query_insert =
+            "INSERT INTO `utilisateurs` (`id`, `mail`, `mdp`, `nom`, `prenom`, `pseudo`, `avatar`, `affichage_nom`, `administrateur`) 
                 VALUES (NULL, '$email', '$mdp', '$nom', '$prenom', '$pseudo', '$image', '0', '0')
                 ";
 
-            $result = $conn->query($query_insert);
+        $result = $conn->query($query_insert);
 
-            if ($result) {
-                ?>
-                <script>
-                    alert("Votre compte a bien été créé.\nVous pouvez maintenant vous connecter.");
-                </script>
-                <?php
-            } else {
-                ?>
-                <script>
-                    alert("Une erreur est survenue lors de la création de votre compte.");
-                </script>
-                <?php
-            }
+        if ($result) {
+            ?>
+            <script>
+                alert("Votre compte a bien été créé.\nVous pouvez maintenant vous connecter.");
+            </script>
+            <?php
+        } else {
+            ?>
+            <script>
+                alert("Une erreur est survenue lors de la création de votre compte.");
+            </script>
+            <?php
         }
-    } catch (RuntimeException $e) {
-        echo $e->getMessage();
     }
 }
 
