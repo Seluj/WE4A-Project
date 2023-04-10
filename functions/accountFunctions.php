@@ -17,7 +17,7 @@ function checkConnectionForm() {
     global $conn;
 
     // récupération des données et sécurisation
-    $email = SecurizeString_ForSQL($_POST["email"]);
+    $email = securizeString_ForSQL($_POST["email"]);
     $mdp = md5($_POST["mdp"]);
 
     // Création de la requete
@@ -52,11 +52,11 @@ function checkNewAccountForm() {
     global $conn;
 
     // récupération des données et sécurisation
-    $nom = SecurizeString_ForSQL($_POST["nom"]);
-    $prenom = SecurizeString_ForSQL($_POST["prenom"]);
+    $nom = securizeString_ForSQL($_POST["nom"]);
+    $prenom = securizeString_ForSQL($_POST["prenom"]);
     $email = $_POST["email"];
     $mdp = md5($_POST["mdp"]);
-    $pseudo = SecurizeString_ForSQL($_POST["pseudo"]);
+    $pseudo = securizeString_ForSQL($_POST["pseudo"]);
 
     // Vérification de l'avatar
     try {

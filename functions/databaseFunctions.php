@@ -5,7 +5,7 @@
 
 
 // Fonction permettant de se connecter à la base de données
-function ConnectDatabase() {
+function connectDatabase() {
 
     $config = include('./config.php');
 
@@ -26,7 +26,7 @@ function boucle($text, $number) {
 }
 
 // Fonction permettant de transformer les caractères spéciaux en entités HTML et éviter les injections SQL
-function SecurizeString_ForSQL($string) {
+function securizeString_ForSQL($string) {
     $string = trim($string);
     $string = stripcslashes($string);
     $string = addslashes($string);
@@ -35,7 +35,7 @@ function SecurizeString_ForSQL($string) {
 }
 
 // Fonction permettant de se déconnecter de la base de données
-function DisconnectDatabase() {
+function disconnectDatabase() {
     global $conn;
     $conn->close();
 }

@@ -5,7 +5,7 @@ include("./functions/accountFunctions.php");
 
 session_start();
 
-ConnectDatabase();
+connectDatabase();
 checkAccount();
 
 $createNewGame = true;

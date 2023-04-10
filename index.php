@@ -4,7 +4,7 @@ include('./PageParts/variables.php');
 include('./functions/databaseFunctions.php');
 include('./functions/accessFunctions.php');
 
-ConnectDatabase();
+connectDatabase();
 
 $type = "";
 

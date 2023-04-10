@@ -16,7 +16,7 @@ function checkNewMessage() {
     global $conn;
 
     // récupération des données et sécurisation
-    $message = SecurizeString_ForSQL($_POST['choix_message']);
+    $message = securizeString_ForSQL($_POST['choix_message']);
     $idAuteur = $_SESSION['id'];
     $idtopic = $_GET['topic'];
 
@@ -37,8 +37,8 @@ function checkNewTopic() {
     global $conn;
 
     // récupération des données et sécurisation
-    $titre = SecurizeString_ForSQL($_POST['choix_titre']);
-    $message = SecurizeString_ForSQL($_POST['choix_message']);
+    $titre = securizeString_ForSQL($_POST['choix_titre']);
+    $message = securizeString_ForSQL($_POST['choix_message']);
     $idAuteur = $_SESSION['id'];
     $idjeux = $_GET['jeux'];
 
