@@ -34,6 +34,21 @@ function securizeString_ForSQL($string) {
     return $string;
 }
 
+function checkSite($name) {
+    if (!isset($_GET['site'])) {
+        header("Location: ./$name?site=0");
+        return false;
+    }
+
+    $site = $_GET['site'];
+    if ($site != 0 && $site != 1) {
+        header("Location: ./$name?site=0");
+        return false;
+    }
+    return $site;
+}
+
+
 // Fonction permettant de se déconnecter de la base de données
 function disconnectDatabase() {
     global $conn;
