@@ -30,7 +30,10 @@ if (isset($_SESSION['id'])) {
 
 }
 
-switch ($_GET['site']) {
+$site = $_GET['site'] ?? -1;
+switch ($site) {
+    case -1:
+        break;
     case 0:
         $site = 1;
         //$imagetype = "images/icone.png";
@@ -42,6 +45,7 @@ switch ($_GET['site']) {
         $typejeu = "Jeux de Société";
         break;
     default:
+        $site = 0;
         break;
 }
 
@@ -57,13 +61,18 @@ switch ($_GET['site']) {
 
     <div id="formulaires">
 
+        <?php
+        if ($site != -1) {
+        ?>
         <p id="Direction"> Vers <?php echo $typejeu?> </p>
         <form id="Changement_jeu" action="" method="get">
 
             <input type="hidden" name="site" value="<?php echo $site;?>">
             <input type="submit" style="background-image: url(./images/Loupe.png)" value="">
         </form>
-
+        <?php
+        }
+        ?>
         <form id="Recherche_generale" action="" method="get">
             <?php
             $keys = array('site', 'topic', 'jeu', 'message');

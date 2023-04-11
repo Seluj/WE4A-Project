@@ -49,16 +49,29 @@ function checkConnectionForm() {
 
 // Fonction permettant de valider le formulaire d'inscription
 function checkNewAccountForm() {
+    $mdp1 = $_POST["mdp1"];
+    $mdp2 = $_POST["mdp2"];
+
+    if ($mdp1 != $mdp2) {
+        ?>
+        <script>
+            alert("Les mots de passe ne correspondent pas.");
+        </script>
+        <?php
+        return;
+    }
+
+    $mdp = md5($mdp1);
+
+
     global $conn, $imagePath;
 
     // récupération des données et sécurisation
     $nom = securizeString_ForSQL($_POST["nom"]);
     $prenom = securizeString_ForSQL($_POST["prenom"]);
     $email = $_POST["email"];
-    $mdp = md5($_POST["mdp"]);
+
     $pseudo = securizeString_ForSQL($_POST["pseudo"]);
-
-
 
 
     // Création des requetes
@@ -123,6 +136,76 @@ function checkNewAccountForm() {
             </script>
             <?php
         }
+    }
+}
+
+function updateAccount() {
+    global $conn, $imagePath;
+
+
+    // récupération des données et sécurisation
+    $nom = securizeString_ForSQL($_POST["nom"]);
+    $prenom = securizeString_ForSQL($_POST["prenom"]);
+    $email = $_POST["email"];
+    $pseudo = securizeString_ForSQL($_POST["pseudo"]);
+    $id = $_SESSION['id'];
+
+    // Création des requetes
+    $update = "UPDATE `utilisateurs` SET `mail` = '$email', `nom` = '$nom', `prenom` = '$prenom', `pseudo` = '$pseudo' WHERE `utilisateurs`.`id` = $id";
+
+    // Execution des requetes et verification
+    $result = $conn->query($update);
+    if ($result) {
+        ?>
+        <script>
+            alert("Votre compte a bien été modifié.");
+        </script>
+        <?php
+    } else {
+        ?>
+        <script>
+            alert("Une erreur est survenue lors de la modification de votre compte.");
+        </script>
+        <?php
+    }
+}
+
+function updatePassword() {
+    $mdp1 = $_POST["mdp1"];
+    $mdp2 = $_POST["mdp2"];
+
+    if ($mdp1 != $mdp2) {
+        ?>
+        <script>
+            alert("Les mots de passe ne correspondent pas.");
+        </script>
+        <?php
+        return;
+    }
+
+    $mdp = md5($mdp1);
+
+    global $conn;
+
+    $id = $_SESSION['id'];
+
+    // Création des requetes
+    $update = "UPDATE `utilisateurs` SET `mdp` = '$mdp' WHERE `utilisateurs`.`id` = $id";
+
+    // Execution des requetes et verification
+    $result = $conn->query($update);
+    if ($result) {
+        ?>
+        <script>
+            alert("Votre mot de passe a bien été modifié.");
+        </script>
+        <?php
+    } else {
+        ?>
+        <script>
+            alert("Une erreur est survenue lors de la modification de votre mot de passe.");
+        </script>
+        <?php
     }
 }
 
