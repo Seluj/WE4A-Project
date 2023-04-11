@@ -26,7 +26,7 @@ function checkNewGame() {
         return;
     }
 
-    $regle = securizeFile_ForSQL($_FILES, "saisie_regles_jeu", 'pdf', $rulesGamesPath, "regle_".$nom);
+    $regle = securizeFile_ForSQL($_FILES, "saisie_regles_jeu", 'pdf', $rulesGamesPath, "regles_".$nom);
 
     if (!$regle) {
         ?>
