@@ -98,7 +98,8 @@ function securizeFile_ForSQL($file, $name, $type, $savePath, $nameFile) {
         if (false === $ext = array_search($finfo->file($file[$name]['tmp_name']), $array, true)) {
             throw new RuntimeException('Invalid file format.');
         }
-        $imagePath = "data/users/images";
+
+
         // You should name it uniquely.
         // DO NOT USE $_FILES[$name]['name'] WITHOUT ANY VALIDATION !!
         // Obtain safe unique name from its binary data.
