@@ -109,8 +109,8 @@ input[type="checkbox"]{
 	text-align: center;
 	position:relative;
 	min-width: 500px;
-	width: 850px;
-	margin: 6px auto;
+	width: 895px;
+	margin: 6px 5px;
 	padding: 20px 10px;
 }
 
@@ -280,7 +280,7 @@ input[type="checkbox"]{
 
 #jeux_proposes{
 	border: 2px solid black;
-	padding: 0px 10px;
+	padding: 0 10px;
 	background-color:white;
 	max-height: 300px;
 	overflow: scroll;
@@ -289,4 +289,24 @@ input[type="checkbox"]{
 #jeux_proposes:hover{
 	max-height: none;
 	overflow: visible;
+}
+
+#image_titre {
+	position:relative;
+	max-width: 100%;
+	min-height:200px;
+	margin-top:-20px;
+	margin-bottom: 10px;
+}
+
+#texte_presentation {
+	text-align: justify;
+	margin:0 15px;
+	padding: 10px 0;
+	border-top: solid black 3px;
+	border-bottom: solid black 3px;
+}
+
+* {
+	box-sizing: border-box;
 }
