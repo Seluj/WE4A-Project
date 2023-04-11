@@ -27,8 +27,13 @@
         <br><br>
         <?php if(!$connecte){?>
             <div class="entrees">
-                <label for="mdp">Mot de passe :</label>
-                <input id="mdp" class="saisie" name="mdp" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
+                <label for="mdp1">Mot de passe :</label>
+                <input id="mdp1" class="saisie" name="mdp1" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
+            </div>
+            <br><br>
+            <div class="entrees">
+                <label for="mdp2">Confirmation :</label>
+                <input id="mdp2" class="saisie" name="mdp2" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
             </div>
         <?php } else {?>
             <button class="Boutons" type="button" id="modifierMDP"  onClick="myFunction()">Modifier mot de passe</button>

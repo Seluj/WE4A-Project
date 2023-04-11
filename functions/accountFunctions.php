@@ -49,16 +49,29 @@ function checkConnectionForm() {
 
 // Fonction permettant de valider le formulaire d'inscription
 function checkNewAccountForm() {
+    $mdp1 = $_POST["mdp1"];
+    $mdp2 = $_POST["mdp2"];
+
+    if ($mdp1 != $mdp2) {
+        ?>
+        <script>
+            alert("Les mots de passe ne correspondent pas.");
+        </script>
+        <?php
+        return;
+    }
+
+    $mdp = md5($mdp1);
+
+
     global $conn, $imagePath;
 
     // récupération des données et sécurisation
     $nom = securizeString_ForSQL($_POST["nom"]);
     $prenom = securizeString_ForSQL($_POST["prenom"]);
     $email = $_POST["email"];
-    $mdp = md5($_POST["mdp"]);
+
     $pseudo = securizeString_ForSQL($_POST["pseudo"]);
-
-
 
 
     // Création des requetes
