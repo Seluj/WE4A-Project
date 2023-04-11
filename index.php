@@ -48,7 +48,7 @@ if (isset($_GET['jeu'])) {
         $descriptionJeu = $jeu['description'];
         $imagejeu = $imagesGamesPathLink.$jeu['image'];
         $regles = $rulesGamesPathLink.$jeu['regles'];
-        $type = "jeu";
+        $type = "Jeu";
     }
 } else if (isset($_GET['topic'])) {
     $idTopic = $_GET['topic'];
@@ -66,7 +66,7 @@ if (isset($_GET['jeu'])) {
         $nomTopic = $topic['titre'];
         $idJeu = $topic['jeu'];
         $jeu = getJeux($idJeu, "one");
-        $type = "topic";
+        $type = "Topic";
     }
 } else if (isset($_GET['message'])) {
     $idMessage = $_GET['message'];
@@ -144,28 +144,14 @@ if (isset($_GET['jeu'])) {
         ?>
 
 
-
-
         <div class="container central">
 
-            <h1>Jeu : <?php echo $nomJeu ?></h1>
-            <img id="image_jeu" src="<?php echo $imagejeu ?>" alt="avatar">
-            <?php if($administrateur){?>
-                <div id="BoutonModifierJeu" class="linkBox">
-                    <a class="police" href="./newGame.php">Modifier Jeu</a>
-                </div>
-            <?php } ?>
-            <div id="description_jeu">
-                <h2>Description :</h2>
-                <p><?php echo $descriptionJeu ?></p>
-            </div>
-            <h2 id="telecharger_regle" class="linkBox"><a href="<?php echo $regles ?>" download="Regles_carcassonne.pdf">Télécharger les règles de <?php echo $nomJeu ?></a></h2>
-            <?php if($connecte){?>
-            <div id="BoutonCreerTopic" class="linkBox">
-                <a class="police" href="./newMessage.php">Créer Topic</a>
-            </div>
-            <?php } ?>
-            <h3>Topics associés</h3>
+            <?php if($type!="default"){
+                include('./PageParts/presentation.php');
+            }else{
+                echo "coucou";
+            } ?>
+
             <ul>
                 <?php boucle("Message", 20) ?>
             </ul>
