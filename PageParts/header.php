@@ -1,6 +1,5 @@
 <?php
-$typejeu = "Jeux Vidéos";
-
+$typejeu = "";
 
 $connecte = false;
 $nom = "";
@@ -27,7 +26,6 @@ if (isset($_SESSION['id'])) {
     if ($_SESSION['administrateur'] != 0) {
         $administrateur = true;
     }
-
 }
 
 $site = $_GET['site'] ?? -1;
@@ -48,7 +46,6 @@ switch ($site) {
         $site = 0;
         break;
 }
-
 ?>
 
 <header>
