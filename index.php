@@ -148,9 +148,19 @@ if (isset($_GET['jeu'])) {
 
             <?php if($type!="default"){
                 include('./PageParts/presentation.php');
-            }else{
-                echo "coucou";
-            } ?>
+            }else{?>
+
+                <img id="image_titre" src="./images/fond_titre.jpg" alt="avatar">
+
+                <p id="texte_presentation">Venez vous plongez avec nous dans le monde des jeux de société et des jeux vidéos ! Vous souhaitez découvrir de
+                    nouveaux jeux, discuter stratégie et partager vos expériences de jeu avec d'autres passionnés dans un monde de
+                    divertissement et de compétition ? Notre communauté dynamique est l'endroit idéal pour les joueurs occasionnels
+                    et les compétiteurs chevronnés pour participer à des discussions animées, pour poser des questions et aider les
+                    autres joueurs en répondant aux leurs.
+                    Vous avez la possibilité de créer des topics à propos de jeux, d'y échanger avec les autres utilisateurs
+                    au travers de messages, et de participer à des topics créés par d'autres. </p>
+            <?php } ?>
+
 
             <ul>
                 <?php boucle("Message", 20) ?>
