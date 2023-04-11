@@ -2,6 +2,7 @@
 
 function checkNewGame() {
 
+    global $imagesGamesPath, $rulesGamesPath;
     if (!isset($_POST['creer_jeu']))
         return;
 

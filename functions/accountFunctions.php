@@ -49,7 +49,7 @@ function checkConnectionForm() {
 
 // Fonction permettant de valider le formulaire d'inscription
 function checkNewAccountForm() {
-    global $conn;
+    global $conn, $imagePath;
 
     // récupération des données et sécurisation
     $nom = securizeString_ForSQL($_POST["nom"]);
