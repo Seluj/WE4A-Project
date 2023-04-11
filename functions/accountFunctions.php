@@ -61,18 +61,6 @@ function checkNewAccountForm() {
 
 
 
-    // On récupère le nom de l'image final en vérifiant ses données pour l'insérer dans la base de données
-    $image = securizeFile_ForSQL($_FILES, "avatar", 'img', $imagePath);
-
-    if (!$image) {
-        ?>
-        <script>
-            alert("Problème avec l'image.");
-        </script>
-        <?php
-        return;
-    }
-
     // Création des requetes
     $query_email = "SELECT * FROM utilisateurs WHERE mail = '$email'";
     $query_pseudo = "SELECT * FROM utilisateurs WHERE pseudo = '$pseudo'";
@@ -101,6 +89,19 @@ function checkNewAccountForm() {
         </script>
         <?php
     } else {
+
+        // On récupère le nom de l'image final en vérifiant ses données pour l'insérer dans la base de données
+        $image = securizeFile_ForSQL($_FILES, "avatar", 'img', $imagePath, null);
+
+        if (!$image) {
+            ?>
+            <script>
+                alert("Problème avec l'image.");
+            </script>
+            <?php
+            return;
+        }
+
         // Si aucune erreur n'a été trouvé, on insère les données de l'utilisateur dans la base de données
         $query_insert =
             "INSERT INTO `utilisateurs` (`id`, `mail`, `mdp`, `nom`, `prenom`, `pseudo`, `avatar`, `affichage_nom`, `administrateur`) 
