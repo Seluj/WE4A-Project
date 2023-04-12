@@ -113,7 +113,7 @@ switch ($site) {
 
 <script>
     function addFile(){
-        var file = document.getElementsByClassName("input_center");
+        const file = document.getElementsByClassName("input_center");
         file.style.
     }
 </script>
