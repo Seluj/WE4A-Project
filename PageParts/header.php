@@ -28,12 +28,7 @@ if (isset($_SESSION['id'])) {
     }
 }
 
-//$site = $_GET['site'] ?? -1;
-if (isset($_GET['site'])) {
-    $site = $_GET['site'];
-} else {
-    $site = -1;
-}
+$site = $_GET['site'] ?? -1;
 
 switch ($site) {
     case -1:

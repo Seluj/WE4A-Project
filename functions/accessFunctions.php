@@ -27,12 +27,12 @@ function getTopics($id, $type) {
         if ($id == null) {
             $query = "SELECT `topics`.*
                     FROM `topics`
-                    ORDER BY `topics`.`date_edit` ASC";
+                    ORDER BY `topics`.`date_edit` DESC";
         } else {
-            $query = "SELECT * FROM topics WHERE jeux_id = '$id'";
+            $query = "SELECT * FROM topics WHERE jeux_id = '$id' ORDER BY `topics`.`date_edit` DESC";
         }
     } else if ($type == "one") {
-        $query = "SELECT * FROM messages WHERE topics_id = '$id'";
+        $query = "SELECT * FROM messages WHERE topics_id = '$id' ORDER BY `messages`.`date_ajout` ASC";
     } else {
         return false;
     }

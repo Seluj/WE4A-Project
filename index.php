@@ -8,25 +8,10 @@ connectDatabase();
 
 $type = "";
 
-$imagejeu = "images/carcassonne.jpg";
-$nomJeu = "Carcassonne";
-$descriptionJeu ="Retrouvez l’ambiance médiévale en partant à la conquête des terres et villes du sud de la France avec le jeu Carcassonne. Arpentez chemins et champs pour asseoir votre puissance, bloquez vos adversaires et triomphez par votre stratégie sur le tableau des scores.
-
-Grâce à ses parties courtes, son mécanisme mêlant tactique et opportunisme, ce petit jeu a tout pour séduire et permettre de grands moments de jeu en famille.
-
-Primé en Allemagne - « Spiel des Jahres 2001 » (Jeu de société de l’année) - Carcassonne est un jeu d’une très grande simplicité, accessible à tous et original.
-
-Votre but : Obtenir le plus de points lors du décompte final.
-
-A la manière des célèbres Dominos, le plateau de jeu se construit peu à peu au gré de la pose de « tuiles paysage » où l’on retrouve de morceaux de routes, champs et forteresses.
-
-En plaçant judicieusement vos partisans sur le paysage constitué, vous pourrez acquérir des points grâce à la longueur des routes, la grandeur des villes ou des champs. Les points sont en effet décomptés dès qu’un élément (route, ville etc.) est achevé par la pose d’une tuile.
-
-Le jeu s’achève lorsque toutes les tuiles ont été posées. Le paysage est constitué et le vainqueur est le joueur le plus avancé sur le tableau des points.
-
-Carcassonne bénéficie de nombreuses extensions apportant de nouvelles règles et possibilités tactiques.";
-
-$regles = "data/games/rules/regles_carcassonne.pdf";
+$imagejeu = "";
+$nomJeu = "";
+$descriptionJeu ="";
+$regles = "";
 
 
 $site = checkSite('index.php');
@@ -42,10 +27,10 @@ if (isset($_GET['jeu'])) {
         </script>
 
         <?php
-        header("Location: ./index.php".$site);
+        header("Location: ./index.php?site=".$site);
     } else {
-        $nomJeu = $jeu['nom'];
-        $descriptionJeu = $jeu['description'];
+        $nomJeu = $jeu['Nom'];
+        $descriptionJeu = $jeu['Description'];
         $imagejeu = $imagesGamesPathLink.$jeu['image'];
         $regles = $rulesGamesPathLink.$jeu['regles'];
         $type = "Jeu";
@@ -61,7 +46,7 @@ if (isset($_GET['jeu'])) {
         </script>
 
         <?php
-        header("Location: ./index.php".$site);
+        header("Location: ./index.php?site=".$site);
     } else {
         $nomTopic = $topic['titre'];
         $idJeu = $topic['jeu'];
@@ -79,7 +64,7 @@ if (isset($_GET['jeu'])) {
         </script>
 
         <?php
-        header("Location: ./index.php");
+        header("Location: ./index.php?site=".$site);
     } else {
         $idTopic = $message['topic'];
         $topic = getTopics($idTopic, "one");
@@ -94,7 +79,7 @@ if (isset($_GET['jeu'])) {
     $jeux = getJeux(0, "all");
     $type = "default";
 }
-
+echo "jeu : ".$type;
 ?>
 
 <!DOCTYPE html>
@@ -168,11 +153,13 @@ if (isset($_GET['jeu'])) {
                 </div>
             <?php } ?>
 
+            <div class="deroulant">
 
-            <ul>
-                <?php boucle("Message", 20) ?>
-            </ul>
-
+                    <h3>Topics<?php if($type="Jeu"){ echo " associés";} ?></h3>
+                <ul>
+                    <?php boucle("Message", 20) ?>
+                </ul>
+            </div>
         </div>
 
         <?php include('./PageParts/games.php')?>
