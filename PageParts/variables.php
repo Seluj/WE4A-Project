@@ -1,6 +1,6 @@
 <?php
 $nomsite = "Dice & Pixels";
-$headLink = "http://chris.ferlin.fr:90/Projet/";
+$headLink = "http://chris.ferlin.fr:6969/Projet/";
 $imagePathLink = $headLink."data/users/images/";
 $imagePath = "./data/users/images/";
 $littleImagePathLink = $headLink."images/";

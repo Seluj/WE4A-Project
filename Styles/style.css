@@ -100,16 +100,15 @@ input[type="checkbox"]{
 
 #utilisateurs {
 	position:relative;
-	left: 0;
 	min-width: 250px;
-	width: 260px;
+	width: 300px;
 }
 
 .central {
 	text-align: center;
 	position:relative;
 	min-width: 500px;
-	width: 10000px;
+	width: 100%;
 	margin: 6px 10px;
 	padding: 20px 10px;
 }
@@ -194,8 +193,8 @@ input[type="checkbox"]{
 
 #jeux{
 	margin-right: 0;
-	min-width: 200px;
-	width: 320px;
+	min-width: 250px;
+	width: 450px;
 }
 
 #profil {
@@ -305,6 +304,11 @@ input[type="checkbox"]{
 	padding: 10px 0;
 	border-top: solid black 3px;
 	border-bottom: solid black 3px;
+}
+
+#deroulant {
+	max-height: 600px;
+	overflow: auto;
 }
 
 * {
