@@ -1,7 +1,12 @@
 <?php
 
 // Fonction permettant de répartir la création d'un nouveau topic ou un nouveau message
-function checkEntry() {
+
+/**
+ * @return void
+ */
+function checkEntry(): void
+{
     if(!isset($_POST["createNewMessage"]))
         return;
     if ($_POST['createNewMessage'] == "Créer Topic") {
@@ -12,7 +17,12 @@ function checkEntry() {
 }
 
 // Fonction permettant de créer un nouveau message
-function checkNewMessage() {
+
+/**
+ * @return void
+ */
+function checkNewMessage(): void
+{
     global $conn;
 
     // récupération des données et sécurisation
@@ -33,7 +43,12 @@ function checkNewMessage() {
 }
 
 // Fonction permettant de créer un nouveau topic
-function checkNewTopic() {
+
+/**
+ * @return void
+ */
+function checkNewTopic(): void
+{
     global $conn;
 
     // récupération des données et sécurisation

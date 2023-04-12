@@ -1,7 +1,12 @@
 <?php
 
-// Fonction permettant de récupérer un message ou l'ensemble des messages d'un topic
-function getMessages($id, $type) {
+/**
+ * @param $id
+ * @param $type
+ * @return bool|array|null
+ */
+function getMessages($id, $type): bool|array|null
+{
     global $conn;
 
     if ($type == "all") {
@@ -20,7 +25,14 @@ function getMessages($id, $type) {
 }
 
 // Fonction permettant de récupérer un topic ou l'ensemble des topics d'un jeu
-function getTopics($id, $type) {
+
+/**
+ * @param $id
+ * @param $type
+ * @return bool|array|null
+ */
+function getTopics($id, $type): bool|array|null
+{
     global $conn;
 
     if ($type == "all") {
@@ -45,7 +57,14 @@ function getTopics($id, $type) {
 }
 
 // Fonction permettant de récupérer un jeu ou l'ensemble des jeux
-function getJeux($id, $type) {
+
+/**
+ * @param $id
+ * @param $type
+ * @return bool|array|null
+ */
+function getJeux($id, $type): bool|array|null
+{
     global $conn;
 
     if ($type == "all") {

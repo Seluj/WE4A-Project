@@ -5,7 +5,12 @@
 
 
 // Fonction permettant de se connecter à la base de données
-function connectDatabase() {
+
+/**
+ * @return void
+ */
+function connectDatabase(): void
+{
 
     $config = include('./config.php');
 
@@ -18,7 +23,14 @@ function connectDatabase() {
     }
 }
 
-function boucle($text, $number) {
+
+/**
+ * @param $text
+ * @param $number
+ * @return void
+ */
+function boucle($text, $number): void
+{
     for($i = 1; $i <= $number; $i++) {
         ?><li> <img src="images/Meeple.png" alt="icone">
         <a href=""><?php echo $text." ".$i ?></a></li><?php
@@ -26,7 +38,13 @@ function boucle($text, $number) {
 }
 
 // Fonction permettant de transformer les caractères spéciaux en entités HTML et éviter les injections SQL
-function securizeString_ForSQL($string) {
+
+/**
+ * @param $string
+ * @return string
+ */
+function securizeString_ForSQL($string): string
+{
     $string = trim($string);
     $string = stripcslashes($string);
     $string = addslashes($string);
@@ -35,7 +53,16 @@ function securizeString_ForSQL($string) {
 }
 
 
-function securizeFile_ForSQL($file, $name, $type, $savePath, $nameFile) {
+/**
+ * @param $file
+ * @param $name
+ * @param $type
+ * @param $savePath
+ * @param $nameFile
+ * @return bool|string
+ */
+function securizeFile_ForSQL($file, $name, $type, $savePath, $nameFile): bool|string
+{
 
     $image = false;
 
@@ -121,7 +148,12 @@ function securizeFile_ForSQL($file, $name, $type, $savePath, $nameFile) {
 }
 
 
-function checkSite($name) {
+/**
+ * @param $name
+ * @return int
+ */
+function checkSite($name): int
+{
     if (!isset($_GET['site'])) {
         header("Location: ./$name?site=0");
         return false;
@@ -137,7 +169,12 @@ function checkSite($name) {
 
 
 // Fonction permettant de se déconnecter de la base de données
-function disconnectDatabase() {
+
+/**
+ * @return void
+ */
+function disconnectDatabase(): void
+{
     global $conn;
     $conn->close();
 }

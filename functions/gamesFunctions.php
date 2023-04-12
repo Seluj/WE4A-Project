@@ -1,6 +1,10 @@
 <?php
 
-function checkNewGame() {
+/**
+ * @return void
+ */
+function checkNewGame(): void
+{
 
     global $imagesGamesPath, $rulesGamesPath;
     if (!isset($_POST['creer_jeu']))

@@ -1,7 +1,12 @@
 <?php
 
 // Fonction permettant de répartir la création d'un nouveau compte ou la connexion
-function checkAccount() {
+
+/**
+ * @return void
+ */
+function checkAccount(): void
+{
     // Si l'utilisateur n'est pas connecté, on vérifie si il a cliqué sur le bouton de connexion ou d'inscription
     if (!isset($_SESSION['id'])) {
         if (isset($_POST['connecter'])) {
@@ -13,7 +18,12 @@ function checkAccount() {
 }
 
 // Fonction permettant de valider le formulaire de connexion
-function checkConnectionForm() {
+
+/**
+ * @return void
+ */
+function checkConnectionForm(): void
+{
     global $conn;
 
     // récupération des données et sécurisation
@@ -48,7 +58,12 @@ function checkConnectionForm() {
 }
 
 // Fonction permettant de valider le formulaire d'inscription
-function checkNewAccountForm() {
+
+/**
+ * @return void
+ */
+function checkNewAccountForm(): void
+{
     $mdp1 = $_POST["mdp1"];
     $mdp2 = $_POST["mdp2"];
 
@@ -139,7 +154,12 @@ function checkNewAccountForm() {
     }
 }
 
-function updateAccount() {
+
+/**
+ * @return void
+ */
+function updateAccount(): void
+{
     global $conn, $imagePath;
 
 
@@ -170,7 +190,12 @@ function updateAccount() {
     }
 }
 
-function updatePassword() {
+
+/**
+ * @return void
+ */
+function updatePassword(): void
+{
     $mdp1 = $_POST["mdp1"];
     $mdp2 = $_POST["mdp2"];
 
