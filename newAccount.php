@@ -8,7 +8,7 @@ session_start();
 connectDatabase();
 checkAccount();
 
-$PagenewAccount = true;
+$pageNewAccount = true;
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ $PagenewAccount = true;
 
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $nomsite ?></title>
+    <title><?php echo $nomSite ?></title>
     <link rel="stylesheet" href="./Styles/style.css">
     <link rel="stylesheet" href="./Styles/header.css">
     <link rel="stylesheet" href="./Styles/interaction.css">
@@ -36,31 +36,30 @@ $PagenewAccount = true;
         <?php include('./PageParts/signinForm.php') ?>
         <?php include('./PageParts/loginForm.php') ?>
         <script>
-            window.onload = function(){
+            window.onload = function() {
                 FunctionReturnConnect();
             }
 
-            function FunctionReturnConnect(){
-                var log = document.getElementById("login");
-                var sign = document.getElementById("signin");
-                var connecte = <?php echo json_encode($connecte); ?>;
+            function FunctionReturnConnect() {
+                const log = document.getElementById("login");
+                const sign = document.getElementById("signin");
+                let connecte = <?php echo json_encode($connecte); ?>;
 
-                if(connecte){
+                if (connecte) {
                     log.style.display = "none";
                     sign.style.display = "inline";
-                }else{
+                } else {
                     log.style.display = "inline-block";
                     sign.style.display = "none";
                 }
-
             }
+
             function FunctionInscription() {
-                var log = document.getElementById("login");
-                var sign = document.getElementById("signin");
+                const log = document.getElementById("login");
+                const sign = document.getElementById("signin");
 
                 log.style.display = "none";
                 sign.style.display = "inline-block";
-
             }
         </script>
 
@@ -69,4 +68,4 @@ $PagenewAccount = true;
 
 </body>
 </html>
-<?php $PagenewAccount = false;?>
+<?php $pageNewAccount = false;?>

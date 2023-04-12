@@ -9,22 +9,23 @@ if (!isset($_SESSION['id'])) {
     header("Location: ./index.php");
 }
 
-$posttype   = "";
+$postType = "";
 $titreTopic = "";
-$jeuID     = "";
-$topicID    = "";
-if(isset($_GET['topic'])){
+$jeuID = "";
+$topicID = "";
+
+if (isset($_GET['topic'])) {
     $topicID = $_GET['topic'];
     $row = getTopics($topicID, "one");
 
     if ($row) {
         $titreTopic = $row['titre'];
-        $posttype = "Message";
+        $postType = "Message";
     } else {
-        $posttype = "Topic";
+        $postType = "Topic";
     }
 } else {
-    $posttype = "Topic";
+    $postType = "Topic";
 }
 checkEntry();
 ?>
@@ -37,7 +38,7 @@ checkEntry();
 
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $nomsite ?></title>
+    <title><?php echo $nomSite ?></title>
     <link rel="stylesheet" href="./Styles/style.css">
     <link rel="stylesheet" href="./Styles/header.css">
     <link rel="stylesheet" href="./Styles/interaction.css">
@@ -56,35 +57,35 @@ checkEntry();
         <div class="container central">
             <img class="image_commentaire" src="./images/Welcome_in_the_chat.png" alt="Start a new Game">
 
-            <h1 class="titre_interaction">Nouveau <?php echo $posttype ?></h1>
+            <h1 class="titre_interaction">Nouveau <?php echo $postType ?></h1>
 
             <form class="formulaire" action="#" method="post">
 
 
                 <div id="entrer_titre" class="entrees">
 
-                    <?php if($posttype == "Topic"){?>
+                    <?php if ($postType == "Topic") {?>
                         <label for="choix_titre">Saisissez un titre pour votre Topic :</label>
                         <br><input type="text" name="choix_titre" placeholder="Titre"/>
 
 
-                    <?php }else{?>
+                    <?php } else {?>
 
                         <p>Topic : <?php echo $titreTopic ?></p>
-                    <?php }?>
+                    <?php } ?>
 
                 </div>
 
                 <br><br>
 
                 <div id="saisir_message" class="entrees">
-                    <label for="choix_message">Saisissez votre <?php if($posttype == "Topic"){ echo "premier "; }?>message :</label>
+                    <label for="choix_message">Saisissez votre <?php if ($postType == "Topic") { echo "premier "; }?>message :</label>
                     <br>
                     <textarea id="message" name="choix_message" placeholder="Message"></textarea>
 
                 </div>
 
-                <br><input class="Boutons" name="createNewMessage" type="submit" value="<?php if($posttype == "Topic"){echo "Créer Topic";}
+                <br><input class="Boutons" name="createNewMessage" type="submit" value="<?php if ($postType == "Topic") {echo "Créer Topic";}
 
                 else{echo "Envoyer Message";}?>">
 

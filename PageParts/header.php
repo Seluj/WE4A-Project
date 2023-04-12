@@ -1,5 +1,5 @@
 <?php
-$typejeu = "";
+$typeJeu = "";
 
 $connecte = false;
 $nom = "";
@@ -21,7 +21,7 @@ if (isset($_SESSION['id'])) {
        $utilisateur = $pseudo;
    } else {
        $affichage_nom = true;
-       $utilisateur = $prenom." ".$nom;
+       $utilisateur = $prenom . " " . $nom;
    }
     if ($_SESSION['administrateur'] != 0) {
         $administrateur = true;
@@ -36,12 +36,12 @@ switch ($site) {
     case 0:
         $site = 1;
         //$imagetype = "images/icone.png";
-        $typejeu = "Jeux Vidéos";
+        $typeJeu = "Jeux Vidéos";
         break;
     case 1:
         $site = 0;
         //$imagetype = "images/icone.png";
-        $typejeu = "Jeux de Société";
+        $typeJeu = "Jeux de Société";
         break;
     default:
         $site = 0;
@@ -53,7 +53,7 @@ switch ($site) {
 
     <!-- Nom du site -->
 
-    <h1 id="Nom_Site" class="police"><?php echo $nomsite ?></h1>
+    <h1 id="Nom_Site" class="police"><?php echo $nomSite ?></h1>
 
     <!-- Barre de recherche -->
 
@@ -62,7 +62,7 @@ switch ($site) {
         <?php
         if ($site != -1) {
         ?>
-        <p id="Direction"> Vers <?php echo $typejeu?> </p>
+        <p id="Direction"> Vers <?php echo $typeJeu?> </p>
         <form id="Changement_jeu" action="" method="get">
 
             <input type="hidden" name="site" value="<?php echo $site;?>">
@@ -80,7 +80,7 @@ switch ($site) {
                 }
                 $value = htmlspecialchars($_GET[$name]);
                 $name = htmlspecialchars($name);
-                echo '<input type="hidden" name="'. $name .'" value="'. $value .'">';
+                echo '<input type="hidden" name="' . $name . '" value="' . $value . '">';
             }
             ?>
             <input class="saisie" type="text" name="search" placeholder="Rechercher">
@@ -93,7 +93,7 @@ switch ($site) {
         ?>
             <!-- Bouton de connexion -->
             <div id="Connexion" class="linkBox">
-                <a href="./newAccount.php" > <img src="<?php echo $littleImagePathLink."Meeple.png" ?>" alt="icone"> </a>
+                <a href="./newAccount.php" > <img src="<?php echo $littleImagePathLink . "Meeple.png" ?>" alt="icone"> </a>
                 <a class="police" href="./newAccount.php">Se Connecter</a>
             </div>
         <?php
@@ -101,7 +101,7 @@ switch ($site) {
         ?>
              <!-- Bouton de déconnexion -->
             <div id="Deconnexion" class="linkBox">
-                <a href="" > <img src="<?php echo $littleImagePathLink."Meeple.png" ?>" alt="icone"> </a>
+                <a href="" > <img src="<?php echo $littleImagePathLink . "Meeple.png" ?>" alt="icone"> </a>
                 <a class="police" href="./stopSession.php">Se Déconnecter</a>
             </div>
         <?php

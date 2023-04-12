@@ -3,7 +3,7 @@
 
     <img class="image_commentaire" src="<?php echo $littleImagePathLink."New_Player.png" ?>" alt="New Player !">
 
-    <h1 class="titre_interaction"><?php if(!$connecte){?>Créer un compte<?php }else{?>Modifier Profil<?php } ?></h1>
+    <h1 class="titre_interaction"><?php if (!$connecte) { ?>Créer un compte<?php } else { ?>Modifier Profil<?php } ?></h1>
 
 
     <form class="formulaire" method="post" action="#" enctype="multipart/form-data">
@@ -25,7 +25,7 @@
             <input id="email" class="saisie" name="email" type="email" required="required" value="<?php echo $email ?>"/>
         </div>
         <br><br>
-        <?php if(!$connecte){?>
+        <?php if (!$connecte) {?>
             <div class="entrees">
                 <label for="mdp1">Mot de passe :</label>
                 <input id="mdp1" class="saisie" name="mdp1" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
@@ -51,10 +51,10 @@
         <br><br>
         <div class="entrees">
             <label for="affichage_nom">Afficher mon nom</label>
-            <input id="affichage_nom" class="input_center" name="affichage_nom" type="checkbox" <?php if($affichage_nom){echo "checked";} ?>>
+            <input id="affichage_nom" class="input_center" name="affichage_nom" type="checkbox" <?php if ($affichage_nom) {echo "checked";} ?>>
         </div>
         <br><br>
-        <?php if(!$connecte){ ?>
+        <?php if (!$connecte) { ?>
             <button class="Boutons" type="button" id="button2"  onClick="FunctionReturnConnect()">Retour</button>
             <input class="Boutons" type="submit" name="inscrire" value="S'inscrire" />
         <?php } else {?>

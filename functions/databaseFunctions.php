@@ -32,8 +32,10 @@ function connectDatabase(): void
 function boucle($text, $number): void
 {
     for($i = 1; $i <= $number; $i++) {
-        ?><li> <img src="images/Meeple.png" alt="icone">
-        <a href=""><?php echo $text." ".$i ?></a></li><?php
+        ?>
+        <li> <img src="images/Meeple.png" alt="icone">
+        <a href=""><?php echo $text." ".$i ?></a></li>
+        <?php
     }
 }
 

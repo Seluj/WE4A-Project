@@ -11,20 +11,20 @@ connectDatabase();
 checkAccount();
 
 $idJeu="";
-$nom_jeu = "";
-$description_jeu = "";
-$image_jeu = "";
-$regles_jeu="";
-$type_jeu = "";
+$nomJeu = "";
+$descriptionJeu = "";
+$imageJeu = "";
+$reglesJeu="";
+$typeJeu = "";
 
 if(isset($_GET["jeu"])){
     $idJeu = $_GET["jeu"];
     $jeu=getJeux($idJeu,"one");
-    $nom_jeu = $jeu["Nom"];
-    $description_jeu = $jeu["Description"];;
-    $image_jeu = $jeu["image"];
-    $regles_jeu=$jeu["regles"];
-    $type_jeu = $jeu["type"];
+    $nomJeu = $jeu["Nom"];
+    $descriptionJeu = $jeu["Description"];;
+    $imageJeu = $jeu["image"];
+    $reglesJeu=$jeu["regles"];
+    $typeJeu = $jeu["type"];
 }else{
     $idJeu=-1;
 }
@@ -41,7 +41,7 @@ checkNewGame();
 
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $nomsite ?></title>
+    <title><?php echo $nomSite ?></title>
     <link rel="stylesheet" href="./Styles/style.css">
     <link rel="stylesheet" href="./Styles/header.css">
     <link rel="stylesheet" href="./Styles/interaction.css">
@@ -59,25 +59,25 @@ checkNewGame();
     <?php include('./PageParts/profile.php')?>
 
     <div class="container central">
-        <?php if($idJeu == -1){ ?>
-            <img class="image_commentaire" src="<?php echo $littleImagePathLink."New_Game.png" ?>" alt="New Game !">
+        <?php if ($idJeu == -1) { ?>
+            <img class="image_commentaire" src="<?php echo $littleImagePathLink . "New_Game.png" ?>" alt="New Game !">
         <?php } else {?>
-            <img class="image_commentaire" src="<?php echo $littleImagePathLink."Game_Changer.png" ?>" alt="Game Changer!">
+            <img class="image_commentaire" src="<?php echo $littleImagePathLink . "Game_Changer.png" ?>" alt="Game Changer!">
         <?php } ?>
-        <h1 class="titre_interaction"><?php if($idJeu==-1){echo "Ajouter un jeu";}else{echo "Modifier le jeu";} ?></h1>
+        <h1 class="titre_interaction"><?php if ($idJeu==-1) {echo "Ajouter un jeu";} else {echo "Modifier le jeu";} ?></h1>
 
 
         <form class="formulaire" method="post" action="#" enctype="multipart/form-data">
 
             <div class="entrees">
                 <label for="nom">Nom</label>
-                <input id="nom" class="saisie" name="nom" type="text" required="required" pattern="[a-zA-Z-'--- -é-è-à-ç]{1,20}" value="<?php echo $nom_jeu ?>"/>
+                <input id="nom" class="saisie" name="nom" type="text" required="required" pattern="[a-zA-Z-'--- -é-è-à-ç]{1,20}" value="<?php echo $nomJeu ?>"/>
             </div>
             <br><br>
 
             <div id="saisir_description" class="entrees">
                 <label for="description">Saisissez la description du jeu</label>
-                <textarea id="description" name="choix_description" placeholder="Description" ><?php echo $description_jeu ?></textarea>
+                <textarea id="description" name="choix_description" placeholder="Description" ><?php echo $descriptionJeu ?></textarea>
 
             </div>
             <br><br>
@@ -96,13 +96,13 @@ checkNewGame();
 
             <div class="entrees">
                 <label for="type_jeu_societe">Jeu de société</label>
-                <input type="radio" id="type_jeu_societe" name="type_jeu" value="societe" <?php if($type_jeu == 0){echo "checked";}?>><br>
+                <input type="radio" id="type_jeu_societe" name="type_jeu" value="societe" <?php if ($typeJeu == 0) {echo "checked";}?>><br>
 
                 <label for="type_jeu_video">Jeu Vidéo</label>
-                <input type="radio" id="type_jeu_video" name="type_jeu" value="video" <?php if($type_jeu == 1){echo "checked";}?>>
+                <input type="radio" id="type_jeu_video" name="type_jeu" value="video" <?php if ($typeJeu == 1) {echo "checked";}?>>
             </div>
             <br><br>
-            <?php if($idJeu==-1){ ?>
+            <?php if ($idJeu==-1) { ?>
                 <input class="Boutons" type="submit" name="creer_jeu" value="Créer Jeu" />
             <?php } else {?>
                 <input class="Boutons" type="submit" name="modifier_jeu" value="Modifier Jeu" />

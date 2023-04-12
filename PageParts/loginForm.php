@@ -1,6 +1,6 @@
 <div id="login" class="container central">
 
-    <img class="image_commentaire" src="<?php echo $littleImagePathLink."You_re_back.png" ?>" alt="You're Back !">
+    <img class="image_commentaire" src="<?php echo $littleImagePathLink . "You_re_back.png" ?>" alt="You're Back !">
 
     <h1 class="titre_interaction">Connexion</h1>
 

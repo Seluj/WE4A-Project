@@ -1,5 +1,5 @@
 <?php
-$nomsite = "Dice & Pixels";
+$nomSite = "Dice & Pixels";
 $headLink = "http://chris.ferlin.fr:6969/Projet/";
 $imagePathLink = $headLink."data/users/images/";
 $imagePath = "./data/users/images/";
@@ -8,6 +8,6 @@ $rulesGamesPathLink = $headLink."data/games/rules/";
 $rulesGamesPath = "./data/games/rules/";
 $imagesGamesPathLink = $headLink."data/games/images/";
 $imagesGamesPath = "./data/games/images/";
-$PagenewAccount = false;
+$pageNewAccount = false;
 ?>
 

@@ -8,7 +8,7 @@ connectDatabase();
 
 $type = "";
 
-$imagejeu = "";
+$imageJeu = "";
 $nomJeu = "";
 $descriptionJeu ="";
 $regles = "";
@@ -31,7 +31,7 @@ if (isset($_GET['jeu'])) {
     } else {
         $nomJeu = $jeu['Nom'];
         $descriptionJeu = $jeu['Description'];
-        $imagejeu = $imagesGamesPathLink.$jeu['image'];
+        $imageJeu = $imagesGamesPathLink.$jeu['image'];
         $regles = $rulesGamesPathLink.$jeu['regles'];
         $type = "Jeu";
     }
@@ -79,7 +79,7 @@ if (isset($_GET['jeu'])) {
     $jeux = getJeux(0, "all");
     $type = "default";
 }
-echo "jeu : ".$type;
+
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +89,7 @@ echo "jeu : ".$type;
 
 <head>
 <meta charset="UTF-8">
-<title><?php echo $nomsite ?></title>
+<title><?php echo $nomSite ?></title>
 <link rel="stylesheet" href="./Styles/style.css">
 <link rel="stylesheet" href="./Styles/header.css">
 <link rel="stylesheet" href="./Styles/interaction.css">
@@ -145,17 +145,17 @@ echo "jeu : ".$type;
                         autres joueurs en répondant aux leurs.
                         Vous avez la possibilité de créer des topics à propos de jeux, d'y échanger avec les autres utilisateurs
                         au travers de messages, et de participer à des topics créés par d'autres. </p>
-                    <?php if($administrateur){?>
+                    <?php if ($administrateur) {?>
                         <div id="BoutonModifierJeu" class="linkBox">
                             <a class="police" href="./newGame.php">Ajouter Jeu</a>
                         </div>
-                    <?php }?>
+                    <?php } ?>
                 </div>
             <?php } ?>
 
             <div class="deroulant">
 
-                    <h3>Topics<?php if($type="Jeu"){ echo " associés";} ?></h3>
+                    <h3>Topics<?php if ($type="Jeu") { echo " associés";} ?></h3>
                 <ul>
                     <?php boucle("Message", 20) ?>
                 </ul>

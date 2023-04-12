@@ -43,7 +43,7 @@ function checkConnectionForm(): void
         $_SESSION['nom'] = $row['nom'];
         $_SESSION['prenom'] = $row['prenom'];
         $_SESSION['pseudo'] = $row['pseudo'];
-        $_SESSION['avatar'] = ($row['avatar']);
+        $_SESSION['avatar'] = $row['avatar'];
         $_SESSION['affichage_nom'] = $row['affichage_nom'];
         $_SESSION['administrateur'] = $row['administrateur'];
         header("Location: ./index.php");
@@ -131,10 +131,8 @@ function checkNewAccountForm(): void
         }
 
         // Si aucune erreur n'a été trouvé, on insère les données de l'utilisateur dans la base de données
-        $query_insert =
-            "INSERT INTO `utilisateurs` (`id`, `mail`, `mdp`, `nom`, `prenom`, `pseudo`, `avatar`, `affichage_nom`, `administrateur`) 
-                VALUES (NULL, '$email', '$mdp', '$nom', '$prenom', '$pseudo', '$image', '0', '0')
-                ";
+        $query_insert = "INSERT INTO `utilisateurs` (`id`, `mail`, `mdp`, `nom`, `prenom`, `pseudo`, `avatar`, `affichage_nom`, `administrateur`) 
+                VALUES (NULL, '$email', '$mdp', '$nom', '$prenom', '$pseudo', '$image', '0', '0')";
 
         $result = $conn->query($query_insert);
 
