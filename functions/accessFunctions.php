@@ -24,9 +24,15 @@ function getTopics($id, $type) {
     global $conn;
 
     if ($type == "all") {
-        $query = "SELECT * FROM topics WHERE jeux_id = '$id'";
+        if ($id == null) {
+            $query = "SELECT `topics`.*
+                    FROM `topics`
+                    ORDER BY `topics`.`date_edit` ASC";
+        } else {
+            $query = "SELECT * FROM topics WHERE jeux_id = '$id'";
+        }
     } else if ($type == "one") {
-        $query = "SELECT * FROM topics WHERE id = '$id'";
+        $query = "SELECT * FROM messages WHERE topics_id = '$id'";
     } else {
         return false;
     }
