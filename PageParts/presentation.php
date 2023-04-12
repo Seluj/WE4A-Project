@@ -19,7 +19,3 @@
         <a class="police" href="./newMessage.php">Créer Topic</a>
     </div>
 <?php } ?>
-
-<?php if($type="Jeu"){ ?>}
-    <h3>Topics associés</h3>
-<?php } ?>

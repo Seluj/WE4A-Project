@@ -146,10 +146,11 @@ if (isset($_GET['jeu'])) {
 
         <div class="container central">
 
-            <?php if($type!="default"){
+            <?php if ($type == "Jeu") {
                 include('./PageParts/presentation.php');
-            }else{?>
-                <div id="deroulant">
+            } else {
+                ?>
+                <div class="deroulant">
                     <img id="image_titre" src="./images/fond_titre.jpg" alt="Bienvenue">
 
                     <p id="texte_presentation">Venez vous plongez avec nous dans le monde des jeux de société et des jeux vidéos ! Vous souhaitez découvrir de
@@ -159,6 +160,11 @@ if (isset($_GET['jeu'])) {
                         autres joueurs en répondant aux leurs.
                         Vous avez la possibilité de créer des topics à propos de jeux, d'y échanger avec les autres utilisateurs
                         au travers de messages, et de participer à des topics créés par d'autres. </p>
+                    <?php if($administrateur){?>
+                        <div id="BoutonModifierJeu" class="linkBox">
+                            <a class="police" href="./newGame.php">Ajouter Jeu</a>
+                        </div>
+                    <?php }?>
                 </div>
             <?php } ?>
 

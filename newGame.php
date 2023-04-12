@@ -1,6 +1,7 @@
 <?php
 include("./PageParts/variables.php");
 include("./functions/databaseFunctions.php");
+include("./functions/accessFunctions.php");
 include("./functions/accountFunctions.php");
 include("./functions/gamesFunctions.php");
 
@@ -9,21 +10,25 @@ session_start();
 connectDatabase();
 checkAccount();
 
-$createNewGame = true;
-
+$idJeu="";
 $nom_jeu = "";
 $description_jeu = "";
 $image_jeu = "";
 $regles_jeu="";
 $type_jeu = "";
 
-if(!$createNewGame){
-    $nom_jeu ="nomjeu";
-    $description_jeu = "description";
-    $image_jeu = "./images/carcassonne.jpg";
-    $regles_jeu="regles_carcassonne.pdf";
-    $type_jeu = "societe";
+if(isset($_GET["jeu"])){
+    $idJeu = $_GET["jeu"];
+    $jeu=getJeux($idJeu,"one");
+    $nom_jeu = $jeu["Nom"];
+    $description_jeu = $jeu["Description"];;
+    $image_jeu = $jeu["image"];
+    $regles_jeu=$jeu["regles"];
+    $type_jeu = $jeu["type"];
+}else{
+    $idJeu=-1;
 }
+
 
 checkNewGame();
 
@@ -54,10 +59,12 @@ checkNewGame();
     <?php include('./PageParts/profile.php')?>
 
     <div class="container central">
-
-        <img class="image_commentaire" src="<?php echo $littleImagePathLink."New_Game.png" ?>" alt="New Game !">
-
-        <h1 class="titre_interaction"><?php if($createNewGame){echo "Ajouter un jeu";}else{echo "Modifier le jeu";} ?></h1>
+        <?php if($idJeu == -1){ ?>
+            <img class="image_commentaire" src="<?php echo $littleImagePathLink."New_Game.png" ?>" alt="New Game !">
+        <?php } else {?>
+            <img class="image_commentaire" src="<?php echo $littleImagePathLink."Game_Changer.png" ?>" alt="Game Changer!">
+        <?php } ?>
+        <h1 class="titre_interaction"><?php if($idJeu==-1){echo "Ajouter un jeu";}else{echo "Modifier le jeu";} ?></h1>
 
 
         <form class="formulaire" method="post" action="#" enctype="multipart/form-data">
@@ -89,13 +96,13 @@ checkNewGame();
 
             <div class="entrees">
                 <label for="type_jeu_societe">Jeu de société</label>
-                <input type="radio" id="type_jeu_societe" name="type_jeu" value="societe" <?php if($type_jeu == "societe"){echo "checked";}?>><br>
+                <input type="radio" id="type_jeu_societe" name="type_jeu" value="societe" <?php if($type_jeu == 0){echo "checked";}?>><br>
 
                 <label for="type_jeu_video">Jeu Vidéo</label>
-                <input type="radio" id="type_jeu_video" name="type_jeu" value="video" <?php if($type_jeu == "video"){echo "checked";}?>>
+                <input type="radio" id="type_jeu_video" name="type_jeu" value="video" <?php if($type_jeu == 1){echo "checked";}?>>
             </div>
             <br><br>
-            <?php if($createNewGame){ ?>
+            <?php if($idJeu==-1){ ?>
                 <input class="Boutons" type="submit" name="creer_jeu" value="Créer Jeu" />
             <?php } else {?>
                 <input class="Boutons" type="submit" name="modifier_jeu" value="Modifier Jeu" />
