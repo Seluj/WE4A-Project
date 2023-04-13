@@ -24,35 +24,45 @@
             <label for="email">Email :</label>
             <input id="email" class="saisie" name="email" type="email" required="required" value="<?php echo $email ?>"/>
         </div>
-        <br><br>
-        <?php if (!$connecte) {?>
-            <div class="entrees">
-                <label for="mdp1">Mot de passe :</label>
-                <input id="mdp1" class="saisie" name="mdp1" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
-            </div>
-            <br><br>
-            <div class="entrees">
-                <label for="mdp2">Confirmation :</label>
-                <input id="mdp2" class="saisie" name="mdp2" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
-            </div>
-        <?php } else {?>
-            <button class="Boutons" type="button" id="modifierMDP"  onClick="myFunction()">Modifier mot de passe</button>
-        <?php } ?>
+
         <br><br>
         <div class="entrees">
             <label for="pseudo">Pseudo :</label>
             <input id="pseudo" class="saisie" name="pseudo" type="text" required="required" pattern="[a-zA-Z0-9-'--]{1,20}" value="<?php echo $pseudo ?>"/>
         </div>
+
         <br><br>
         <div class="entrees">
             <label for="avatar">Avatar :</label>
             <input id="avatar" class="input_center" name="avatar" type="file" onchange="addFile()">
         </div>
+
         <br><br>
         <div class="entrees">
             <label for="affichage_nom">Afficher mon nom</label>
             <input id="affichage_nom" class="input_center" name="affichage_nom" type="checkbox" <?php if ($affichage_nom) {echo "checked";} ?>>
         </div>
+
+        <?php if ($connecte) {?>
+            <br><br>
+            <div class="entrees">
+                <label for="ancien_mdp">Ancien mot de passe :</label>
+                <input id="ancien_mdp" class="saisie" name="ancien_mdp" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
+            </div>
+        <?php }?>
+
+            <br><br>
+            <div class="entrees">
+                <label for="mdp1">Mot de passe :</label>
+                <input id="mdp1" class="saisie" name="mdp1" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
+            </div>
+
+            <br><br>
+            <div class="entrees">
+                <label for="mdp2">Confirmation :</label>
+                <input id="mdp2" class="saisie" name="mdp2" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
+            </div>
+
         <br><br>
         <?php if (!$connecte) { ?>
             <button class="Boutons" type="button" id="button2"  onClick="FunctionReturnConnect()">Retour</button>
