@@ -1,6 +1,6 @@
 <h1><?php echo $type . " : " . $nomJeu ?></h1>
 
-<img id="image_jeu" src="<?php echo $imagejeu ?>" alt="avatar">
+<img id="image_jeu" src="<?php echo $imageJeu ?>" alt="avatar">
 
 <?php if ($administrateur) {?>
     <div id="BoutonModifierJeu" class="linkBox">
