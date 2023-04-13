@@ -1,5 +1,6 @@
 <?php
 $nomSite = "Dice & Pixels";
+$nomSectionJeux = "Jeux proposés";
 $headLink = "http://chris.ferlin.fr:6969/Projet/";
 $imagePathLink = $headLink."data/users/images/";
 $imagePath = "./data/users/images/";

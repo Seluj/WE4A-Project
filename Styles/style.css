@@ -298,7 +298,7 @@ input[type="checkbox"]{
 	margin-bottom: 10px;
 }
 
-#texte_presentation {
+.texte_accueil {
 	text-align: justify;
 	margin:0 15px;
 	padding: 10px 0;
