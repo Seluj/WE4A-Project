@@ -140,7 +140,7 @@ input[type="checkbox"]{
 
 }
 
-#image_jeu {
+.image_jeu {
 	float:left;
 	min-height: 50px;
 	min-width: 50px;
