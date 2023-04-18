@@ -1,6 +1,7 @@
 <?php
 $typeJeu = "";
 
+$id_user="";
 $connecte = false;
 $nom = "";
 $prenom = "";
@@ -10,8 +11,10 @@ $avatar = "";
 $affichage_nom = false;
 $administrateur = false;
 
+
 if (isset($_SESSION['id'])) {
     $connecte = true;
+    $id_user = $_SESSION['id'];
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
     $email = $_SESSION['mail'];
