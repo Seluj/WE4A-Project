@@ -30,15 +30,19 @@ function checkNewGame(): void
         return;
     }
 
-    $regle = securizeFile_ForSQL($_FILES, "saisie_regles_jeu", 'pdf', $rulesGamesPath, "regles_".$nom);
+    if ($_FILES["saisie_regles_jeu"]['error'] == UPLOAD_ERR_NO_FILE || !isset($_POST["saisie_regles_jeu"])) {
+        $regle = NULL;
+    } else {
+        $regle = securizeFile_ForSQL($_FILES, "saisie_regles_jeu", 'pdf', $rulesGamesPath, "regles_" . $nom);
+    }
 
     if (!$regle) {
         ?>
         <script>
-            alert("Problème avec les règles.");
+            alert("Règles non ajoutées.");
         </script>
         <?php
-        return;
+        $regle = '-1';
     }
 
     $type = securizeString_ForSQL($_POST["type_jeu"]);
