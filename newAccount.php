@@ -2,6 +2,7 @@
 include("./PageParts/variables.php");
 include("./functions/databaseFunctions.php");
 include("./functions/accountFunctions.php");
+include("./functions/accessFunctions.php");
 
 session_start();
 
