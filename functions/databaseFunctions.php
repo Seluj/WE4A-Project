@@ -23,22 +23,6 @@ function connectDatabase(): void
     }
 }
 
-
-/**
- * @param $text
- * @param $number
- * @return void
- */
-function boucle($text, $number): void
-{
-    for($i = 1; $i <= $number; $i++) {
-        ?>
-        <li> <img src="images/Meeple.png" alt="icone">
-        <a href=""><?php echo $text." ".$i ?></a></li>
-        <?php
-    }
-}
-
 // Fonction permettant de transformer les caractères spéciaux en entités HTML et éviter les injections SQL
 
 /**
