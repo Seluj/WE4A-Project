@@ -18,6 +18,17 @@
     <?php } ?>
 
     <ul>
-        <?php boucle("Utilisateur", 20) ?>
+        <?php while ($row = mysqli_fetch_assoc($users)) { ?>
+            <li><a href="">
+                <?php if ($row["affichage_nom"] == 0) {
+                    $utilNom = $row["pseudo"];
+                } else {
+                    $utilNom = $row["prenom"] . " " . $row["nom"];
+                }
+                echo $utilNom;
+                ?>
+
+            </a></li>
+        <?php } ?>
     </ul>
 </div>
