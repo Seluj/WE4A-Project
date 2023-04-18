@@ -47,6 +47,10 @@ switch ($site) {
         $site = 0;
         break;
 }
+
+$jeux = getJeux($siteCourant);
+$jeuxVisites = getJeux($siteCourant, $id_user, true);
+$users = getUsers();
 ?>
 
 <header>
