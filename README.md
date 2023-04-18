@@ -10,7 +10,7 @@
 ## Introduction
 
 Ce projet est un projet de fin de 1ʳᵉ année de diplôme d'ingénieur en informatique à l'Université de technologie de Belfort Montbéliard (UTBM). 
-Il a pour but de simuler un forum de discussion en ligne. Le sujet est du forum est les jeux en général : les jeux de société et les jeux vidéos.
+Il a pour but de simuler un forum de discussion en ligne. Le sujet du forum est les jeux en général : les jeux de société et les jeux vidéos.
 
 ## Utilisation
 
