@@ -53,30 +53,7 @@ if (isset($_GET['jeu'])) {
         $jeu = getJeux($idJeu, "one");
         $type = "Topic";
     }
-} else if (isset($_GET['message'])) {
-    $idMessage = $_GET['message'];
-    $message = getMessages($idMessage, "one");
-
-    if (!$message) {
-        ?>
-        <script>
-            alert("Le message n'existe pas");
-        </script>
-
-        <?php
-        header("Location: ./index.php?site=".$site);
-    } else {
-        $idTopic = $message['topic'];
-        $topic = getTopics($idTopic, "one");
-        $idJeu = $topic['jeu'];
-        $jeu = getJeux($idJeu, "one");
-        $type = "message";
-    }
-} else if (isset($_GET['search'])) {
-    $search = $_GET['search'];
-    // TODO : Recherche
 } else {
-    $jeux = getJeux(0, "all");
     $type = "default";
 }
 

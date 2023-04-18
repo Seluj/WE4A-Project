@@ -108,12 +108,4 @@ switch ($site) {
         }
         ?>
     </div>
-
 </header>
-
-<script>
-    function addFile(){
-        const file = document.getElementsByClassName("input_center");
-        file.style.
-    }
-</script>
