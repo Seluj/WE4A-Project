@@ -5,7 +5,13 @@ include('./functions/databaseFunctions.php');
 include('./functions/accessFunctions.php');
 include("./functions/postFunctions.php");
 
+connectDatabase();
+
 if (!isset($_SESSION['id'])) {
+    header("Location: ./index.php");
+}
+
+if (!checkParameter("topic") && !checkParameter("jeu")) {
     header("Location: ./index.php");
 }
 
