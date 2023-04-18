@@ -153,6 +153,18 @@ function checkSite($name): int
     return $site;
 }
 
+/**
+ * @param $parameter
+ * @return bool
+ */
+function checkParameter($parameter): bool
+{
+    if (!isset($_GET[$parameter])) {
+        return false;
+    }
+    return true;
+}
+
 
 // Fonction permettant de se déconnecter de la base de données
 
