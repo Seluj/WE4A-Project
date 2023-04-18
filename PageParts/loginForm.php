@@ -8,8 +8,8 @@
     <form class="formulaire" method="post" action="#">
 
         <div class="entrees">
-            <label for="email">Email :</label>
-            <input id="email" class="saisie" name="email" type="email" required="required"/>
+            <label for="emailLogin">Email :</label>
+            <input id="emailLogin" class="saisie" name="email" type="email" required="required"/>
         </div>
         <br><br>
         <div class="entrees">

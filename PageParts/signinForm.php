@@ -21,8 +21,8 @@
 
         <br><br>
         <div class="entrees">
-            <label for="email">Email :</label>
-            <input id="email" class="saisie" name="email" type="email" required="required" value="<?php echo $email ?>"/>
+            <label for="emailSignin">Email :</label>
+            <input id="emailSignin" class="saisie" name="email" type="email" required="required" value="<?php echo $email ?>"/>
         </div>
 
         <br><br>

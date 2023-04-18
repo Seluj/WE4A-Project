@@ -27,7 +27,7 @@ function checkConnectionForm(): void
     global $conn;
 
     // récupération des données et sécurisation
-    $email = securizeString_ForSQL($_POST["email"]);
+    $email = securizeString_ForSQL($_POST["emailLogin"]);
     $mdp = md5($_POST["mdp"]);
 
     // Création de la requete
@@ -84,7 +84,7 @@ function checkNewAccountForm(): void
     // récupération des données et sécurisation
     $nom = securizeString_ForSQL($_POST["nom"]);
     $prenom = securizeString_ForSQL($_POST["prenom"]);
-    $email = $_POST["email"];
+    $email = $_POST["emailSignin"];
 
     $pseudo = securizeString_ForSQL($_POST["pseudo"]);
 
