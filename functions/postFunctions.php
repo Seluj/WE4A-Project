@@ -55,7 +55,7 @@ function checkNewTopic(): void
     $titre = securizeString_ForSQL($_POST['choix_titre']);
     $message = securizeString_ForSQL($_POST['choix_message']);
     $idAuteur = $_SESSION['id'];
-    $idJeux = $_GET['jeux'];
+    $idJeux = $_GET['jeu'];
 
     // Création des requetes
     $insert_topic = "INSERT INTO `topics` (`id`, `date_edit`, `titre`, `user_id`, `jeux_id`) 
@@ -73,7 +73,7 @@ function checkNewTopic(): void
     // Si la requete a fonctionné, on récupère l'id du topic créé et on crée le message
     if ($result) {
         $row = mysqli_fetch_assoc($result);
-        $idTopic = $row['id_post'];
+        $idTopic = $row['id'];
         $insert_message = "INSERT INTO `messages` (`id`, `contenu`, `user_id`, `topics_id`) 
             VALUES (NULL, '$message', '$idAuteur', '$idTopic')";
         $result = $conn->query($insert_message);

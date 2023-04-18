@@ -52,8 +52,8 @@ if (isset($_GET['jeu'])) {
         header("Location: ./index.php?site=".$site);
     } else {
         $nomTopic = $topic['titre'];
-        $idJeu = $topic['jeu'];
-        $jeu = getJeux($idJeu, "one");
+        $idJeu = $topic['jeux_id'];
+        $jeu = getJeux($siteCourant, $idJeu);
         $type = "Topic";
         $firstMessage = getMessages($idTopic,"fist");
         $messages = getMessages($idTopic,"all");
