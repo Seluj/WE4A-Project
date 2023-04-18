@@ -15,10 +15,11 @@ $regles = "";
 
 
 $site = checkSite('index.php');
+$siteCourant = $site;
 
 if (isset($_GET['jeu'])) {
     $idJeu = $_GET['jeu'];
-    $jeu = getJeux($idJeu, "one");
+    $jeu = getJeux($siteCourant, $idJeu);
 
     if (!$jeu) {
         ?>
@@ -34,6 +35,8 @@ if (isset($_GET['jeu'])) {
         $imageJeu = $imagesGamesPathLink.$jeu['image'];
         $regles = $rulesGamesPathLink.$jeu['regles'];
         $type = "Jeu";
+
+        $topics = getTopics($idJeu, "all");
     }
 } else if (isset($_GET['topic'])) {
     $idTopic = $_GET['topic'];

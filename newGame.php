@@ -19,7 +19,7 @@ $typeJeu = "";
 
 if(isset($_GET["jeu"])){
     $idJeu = $_GET["jeu"];
-    $jeu=getJeux($idJeu,"one");
+    $jeu=getJeux($siteCourant, $idJeu);
     $nomJeu = $jeu["Nom"];
     $descriptionJeu = $jeu["Description"];;
     $imageJeu = $jeu["image"];
