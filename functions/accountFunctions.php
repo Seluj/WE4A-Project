@@ -1,17 +1,18 @@
 <?php
 
-// Fonction permettant de répartir la création d'un nouveau compte ou la connexion
-
 /**
+ * fonction checkAccount : permet de vérifier si un utilisateur est connecté, s'il veut se connecter ou s'enregistrer
  * @return void
  */
 function checkAccount(): void
 {
-    // Si l'utilisateur n'est pas connecté, on vérifie si il a cliqué sur le bouton de connexion ou d'inscription
+    // Si l'utilisateur n'est pas connecté, on vérifie :
     if (!isset($_SESSION['id'])) {
-        if (isset($_POST['connecter'])) {
+        if (isset($_POST['connecter'])) { // - s'il a cliqué sur le bouton de connexion
+            // Dans ce cas, on vérifie les identifiants fournis avec la fonction checkConnectionForm
             checkConnectionForm();
-        } else if (isset($_POST['inscrire'])) {
+        } else if (isset($_POST['inscrire'])) { // - s'il a cliqué sur le bouton d'inscription
+            // Dans ce cas, on vérifie les données fournies avec la fonction checkNewAccountForm
             checkNewAccountForm();
         }
     }
