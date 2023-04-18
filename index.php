@@ -55,6 +55,11 @@ if (isset($_GET['jeu'])) {
         $idJeu = $topic['jeu'];
         $jeu = getJeux($idJeu, "one");
         $type = "Topic";
+        $firstMessage = getMessages($idTopic,"fist");
+        $messages = getMessages($idTopic,"all");
+        $nomJeu = $jeu['Nom'];
+        $imageJeu = $imagesGamesPathLink . $jeu['image'];
+        $regles = $rulesGamesPathLink . $jeu['regles'];
     }
 } else {
     $type = "default";
