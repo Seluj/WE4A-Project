@@ -94,7 +94,7 @@ checkEntry();
                 <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
             </div>
         </div>
-        <?php include('./PageParts/games.php')?>
+        <?php include('./PageParts/proposedGames.php') ?>
     </div>
 </body>
 </html>

@@ -64,7 +64,7 @@ $pageNewAccount = true;
             }
         </script>
 
-        <?php include('./PageParts/games.php') ?>
+        <?php include('./PageParts/proposedGames.php') ?>
     </div>
 
 </body>
