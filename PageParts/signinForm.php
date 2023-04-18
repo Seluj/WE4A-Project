@@ -22,7 +22,7 @@
         <br><br>
         <div class="entrees">
             <label for="emailSignin">Email :</label>
-            <input id="emailSignin" class="saisie" name="email" type="email" required="required" value="<?php echo $email ?>"/>
+            <input id="emailSignin" class="saisie" name="emailSignin" type="email" required="required" value="<?php echo $email ?>"/>
         </div>
 
         <br><br>

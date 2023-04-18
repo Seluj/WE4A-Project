@@ -9,7 +9,7 @@
 
         <div class="entrees">
             <label for="emailLogin">Email :</label>
-            <input id="emailLogin" class="saisie" name="email" type="email" required="required"/>
+            <input id="emailLogin" class="saisie" name="emailLogin" type="email" required="required"/>
         </div>
         <br><br>
         <div class="entrees">

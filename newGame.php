@@ -77,7 +77,7 @@ checkNewGame();
 
             <div id="saisir_description" class="entrees">
                 <label for="description">Saisissez la description du jeu</label>
-                <textarea id="description" name="choix_description" placeholder="Description" ><?php echo $descriptionJeu ?></textarea>
+                <textarea id="description" name="choix_description" required="required" placeholder="Description" ><?php echo $descriptionJeu ?></textarea>
 
             </div>
             <br><br>
@@ -90,7 +90,7 @@ checkNewGame();
 
             <div class="entrees">
                 <label for="saisie_image_jeu">Image du Jeu</label>
-                <input id="saisie_image_jeu" class="input_center" name="saisie_image_jeu" type="file">
+                <input id="saisie_image_jeu" class="input_center" required="required" name="saisie_image_jeu" type="file">
             </div>
             <br><br>
 
