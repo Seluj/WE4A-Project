@@ -82,4 +82,27 @@ function getJeux($id, $type): bool|array|null
     }
 }
 
+function getUsers($id = null): bool|mysqli_result|array
+{
+    global $conn;
+
+    if ($id == null) {
+        $query = "SELECT * FROM `utilisateurs`";
+    } else {
+        $id = intval($id);
+        $query = "SELECT * FROM `utilisateurs` WHERE  `utilisateurs`.`id` = '$id'";
+    }
+
+    $result = $conn->query($query);
+
+    if (mysqli_num_rows($result) != 0) {
+        if ($id != null) {
+            return mysqli_fetch_assoc($result);
+        }
+        return $result;
+    } else {
+        return false;
+    }
+}
+
 ?>
