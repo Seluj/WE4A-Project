@@ -80,6 +80,27 @@ if (isset($_GET['jeu'])) {
     $type = "default";
 }
 
+if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+    switch ($type) {
+        case "Jeu":
+            // TODO: Search in game
+            break;
+        case "Topic":
+            // TODO: Search in topic
+            break;
+        case "default":
+            // TODO: Search in all
+            break;
+        /*
+        case "message":
+
+                break;
+        */
+        default:
+            break;
+    }
+}
 ?>
 
 <!DOCTYPE html>
