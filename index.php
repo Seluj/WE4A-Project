@@ -28,12 +28,12 @@ if (isset($_GET['jeu'])) {
         </script>
 
         <?php
-        header("Location: ./index.php?site=".$site);
+        header("Location: ./index.php?site=" . $site);
     } else {
         $nomJeu = $jeu['Nom'];
         $descriptionJeu = $jeu['Description'];
-        $imageJeu = $imagesGamesPathLink.$jeu['image'];
-        $regles = $rulesGamesPathLink.$jeu['regles'];
+        $imageJeu = $imagesGamesPathLink . $jeu['image'];
+        $regles = $rulesGamesPathLink . $jeu['regles'];
         $type = "Jeu";
 
         $topics = getTopics($idJeu, "all");
@@ -49,7 +49,7 @@ if (isset($_GET['jeu'])) {
         </script>
 
         <?php
-        header("Location: ./index.php?site=".$site);
+        header("Location: ./index.php?site=" . $site);
     } else {
         $nomTopic = $topic['titre'];
         $idJeu = $topic['jeux_id'];
