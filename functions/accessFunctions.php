@@ -101,9 +101,6 @@ function getJeux(int $type, int|null $id = null, bool $user = false): bool|mysql
         $query = "SELECT * FROM `jeux` WHERE `jeux`.`type` = '$type'";
     } else if ($user) { // Si on veut récupérer les jeux où l'utilisateur a créé un topic
         // On force la récupération de l'id de l'utilisateur connecté si on ne précise pas d'id
-        if ($id == null) {
-            $id = $_SESSION['id'];
-        }
         $query = "SELECT `jeux`.*
                 FROM `jeux`
                 INNER JOIN `topics` ON `jeux`.`id` = `topics`.`jeux_id`
@@ -150,7 +147,7 @@ function getUsers(int|null $id = null): bool|mysqli_result|array
     if (mysqli_num_rows($result) != 0) { // Si la requête a fonctionné
         if ($id != null) { // Si on a récupéré un seul utilisateur, on retourne un tableau associatif
             return mysqli_fetch_assoc($result);
-        } else { // Sinon on retourne le résultat de la requête
+        } else { // Sinon, on retourne le résultat de la requête
             return $result;
         }
     } else { // Si la requête n'a pas fonctionné, on retourne false

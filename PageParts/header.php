@@ -52,7 +52,7 @@ switch ($site) {
 }
 
 $jeux = getJeux($siteCourant);
-$jeuxVisites = getJeux($siteCourant, $id_user, true);
+$jeuxVisites = getJeux($siteCourant, (int)$id_user, true);
 $users = getUsers();
 ?>
 

@@ -19,7 +19,7 @@ function checkNewGame(): void
     $nom = securizeString_ForSQL($_POST["nom"]);
     $description = securizeString_ForSQL($_POST["choix_description"]);
 
-    $image = securizeFile_ForSQL($_FILES, "saisie_image_jeu", 'img', $imagesGamesPath, null);
+    $image = securizeFile_ForSQL($_FILES, "saisie_image_jeu", 'img', $imagesGamesPath);
 
     if (!$image) {
         ?>

@@ -131,7 +131,7 @@ function checkNewAccountForm(): void
     } else {
 
         // On récupère le nom de l'image final en vérifiant ses données pour l'insérer dans la base de données
-        $image = securizeFile_ForSQL($_FILES, "avatar", 'img', $imagePath, null);
+        $image = securizeFile_ForSQL($_FILES, "avatar", 'img', $imagePath);
 
         if (!$image) { // Si l'image n'a pas été sauvegardée, on affiche un message d'erreur et on quitte la fonction
             ?>
@@ -235,13 +235,13 @@ function updatePassword(): void
 
     // Execution des requêtes et verification
     $result = $conn->query($update);
-    if ($result) {
+    if ($result) { // Si la requête a fonctionné, on affiche un message de succès
         ?>
         <script>
             alert("Votre mot de passe a bien été modifié.");
         </script>
         <?php
-    } else {
+    } else { // Si la requête n'a pas fonctionné, on affiche un message d'erreur
         ?>
         <script>
             alert("Une erreur est survenue lors de la modification de votre mot de passe.");
