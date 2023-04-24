@@ -33,12 +33,12 @@ function checkConnectionForm(): void
     $email = securizeString_ForSQL($_POST["emailLogin"]);
     $mdp = md5($_POST["mdp"]);
 
-    // Création de la requete
+    // Création de la requête
     $query = "SELECT * FROM utilisateurs WHERE mail = '$email' AND mdp = '$mdp'";
 
-    // Execution de la requete et verification
+    // Execution de la requête et verification
     $result = $conn->query($query);
-    if (mysqli_num_rows($result) != 0) { // Si la requete a fonctionné
+    if (mysqli_num_rows($result) != 0) { // Si la requête a fonctionné
         // On récupère les données de l'utilisateur et on enregistre les données dans les variables de session
         $row = mysqli_fetch_assoc($result);
         $_SESSION['id'] = $row['id'];
@@ -50,7 +50,7 @@ function checkConnectionForm(): void
         $_SESSION['affichage_nom'] = $row['affichage_nom'];
         $_SESSION['administrateur'] = $row['administrateur'];
         header("Location: ./index.php");
-    } else { // Si la requete n'a pas fonctionné, on affiche un message d'erreur
+    } else { // Si la requête n'a pas fonctionné, on affiche un message d'erreur
         ?>
         <script>
             alert("Email ou mot de passe incorrect.");
