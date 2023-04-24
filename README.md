@@ -14,13 +14,26 @@ Il a pour but de simuler un forum de discussion en ligne. Le sujet du forum est 
 
 ## Utilisation
 
-Le code PHP est prévu pour du PHP 8.0 ou supérieur. Il fonctionne avec une base de données MySQL.
-
-## Utilisation
-
 Le site est accessible [ici](http://chris.ferlin.fr:6969/Projet/).
 
 La base de données est accessible [ici](http://chris.ferlin.fr/phpmyadmin/) avec les identifiants fournis dans le fichier `config.php` (pas sur GitHub).
+
+
+## Herbergement
+
+### Serveur
+
+Le code PHP est prévu pour du PHP 8.0 ou supérieur. Il fonctionne avec une base de données MySQL.
+
+### Variables
+
+Le fichier `config.php` contient les variables suivantes :
+* host → l'adresse du serveur
+* user → l'utilisateur de la base de données
+* password → le mot de passe de l'utilisateur
+* dbname → le nom de la base de données
+
+Ce fichier n'est pas sur GitHub pour des raisons de sécurité. Toute fois vous pouvez en créer un à partir du fichier `config.php.example`.
 
 ## Auteurs
 
