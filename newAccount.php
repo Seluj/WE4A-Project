@@ -10,6 +10,10 @@ connectDatabase();
 checkAccount();
 
 $pageNewAccount = true;
+
+$site = checkSite('newAccount.php');
+$siteCourant = $site;
+
 ?>
 
 <!DOCTYPE html>

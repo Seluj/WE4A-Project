@@ -1,4 +1,5 @@
 <?php
+global $siteCourant;
 $typeJeu = "";
 
 $id_user="";
@@ -51,8 +52,13 @@ switch ($site) {
         break;
 }
 
-$jeux = getJeux($siteCourant);
-$jeuxVisites = getJeux($siteCourant, (int)$id_user, true);
+$jeux = "";
+$jeuxVisites = "";
+
+if (isset($siteCourant)) {
+    $jeux = getJeux($siteCourant);
+    $jeuxVisites = getJeux($siteCourant, (int)$id_user, true);
+}
 $users = getUsers();
 ?>
 
