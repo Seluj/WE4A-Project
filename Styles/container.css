@@ -9,11 +9,11 @@
 
 /* Sous-partie d'un main_container */
 .container{
+    max-height: 610px;
     position:relative;
     padding: 15px 0 0 10px;
     text-align: center;
     margin: 5px;
-    /*border: 2px solid black;*/
     background-color:white;
     font-family: 'Press Start 2P', cursive;
     border-radius: 15px;
@@ -53,15 +53,54 @@
     min-width: 770px;
 }
 
-.liste_jeux{
-    width:94.5%;
-    max-height: 200px;
+.central {
+    text-align: center;
+    position:relative;
+    min-width: 500px;
+    width: 100%;
+    margin: 6px 10px;
+    padding: 20px 10px;
+}
+
+.central h1{
+    display: inline-block;
+    width: auto;
+    font-size: 30px;
+    text-align: center;
+    margin: auto;
+    position:absolute;
+    left:10%;
+    right:10%;
+}
+
+.central h2 a{
+    margin: 0 auto;
+}
+
+.central h3 {
+
+    padding: 10px 0 0 10px;
+    border-top: black solid 2px;
+}
+
+#utilisateurs {
+    position:relative;
+    min-width: 250px;
+    width: 300px;
+}
+
+.deroulant {
     overflow: hidden;
 }
 
-.liste_jeux:hover{
-    padding: 0 10px;
-    background-color:white;
-    max-height: 400px;
+.deroulant:hover {
     overflow: auto;
+}
+
+#liste_users{
+    max-height:320px;
+}
+
+#default_div{
+    max-height: 700px;
 }
