@@ -24,9 +24,9 @@ if(isset($_GET["jeu"])){
     $descriptionJeu = $jeu["Description"];;
     $imageJeu = $jeu["image"];
     $reglesJeu=$jeu["regles"];
-    $typeJeu = $jeu["type"];
+    $type_jeu = $jeu["type"];
 }else{
-    $idJeu=-1;
+    $idJeu=0;
 }
 
 
@@ -54,7 +54,7 @@ checkNewGame();
     <?php include('./PageParts/users.php') ?>
 
     <div class="container central">
-        <?php if ($idJeu == -1) { ?>
+        <?php if ($idJeu == 0) { ?>
             <img class="image_commentaire" src="<?php echo $littleImagePathLink . "New_Game.png" ?>" alt="New Game !">
         <?php } else {?>
             <img class="image_commentaire" src="<?php echo $littleImagePathLink . "Game_Changer.png" ?>" alt="Game Changer!">
@@ -91,10 +91,10 @@ checkNewGame();
 
             <div class="entrees">
                 <label for="type_jeu_societe">Jeu de société</label>
-                <input type="radio" id="type_jeu_societe" name="type_jeu" value="societe" <?php if ($typeJeu == 0) {echo "checked";}?>><br>
+                <input type="radio" id="type_jeu_societe" name="type_jeu" value="societe" <?php if ($type_jeu == 0) {echo "checked";}?>><br>
 
                 <label for="type_jeu_video">Jeu Vidéo</label>
-                <input type="radio" id="type_jeu_video" name="type_jeu" value="video" <?php if ($typeJeu == 1) {echo "checked";}?>>
+                <input type="radio" id="type_jeu_video" name="type_jeu" value="video" <?php if ($type_jeu == 1) {echo "checked";}?>>
             </div>
             <br><br>
             <?php if ($idJeu==-1) { ?>
@@ -105,7 +105,7 @@ checkNewGame();
         </form>
 
         <div id="Revenir_accueil" class="linkBox">
-            <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
+            <a href="./index.php?site=<?php echo $siteCourant ?>" class="backlink police"><< Revenir à l'accueil</a>
         </div>
     </div>
 
