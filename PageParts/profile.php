@@ -1,34 +1,33 @@
-<div id="utilisateurs" class="container">
-    <?php if ($connecte) {?>
-        <div id="profil">
-            <h1><a href="">Profil</a></h1>
-            <div>
-                <img class="avatar" src="<?php echo $imagePathLink . $_SESSION['avatar'] ?>" alt="avatar">
-                <h2><?php echo $utilisateur ?></h2>
-            </div>
-            <div>
-                <?php echo "Hello c'est moi" ?>
-            </div>
-            <?php if (!$pageNewAccount) { ?>
-                <div id="BoutonModifierProfil" class="linkBox">
-                    <a class="police" href="./newAccount.php">Modifier Profil</a>
-                </div>
-            <?php } ?>
+<?php $player=getUsers($_GET["util"]) ?>
+
+<div class="container central">
+
+    <img class="image_commentaire" src="<?php echo $littleImagePathLink."New_Player.png" ?>" alt="New Player !">
+    <br>
+    <h1 class="titre_interaction">Profil</h1>
+
+
+    <div class="container_list">
+
+        <img class="avatar" src="<?php echo $imagePathLink . $player['avatar'] ?>" alt="avatar">
+
+        <div class="entrees">
+            <p><?php echo $player["nom"] ?></p>
         </div>
-    <?php } ?>
 
-    <ul>
-        <?php while ($row = mysqli_fetch_assoc($users)) { ?>
-            <li><a href="">
-                <?php if ($row["affichage_nom"] == 0) {
-                    $utilNom = $row["pseudo"];
-                } else {
-                    $utilNom = $row["prenom"] . " " . $row["nom"];
-                }
-                echo $utilNom;
-                ?>
+        <br><br>
+        <div class="entrees">
+            <p><?php echo $player["prenom"] ?></p>
+        </div>
 
-            </a></li>
-        <?php } ?>
-    </ul>
+        <br><br>
+        <div class="entrees">
+            <p><?php echo $player["pseudo"] ?></p>
+        </div>
+        <br><br>
+    </div>
+
+    <div id="Revenir_accueil" class="linkBox">
+        <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
+    </div>
 </div>
