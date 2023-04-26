@@ -4,7 +4,9 @@
             <h1>Jeux visités</h1>
             <ul>
                 <?php while ($row = mysqli_fetch_assoc($jeuxVisites)) { ?>
-                    <li><a href="./index.php?site=<?php echo $row["type"] ?>&jeu=<?php echo $row['id'] ?>">
+                    <li>
+                        <img class="avatar" src="<?php echo $imagesGamesPathLink . $row['image'] ?>" alt="image jeu">
+                        <a href="./index.php?site=<?php echo $row["type"] ?>&jeu=<?php echo $row['id'] ?>">
                             <?php echo $row["Nom"] ?></a></li>
                 <?php } ?>
             </ul>
@@ -14,7 +16,9 @@
         <h1><?php echo $nomSectionJeux ?></h1>
         <ul>
             <?php while ($row = mysqli_fetch_assoc($jeux)) { ?>
-                <li><a href="./index.php?site=<?php echo $row["type"] ?>&jeu=<?php echo $row['id'] ?>">
+                <li>
+                    <img class="avatar" src="<?php echo $imagesGamesPathLink . $row['image'] ?>" alt="image jeu">
+                    <a href="./index.php?site=<?php echo $row["type"] ?>&jeu=<?php echo $row['id'] ?>">
                     <?php echo $row["Nom"] ?></a></li>
             <?php } ?>
         </ul>
