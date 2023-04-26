@@ -136,9 +136,10 @@ function securizeFile_ForSQL(array $file, string $name, string $type, string $sa
 
 
 /**
- * Fonction permettant de vérifier si un site est bien renseigné dans l'URL
+ * Fonction permettant de vérifier si le paramètre site est bien renseigné dans l'URL.
+ * Si le paramètre n'est pas renseigné ou si le paramètre n'est pas 0 ou 1, on redirige vers la page avec le paramètre site=0 en gardant les autres paramètres
  * @param string $name nom de la page
- * @return int Retourne 0 si le site n'est pas renseigné ou si le site n'est pas 0 ou 1, 1 sinon
+ * @return int Retourne 0 si le site n'est pas renseigné ou si le site n'est pas 0 ou 1, la valeur du site sinon
  */
 function checkSite(string $name): int
 {
