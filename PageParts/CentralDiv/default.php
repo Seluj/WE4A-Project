@@ -1,5 +1,5 @@
 <div id="default_div">
-    <img id="image_titre" src="./images/fond_titre1.png" alt="Bienvenue">
+    <img id="image_titre" src="./images/fond_titre.png" alt="Bienvenue">
     <?php if(!$connecte){ ?>
         <p class="texte_accueil">Venez vous plongez avec nous dans le monde des jeux de société et des jeux vidéos ! Vous souhaitez découvrir de
             nouveaux jeux, discuter stratégie et partager vos expériences de jeu avec d'autres passionnés dans un monde de
