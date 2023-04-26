@@ -16,6 +16,6 @@
             pourra venir y participer !</p>
 
     <?php }
-    include("./PageParts/listTopics.php")?>
+    include("./PageParts/listTopicsMessages.php") ?>
 
 </div>
