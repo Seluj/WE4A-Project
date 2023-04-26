@@ -1,4 +1,11 @@
 <div id="jeux" class="container">
+
+    <?php if ($administrateur) {?>
+    <div id="BoutonModifierJeu" class="linkBox">
+        <a class="police" href="./newGame.php">Ajouter Jeu</a>
+    </div>
+    <?php } ?>
+
     <?php if($connecte){ ?>
         <div class="liste_jeux" id="jeux_visites">
             <h1>Jeux visités</h1>
