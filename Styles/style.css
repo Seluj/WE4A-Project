@@ -5,7 +5,7 @@
 	font-family: 'Press Start 2P', cursive;
 	font-weight: bold;
 	color: #FFFFFF;
-	text-shadow: 2px 2px #B1B1B1;
+	text-shadow: 1px 1px #B2B2B2;
 }
 
 a {
@@ -32,7 +32,7 @@ h1 {
 	font-weight: bold;
 	margin-top: 0;
 	color: #221146;
-	text-shadow: 1px 1px #B1B1B1;
+	text-shadow: 1px 1px #B2B2B2;
 }
 
 /* Boîtes de saisie de données*/
@@ -245,4 +245,9 @@ input[type="checkbox"]{
 	position:absolute;
 	left: 5px;
 	top:10px;
+}
+
+#titre_topic{
+	margin-top:15%;
+	display:inline-block;
 }
