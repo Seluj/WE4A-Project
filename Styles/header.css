@@ -15,6 +15,7 @@ header {
     color: #fff;
     padding: 5px;
     word-wrap: normal;
+    border-radius: 5px;
 }
 
 /* Titre du header, nom du site */

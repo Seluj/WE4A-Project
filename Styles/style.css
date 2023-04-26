@@ -22,7 +22,7 @@ ul {
 body {
 	margin-top: 0;
 	margin-bottom:0;
-	background-color: #F3EEDF;
+	background-color: #C5DDFF;
 }
 
 /* Titres de la page */
@@ -76,26 +76,6 @@ input[type="checkbox"]{
 
 .linkBox:hover a{
 	color:white;
-}
-
-/* Conteneur principal abritant le contenu de la page */
-.main_container {
-	margin: 10px auto;
-	padding: 5px 0;
-	display: flex;
-	text-align: center;
-	position:relative;
-}
-
-/* Sous-partie d'un main_container */
-.container{
-	position:relative;
-	padding: 15px 0 0 10px;
-	text-align: center;
-	margin: 5px;
-	border: 2px solid black;
-	background-color:white;
-	font-family: 'Press Start 2P', cursive;
 }
 
 #utilisateurs {
@@ -242,24 +222,6 @@ input[type="checkbox"]{
 	overflow-wrap: break-word;
 }
 
-.container ul {
-	list-style: none;
-	padding: 0;
-	margin: 20px 0;
-}
-
-.container li {
-	display: flex;
-	align-items: center;
-	margin-bottom: 10px;
-}
-
-.container ul li img {
-	width: 30px;
-	height: 30px;
-	margin-right: 10px;
-}
-
 .liste_jeux{
 	width:94.5%;
 	min-height: 100px;
@@ -267,27 +229,10 @@ input[type="checkbox"]{
 
 #jeux_visites{
 	border: 2px solid black;
-	padding: 0px 10px;
-	background-color:white;
-	max-height: 300px;
-	overflow: scroll;
-}
-
-#jeux_visites:hover{
-	max-height: 600px;
-}
-
-#jeux_proposes{
-	border: 2px solid black;
 	padding: 0 10px;
 	background-color:white;
 	max-height: 300px;
 	overflow: scroll;
-}
-
-#jeux_proposes:hover{
-	max-height: none;
-	overflow: visible;
 }
 
 #image_titre {

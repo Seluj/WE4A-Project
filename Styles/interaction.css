@@ -4,13 +4,6 @@
     display:none;
 }
 
-.interaction_container{
-    position:relative;
-    margin: 0 20px 0 20px;
-    max-width: 1000px;
-    min-width: 770px;
-}
-
 /* Images située dans le coin supérieur gauche des divs de classe fenetre_interaction */
 .image_commentaire {
     position: absolute;
@@ -29,13 +22,13 @@
 }
 
 /* Formulaires des fenêtres d'interaction */
-.formulaire {
-    padding: 50px;
-    padding-top: 30px;
+.container_list {
+    padding: 30px 50px;
     display: inline-block;
     text-align: center;
     margin: 100px 10px 0 10px;
-    background-color: #333;
+    background-image:url(../images/fond_quadri.png);
+    border-radius: 30px;
 }
 
 /* Zone de texte dans laquelle l'utilisateur peut saisir un message */
@@ -55,7 +48,7 @@
 
 /* Div contenant les éléments permettant à l'utilisateur de saisir des données */
 .entrees {
-    width:350px;
+    width:400px;
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     position: relative;
@@ -74,7 +67,7 @@
 }
 
 input[type="checkbox"]{
-    margin-top:15px;
+    margin-top:5px;
 }
 
 .entrees input{
@@ -85,6 +78,10 @@ input[type="checkbox"]{
     color:transparent;
     width:125px;
     margin:0 60px 0 15px;
+}
+
+#div_affiche_nom{
+    text-align:center;
 }
 
 /* Style des boutons */
