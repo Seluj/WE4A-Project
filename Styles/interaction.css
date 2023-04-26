@@ -21,16 +21,6 @@
     border-bottom: black solid 2px;
 }
 
-/* Formulaires des fenêtres d'interaction */
-.container_list {
-    padding: 30px 50px;
-    display: inline-block;
-    text-align: center;
-    margin: 100px 10px 0 10px;
-    background-image:url(../images/fond_quadri.png);
-    border-radius: 30px;
-}
-
 /* Zone de texte dans laquelle l'utilisateur peut saisir un message */
 #message {
     margin-top:20px;
@@ -48,7 +38,7 @@
 
 /* Div contenant les éléments permettant à l'utilisateur de saisir des données */
 .entrees {
-    width:400px;
+    width:370px;
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     position: relative;
