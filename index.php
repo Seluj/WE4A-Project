@@ -12,13 +12,15 @@ $imageJeu = "";
 $nomJeu = "";
 $descriptionJeu ="";
 $regles = "";
+$idJeu = -1;
+$idTopic = -1;
 
 
 $site = checkSite('index.php');
 $siteCourant = $site;
 
 if (isset($_GET['jeu'])) {
-    $idJeu = $_GET['jeu'];
+    $idJeu = intval($_GET['jeu']);
     $jeu = getJeux($siteCourant, $idJeu);
 
     if (!$jeu) {
@@ -39,7 +41,7 @@ if (isset($_GET['jeu'])) {
         $topics = getTopics($idJeu, "all");
     }
 } else if (isset($_GET['topic'])) {
-    $idTopic = $_GET['topic'];
+    $idTopic = intval($_GET['topic']);
     $topic = getTopics($idTopic, "one");
 
     if (!$topic) {
@@ -69,13 +71,13 @@ if (isset($_GET['search'])) {
     $search = $_GET['search'];
     switch ($type) {
         case "Jeu":
-            // TODO: Search in game
+            $searchJeux = searchInGame($idJeu, $search);
             break;
         case "Topic":
-            // TODO: Search in topic
+            $searchTopics = searchInTopic($idTopic, $search);
             break;
         case "default":
-            // TODO: Search in all
+            $searchDefault = searchInAll($search);
             break;
         /*
         case "message":
