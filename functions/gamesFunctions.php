@@ -77,3 +77,12 @@ function checkNewGame(): void
         <?php
     }
 }
+
+function showDate($date){
+    setlocale(LC_TIME, 'fr_FR.utf8');
+    $timestamp = strtotime($date);
+    $formattedDate = strftime('%e %B %Y - %H:%M', $timestamp);
+    return $formattedDate;
+
+}
+?>
