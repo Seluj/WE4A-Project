@@ -4,7 +4,7 @@
 
 <?php if ($administrateur) {?>
     <div id="BoutonModifierJeu" class="linkBox">
-        <a class="police" href="./newGame.php">Modifier Jeu</a>
+        <a class="police" href="./newGame.php?site=<?php echo $siteCourant ?>">Modifier Jeu</a>
     </div>
 <?php } ?>
 
@@ -18,21 +18,23 @@
 <?php } ?>
 <?php if ($connecte) {?>
     <div id="BoutonCreerTopic" class="linkBox">
-        <a class="police" href="./newMessage.php?jeu=<?php echo $idJeu ?>">Créer Topic</a>
+        <a class="police" href="./newMessage.php?site=<?php echo $siteCourant ?>&jeu=<?php echo $idJeu ?>">Créer Topic</a>
     </div>
 <?php } ?>
 
 <div class="deroulant">
     <?php if($topics != false){?>
         <h3><?php echo "Topics associés à ".$nomJeu;?></h3>
-        <ul>
-            <?php while ($row = mysqli_fetch_assoc($topics)) { ?>
-                <li><a href="./index.php?site=<?php echo $siteCourant ?>&topic=<?php echo $row['id'] ?>">
-                    <?php echo $row["titre"] ?><br>
-                    <?php echo getMessages($row["id"],"first")["contenu"] ?>
-                </a></li>
-            <?php } ?>
-        </ul>
+        <div id="topics_list" class="container_list">
+            <ul>
+                <?php while ($row = mysqli_fetch_assoc($topics)) { ?>
+                    <li id="one_topic" class="entrees"><a href="./index.php?site=<?php echo $siteCourant ?>&topic=<?php echo $row['id'] ?>">
+                            <p class="titre_topic"><?php echo $row["titre"] ?></p>
+                            <p class="message_topic"><?php echo getMessages($row["id"],"first")["contenu"] ?></p>
+                    </a></li><br>
+                <?php } ?>
+            </ul>
+        </div>
     <?php } else {?>
         <h3><?php echo "Aucun Topic associé à ".$nomJeu;?></h3>
     <?php } ?>
