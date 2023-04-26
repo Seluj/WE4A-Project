@@ -143,13 +143,13 @@ function securizeFile_ForSQL(array $file, string $name, string $type, string $sa
 function checkSite(string $name): int
 {
     if (!isset($_GET['site'])) {
-        header("Location: ./$name?site=0");
+        header("Location: ./$name?site=0&" . $_SERVER['QUERY_STRING']);
         return 0;
     }
 
     $site = $_GET['site'];
     if ($site != 0 && $site != 1) {
-        header("Location: ./$name?site=0");
+        header("Location: ./$name?site=0&" . $_SERVER['QUERY_STRING']);
         return 0;
     }
     return $site;

@@ -19,16 +19,18 @@ $typeJeu = "";
 
 if(isset($_GET["jeu"])){
     $idJeu = $_GET["jeu"];
-    $jeu=getJeux($siteCourant, $idJeu);
+    $jeu = getJeux($siteCourant, $idJeu);
     $nomJeu = $jeu["Nom"];
     $descriptionJeu = $jeu["Description"];;
     $imageJeu = $jeu["image"];
-    $reglesJeu=$jeu["regles"];
+    $reglesJeu = $jeu["regles"];
     $type_jeu = $jeu["type"];
 }else{
     $idJeu=0;
 }
 
+$site = checkSite('newGame.php');
+$siteCourant = $site;
 
 checkNewGame();
 
