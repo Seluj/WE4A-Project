@@ -5,7 +5,7 @@
     <h1 class="titre_interaction">Connexion</h1>
 
 
-    <form class="formulaire" method="post" action="#">
+    <form class="container_list" method="post" action="#">
 
         <div class="entrees">
             <label for="emailLogin">Email :</label>
