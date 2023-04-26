@@ -33,6 +33,10 @@ if (isset($_GET['topic'])) {
 } else {
     $postType = "Topic";
 }
+
+$site = checkSite('newMessage.php');
+$siteCourant = $site;
+
 checkEntry();
 ?>
 
