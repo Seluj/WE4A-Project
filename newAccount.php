@@ -13,6 +13,8 @@ $pageNewAccount = true;
 
 $site = checkSite('newAccount.php');
 $siteCourant = $site;
+$util = 0;
+$util = $_GET["util"];
 
 ?>
 
@@ -22,12 +24,7 @@ $siteCourant = $site;
 
 
 <head>
-    <meta charset="UTF-8">
-    <title><?php echo $nomSite ?></title>
-    <link rel="stylesheet" href="./Styles/style.css">
-    <link rel="stylesheet" href="./Styles/header.css">
-    <link rel="stylesheet" href="./Styles/interaction.css">
-    <link rel="icon" href="images/icone.png">
+    <?php include('./PageParts/head.php') ?>
 </head>
 
 <body>
@@ -37,9 +34,14 @@ $siteCourant = $site;
     <?php include('./PageParts/header.php') ?>
 
     <div class="main_container">
-        <?php include('./PageParts/profile.php') ?>
-        <?php include('./PageParts/signinForm.php') ?>
-        <?php include('./PageParts/loginForm.php') ?>
+
+        <?php include('./PageParts/users.php');
+
+        if($util != 0) {
+            include('./PageParts/profile.php');
+        }else{
+            include('./PageParts/signinForm.php');
+            include('./PageParts/loginForm.php') ?>
         <script>
             window.onload = function() {
                 FunctionReturnConnect();
@@ -68,7 +70,10 @@ $siteCourant = $site;
             }
         </script>
 
-        <?php include('./PageParts/proposedGames.php') ?>
+        <?php }
+
+        include('./PageParts/proposedGames.php') ?>
+
     </div>
 
 </body>
