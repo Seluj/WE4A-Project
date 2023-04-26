@@ -66,7 +66,7 @@ $users = getUsers();
 
     <!-- Nom du site -->
 
-    <h1 id="Nom_Site" class="police"><?php echo $nomSite ?></h1>
+    <a href="./index.php?site=<?php echo $siteCourant ?>"><h1 id="Nom_Site" class="police"><?php echo $nomSite ?></h1></a>
 
     <!-- Barre de recherche -->
 
