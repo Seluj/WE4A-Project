@@ -222,19 +222,6 @@ input[type="checkbox"]{
 	overflow-wrap: break-word;
 }
 
-.liste_jeux{
-	width:94.5%;
-	min-height: 100px;
-}
-
-#jeux_visites{
-	border: 2px solid black;
-	padding: 0 10px;
-	background-color:white;
-	max-height: 300px;
-	overflow: scroll;
-}
-
 #image_titre {
 	position:relative;
 	max-width: 100%;
@@ -258,4 +245,22 @@ input[type="checkbox"]{
 
 * {
 	box-sizing: border-box;
+}
+
+.titre_topic {
+	font-weight: bold;
+}
+
+#topics_list {
+	width: 75%;
+}
+
+#one_topic {
+	position:relative;
+	display: inline-block;
+	text-align:center;
+}
+
+#message_topic{
+	overflow: hidden;
 }
