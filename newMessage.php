@@ -43,12 +43,7 @@ checkEntry();
 
 
 <head>
-    <meta charset="UTF-8">
-    <title><?php echo $nomSite ?></title>
-    <link rel="stylesheet" href="./Styles/style.css">
-    <link rel="stylesheet" href="./Styles/header.css">
-    <link rel="stylesheet" href="./Styles/interaction.css">
-    <link rel="icon" href="images/icone.png">
+    <?php include('./PageParts/head.php') ?>
 </head>
 
 <body>
@@ -59,13 +54,13 @@ checkEntry();
 
     <!-- Reste de la page -->
     <div class="main_container">
-        <?php include('./PageParts/profile.php')?>
+        <?php include('./PageParts/users.php') ?>
         <div class="container central">
             <img class="image_commentaire" src="./images/Welcome_in_the_chat.png" alt="Start a new Game">
 
             <h1 class="titre_interaction">Nouveau <?php echo $postType ?></h1>
 
-            <form class="formulaire" action="#" method="post">
+            <form class="container_list" action="#" method="post">
 
 
                 <div id="entrer_titre" class="entrees">

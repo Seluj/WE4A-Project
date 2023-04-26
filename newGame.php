@@ -40,12 +40,7 @@ checkNewGame();
 
 
 <head>
-    <meta charset="UTF-8">
-    <title><?php echo $nomSite ?></title>
-    <link rel="stylesheet" href="./Styles/style.css">
-    <link rel="stylesheet" href="./Styles/header.css">
-    <link rel="stylesheet" href="./Styles/interaction.css">
-    <link rel="icon" href="images/icone.png">
+    <?php include('./PageParts/head.php') ?>
 </head>
 
 <body>
@@ -56,7 +51,7 @@ checkNewGame();
 
 <div class="main_container">
 
-    <?php include('./PageParts/profile.php')?>
+    <?php include('./PageParts/users.php') ?>
 
     <div class="container central">
         <?php if ($idJeu == -1) { ?>
@@ -67,7 +62,7 @@ checkNewGame();
         <h1 class="titre_interaction"><?php if ($idJeu==-1) {echo "Ajouter un jeu";} else {echo "Modifier le jeu";} ?></h1>
 
 
-        <form class="formulaire" method="post" action="#" enctype="multipart/form-data">
+        <form class="container_list" method="post" action="#" enctype="multipart/form-data">
 
             <div class="entrees">
                 <label for="nom">Nom</label>
