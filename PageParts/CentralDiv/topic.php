@@ -11,7 +11,7 @@
 <h2 id="telecharger_regle" class="linkBox"><a href="<?php echo $regles ?>" download="<?php echo 'regles_' . $nomJeu ?>.pdf">Télécharger les règles de <?php echo $nomJeu ?></a></h2>
 <?php if ($connecte) {?>
     <div id="BoutonCreerMessage" class="linkBox">
-        <a class="police" href="./newMessage.php">Créer Message</a>
+        <a class="police" href="./newMessage.php?topic=<?php echo $idTopic ?>">Créer Message</a>
     </div>
 <?php } ?>
 
