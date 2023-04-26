@@ -14,7 +14,7 @@
 </div>
 
 <?php if($regles != $rulesGamesPathLink."-1"){ ?>
-    <h2 id="telecharger_regle" class="linkBox"><a href="<?php echo $regles ?>" download="<?php echo 'regles_' . $nomJeu ?>.pdf">Télécharger les règles de <?php echo $nomJeu ?></a></h2>
+    <h2 id="telecharger_regle" class="linkBox"><a href="<?php echo $regles ?>" download="<?php echo 'regles_' . $nomJeu ?>.pdf">>> Télécharger les règles de <?php echo $nomJeu ?></a></h2>
 <?php } ?>
 <?php if ($connecte) {?>
     <div id="BoutonCreerTopic" class="linkBox">
@@ -22,6 +22,4 @@
     </div>
 <?php } ?>
 
-<div class="deroulant">
-    <?php include("./PageParts/listTopics.php") ?>
-</div>
+<?php include("./PageParts/listTopicsMessages.php") ?>

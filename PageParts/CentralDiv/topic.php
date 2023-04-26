@@ -15,11 +15,4 @@
     </div>
 <?php } ?>
 
-<div class="deroulant">
-    <h3>Messages associés</h3>
-    <ul>
-        <?php while ($row = mysqli_fetch_assoc($messages)) { ?>
-            <li><?php echo $row["date_ajout"]?><br><?php echo $row["contenu"]?></li>
-            <?php } ?>
-    </ul>
-</div>
+<?php include("./PageParts/listTopicsMessages.php") ?>
