@@ -84,40 +84,9 @@ input[type="checkbox"]{
 	width: 300px;
 }
 
-.central {
-	text-align: center;
-	position:relative;
-	min-width: 500px;
-	width: 100%;
-	margin: 6px 10px;
-	padding: 20px 10px;
-}
-
-.central h1{
-	display: inline-block;
-	width: auto;
-	font-size: 30px;
-	text-align: center;
-	margin: auto;
-	position:absolute;
-	left:10%;
-	right:10%;
-}
-
-.central h2 a{
-	margin: 0 auto;
-}
-
 #telecharger_regle:hover{
 	margin-top: 5px;
 	margin-bottom: 0;
-}
-
-.central h3 {
-
-	padding: 10px 0 0 10px;
-	border-top: black solid 2px;
-
 }
 
 .image_jeu {
@@ -131,10 +100,8 @@ input[type="checkbox"]{
 
 
 #BoutonModifierJeu {
-	position:absolute;
-	padding:10px;
-	right:25px;
-	top:20px;
+	position:relative;
+	display:inline-block;
 }
 
 #BoutonCreerTopic{
@@ -238,11 +205,6 @@ input[type="checkbox"]{
 	border-bottom: solid black 3px;
 }
 
-.deroulant {
-	max-height: 75%;
-	overflow: auto;
-}
-
 * {
 	box-sizing: border-box;
 }
@@ -259,8 +221,28 @@ input[type="checkbox"]{
 	position:relative;
 	display: inline-block;
 	text-align:center;
+	width: 600px;
 }
 
 #message_topic{
 	overflow: hidden;
+}
+
+.mini_image {
+	min-height: 50px;
+	min-width: 50px;
+	width: 20%;
+	border-radius: 50px;
+}
+
+#mini_image_jeu {
+	position:absolute;
+	right: 5px;
+	top:10px;
+}
+
+#mini_image_avatar {
+	position:absolute;
+	left: 5px;
+	top:10px;
 }
