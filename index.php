@@ -65,19 +65,25 @@ if (isset($_GET['jeu'])) {
     }
 } else {
     $type = "default";
+    $topics = getTopics(null, "all");
 }
 
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
+    $typeSearch = "";
+    $searchResults = "";
     switch ($type) {
         case "Jeu":
-            $searchJeux = searchInGame($idJeu, $search);
+            $searchResults = searchInGame($idJeu, $search);
+            $typeSearch = "Jeu";
             break;
         case "Topic":
-            $searchTopics = searchInTopic($idTopic, $search);
+            $searchResults = searchInTopic($idTopic, $search);
+            $typeSearch = "Topic";
             break;
         case "default":
-            $searchDefault = searchInAll($search);
+            $searchResults = searchInAll($search);
+            $typeSearch = "All";
             break;
         /*
         case "message":
@@ -87,7 +93,9 @@ if (isset($_GET['search'])) {
         default:
             break;
     }
+    $type="search";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +118,7 @@ if (isset($_GET['search'])) {
 
         <?php include('./PageParts/users.php') ?>
 
-        <div class="container central">
+        <div class="container central deroulant">
 
 
             <?php
@@ -124,6 +132,10 @@ if (isset($_GET['search'])) {
                     break;
                 case "default":
                     include('./PageParts/CentralDiv/default.php');
+                    break;
+                case "search":
+
+                    include('./PageParts/CentralDiv/search.php');
                     break;
                 default:
                     //echo "J'ai un problème : tu es vraiment dans le default";
