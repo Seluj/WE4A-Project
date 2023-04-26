@@ -1,14 +1,11 @@
-<h1>Topic au sujet de <?php $nomJeu ?> </h1>
-<h2>Titre du Topic : <?php $nomTopic ?> </h2>
+<h1>Topic à propos de <?php echo $nomJeu ?> </h1>
 
-<img class="image_jeu" src="<?php echo $imagejeu ?>" alt="avatar">
+<a href="./index.php?site=<?php echo $siteCourant ?>&jeu=<?php echo $idJeu ?>">
+    <img class="image_jeu" src="<?php echo $imageJeu ?>" alt="avatar" title="<?php echo $nomJeu ?>">
+</a>
 
-<div id="<?php if ($type="Jeu") {echo "description_jeu";} else {echo "description_topic";} ?>">
-    <h2>Description :</h2>
-    <p><?php echo $descriptionJeu ?></p>
-</div>
+<h2 id="titre_topic" >Sujet : <?php echo $nomTopic ?> </h2>
 
-<h2 id="telecharger_regle" class="linkBox"><a href="<?php echo $regles ?>" download="<?php echo 'regles_' . $nomJeu ?>.pdf">Télécharger les règles de <?php echo $nomJeu ?></a></h2>
 <?php if ($connecte) {?>
     <div id="BoutonCreerMessage" class="linkBox">
         <a class="police" href="./newMessage.php?topic=<?php echo $idTopic ?>">Créer Message</a>
