@@ -23,19 +23,5 @@
 <?php } ?>
 
 <div class="deroulant">
-    <?php if($topics != false){?>
-        <h3><?php echo "Topics associés à ".$nomJeu;?></h3>
-        <div id="topics_list" class="container_list">
-            <ul>
-                <?php while ($row = mysqli_fetch_assoc($topics)) { ?>
-                    <li id="one_topic" class="entrees"><a href="./index.php?site=<?php echo $siteCourant ?>&topic=<?php echo $row['id'] ?>">
-                            <p class="titre_topic"><?php echo $row["titre"] ?></p>
-                            <p class="message_topic"><?php echo getMessages($row["id"],"first")["contenu"] ?></p>
-                    </a></li><br>
-                <?php } ?>
-            </ul>
-        </div>
-    <?php } else {?>
-        <h3><?php echo "Aucun Topic associé à ".$nomJeu;?></h3>
-    <?php } ?>
+    <?php include("./PageParts/listTopics.php") ?>
 </div>
