@@ -6,7 +6,7 @@
     <h1 class="titre_interaction"><?php if (!$connecte) { ?>Créer un compte<?php } else { ?>Modifier Profil<?php } ?></h1>
 
 
-    <form class="formulaire" method="post" action="#" enctype="multipart/form-data">
+    <form class="container_list" method="post" action="#" enctype="multipart/form-data">
 
         <div class="entrees">
             <label for="nom">Nom :</label>
@@ -38,7 +38,7 @@
         </div>
 
         <br><br>
-        <div class="entrees">
+        <div class="entrees" id="div_affiche_nom">
             <label for="affichage_nom">Afficher mon nom</label>
             <input id="affichage_nom" class="input_center" name="affichage_nom" type="checkbox" <?php if ($affichage_nom) {echo "checked";} ?>>
         </div>
