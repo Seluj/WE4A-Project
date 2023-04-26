@@ -16,20 +16,21 @@
             <?php } ?>
         </div>
     <?php } ?>
+    <div id="liste_users" class="deroulant">
+        <ul>
+            <?php while ($row = mysqli_fetch_assoc($users)) { ?>
+                <li><a href="./newAccount.php?site=<?php echo $siteCourant ?>&util=<?php echo $row["id"] ?>">
+                    <img class="avatar" src="<?php echo $imagePathLink . $row['avatar'] ?>">
+                    <?php if ($row["affichage_nom"] == 0) {
+                        $utilNom = $row["pseudo"];
+                    } else {
+                        $utilNom = $row["prenom"] . " " . $row["nom"];
+                    }
+                    echo $utilNom;
+                    ?>
 
-    <ul>
-        <?php while ($row = mysqli_fetch_assoc($users)) { ?>
-            <li><a href="./newAccount.php?site=<?php echo $siteCourant ?>&util=<?php echo $row["id"] ?>">
-                <img class="avatar" src="<?php echo $imagePathLink . $row['avatar'] ?>">
-                <?php if ($row["affichage_nom"] == 0) {
-                    $utilNom = $row["pseudo"];
-                } else {
-                    $utilNom = $row["prenom"] . " " . $row["nom"];
-                }
-                echo $utilNom;
-                ?>
-
-            </a></li>
-        <?php } ?>
-    </ul>
+                </a></li>
+            <?php } ?>
+        </ul>
+    </div>
 </div>
