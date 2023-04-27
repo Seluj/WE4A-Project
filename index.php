@@ -75,15 +75,12 @@ if (isset($_GET['search'])) {
     $searchResults = "";
     switch ($type) {
         case "Jeu":
-            $searchResults = searchInGame($idJeu, $search);
             $typeSearch = "Jeu";
             break;
         case "Topic":
-            $searchResults = searchInTopic($idTopic, $search);
             $typeSearch = "Topic";
             break;
         case "default":
-            $searchResults = searchInAll($search);
             $typeSearch = "All";
             break;
         /*
@@ -94,7 +91,7 @@ if (isset($_GET['search'])) {
         default:
             break;
     }
-    $type="search";
+    $type = "search";
 }
 
 ?>
@@ -135,8 +132,7 @@ if (isset($_GET['search'])) {
                     include('./PageParts/CentralDiv/default.php');
                     break;
                 case "search":
-
-                    include('./PageParts/CentralDiv/search.php');
+                    include("./PageParts/CentralDiv/search.php");
                     break;
                 default:
                     //echo "J'ai un problème : tu es vraiment dans le default";

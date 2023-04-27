@@ -8,10 +8,13 @@
  * @param string $search Objet de la recherche
  * @return false|mysqli_result Retourne le résultat de la requête ou false si aucun résultat
  */
-function searchInGame(string $idJeu, string $search): bool|mysqli_result
+function searchInGame(string $idJeu, string $search, int $offset): bool|mysqli_result
 {
     // Convertit l'id du jeu en entier pour éviter les injections SQL
     $idJeu = intval($idJeu);
+
+    // Sécurise la recherche pour éviter les injections SQL
+    $search = securizeString_ForSQL($search);
 
     // Récupère la variable globale $conn pour exécuter la requête
     global $conn;
@@ -19,8 +22,15 @@ function searchInGame(string $idJeu, string $search): bool|mysqli_result
     // Construit la requête SQL pour chercher dans les messages et les topics
     $query = "SELECT `messages`.*, `topics`.*
             FROM `messages`
-            INNER JOIN `topics` ON `messages`.`topics_id` = `topics`.`id`
-            WHERE `topics`.`jeux_id` = $idJeu AND (`messages`.`contenu` LIKE '%$search%' OR `topics`.`titre` LIKE '%$search%')";
+            INNER JOIN `topics` 
+                ON `messages`.`topics_id` = `topics`.`id`
+            WHERE `topics`.`jeux_id` = $idJeu 
+              AND (LOWER(`messages`.`contenu`)
+                        LIKE LOWER('%$search%') 
+                    OR LOWER(`topics`.`titre`) 
+                        LIKE LOWER('%$search%'))
+            ORDER BY `topics`.titre ASC, `messages`.`date_ajout` DESC
+            LIMIT 5 OFFSET $offset";
 
     // Exécute la requête et vérifie qu'elle a bien fonctionné
     $result = $conn->query($query);
@@ -39,10 +49,13 @@ function searchInGame(string $idJeu, string $search): bool|mysqli_result
  * @param string $search Objet de la recherche
  * @return false|mysqli_result Retourne le résultat de la requête ou false si aucun résultat
  */
-function searchInTopic(string $idTopic, string $search): bool|mysqli_result
+function searchInTopic(string $idTopic, string $search, int $offset): bool|mysqli_result
 {
     // Convertit l'id du topic en entier pour éviter les injections SQL
     $idTopic = intval($idTopic);
+
+    // Sécurise la recherche pour éviter les injections SQL
+    $search = securizeString_ForSQL($search);
 
     // Récupère la variable globale $conn pour exécuter la requête
     global $conn;
@@ -50,7 +63,11 @@ function searchInTopic(string $idTopic, string $search): bool|mysqli_result
     // Construit la requête SQL pour chercher dans les messages
     $query = "SELECT *
             FROM `messages`
-            WHERE `messages`.`topics_id` = $idTopic AND `messages`.`contenu` LIKE '%$search%'";
+            WHERE `messages`.`topics_id` = $idTopic 
+              AND LOWER(`messages`.`contenu`) 
+                      LIKE LOWER('%$search%')
+            ORDER BY `messages`.`date_ajout` DESC
+            LIMIT 5 OFFSET $offset";
 
     // Exécute la requête et vérifie qu'elle a bien fonctionné
     $result = $conn->query($query);
@@ -68,8 +85,11 @@ function searchInTopic(string $idTopic, string $search): bool|mysqli_result
  * @param string $search Objet de la recherche
  * @return false|mysqli_result Retourne le résultat de la requête ou false si aucun résultat
  */
-function searchInAll(string $search): bool|mysqli_result
+function searchInAll(string $search, int $offset): bool|mysqli_result
 {
+    // Sécurise la recherche pour éviter les injections SQL
+    $search = securizeString_ForSQL($search);
+
     // Récupère la variable globale $conn pour exécuter la requête
     global $conn;
 
@@ -78,7 +98,14 @@ function searchInAll(string $search): bool|mysqli_result
             FROM `jeux`
             INNER JOIN `topics` ON `jeux`.`id` = `topics`.`jeux_id`
             INNER JOIN `messages` ON `topics`.`id` = `messages`.`topics_id`
-            WHERE `jeux`.`Nom` LIKE '%$search%' OR `topics`.`titre` LIKE '%$search%' OR `messages`.`contenu` LIKE '%$search%'";
+            WHERE LOWER(`jeux`.`Nom`) 
+                      LIKE LOWER('%$search%') 
+               OR LOWER(`topics`.`titre`) 
+                      LIKE LOWER('%$search%') 
+               OR LOWER(`messages`.`contenu`) 
+                      LIKE LOWER('%$search%')
+            ORDER BY `jeux`.`Nom` ASC, `topics`.`titre` ASC, `messages`.`date_ajout` DESC
+            LIMIT 5 OFFSET $offset";
 
     // Exécute la requête et vérifie qu'elle a bien fonctionné
     $result = $conn->query($query);
