@@ -33,6 +33,12 @@
 
         <br><br>
         <div class="entrees">
+            <label for="presentation">Présentation :</label>
+            <textarea class="zone_texte" id="presentation" name="presentation" placeholder="Presentation"></textarea>
+        </div>
+
+        <br><br>
+        <div class="entrees">
             <label for="avatar">Avatar :</label>
             <input id="avatar" class="input_center" name="avatar" type="file" onchange="addFile()">
         </div>
