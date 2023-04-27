@@ -13,8 +13,10 @@ $pageNewAccount = true;
 
 $site = checkSite('newAccount.php');
 $siteCourant = $site;
-$util = 0;
-$util = $_GET["util"];
+$util = -1;
+if(isset($_GET["util"])){
+    $util = $_GET["util"];
+}
 
 ?>
 
@@ -37,38 +39,38 @@ $util = $_GET["util"];
 
         <?php include('./PageParts/users.php');
 
-        if($util != 0) {
+        if($util != -1) {
             include('./PageParts/profile.php');
         }else{
             include('./PageParts/signinForm.php');
             include('./PageParts/loginForm.php') ?>
-        <script>
-            window.onload = function() {
-                FunctionReturnConnect();
-            }
-
-            function FunctionReturnConnect() {
-                const log = document.getElementById("login");
-                const sign = document.getElementById("signin");
-                let connecte = <?php echo json_encode($connecte); ?>;
-
-                if (connecte) {
-                    log.style.display = "none";
-                    sign.style.display = "inline";
-                } else {
-                    log.style.display = "inline-block";
-                    sign.style.display = "none";
+            <script>
+                window.onload = function() {
+                    FunctionReturnConnect();
                 }
-            }
 
-            function FunctionInscription() {
-                const log = document.getElementById("login");
-                const sign = document.getElementById("signin");
+                function FunctionReturnConnect() {
+                    const log = document.getElementById("login");
+                    const sign = document.getElementById("signin");
+                    let connecte = <?php echo json_encode($connecte); ?>;
 
-                log.style.display = "none";
-                sign.style.display = "inline-block";
-            }
-        </script>
+                    if (connecte) {
+                        log.style.display = "none";
+                        sign.style.display = "inline";
+                    } else {
+                        log.style.display = "inline-block";
+                        sign.style.display = "none";
+                    }
+                }
+
+                function FunctionInscription() {
+                    const log = document.getElementById("login");
+                    const sign = document.getElementById("signin");
+
+                    log.style.display = "none";
+                    sign.style.display = "inline-block";
+                }
+            </script>
 
         <?php }
 
