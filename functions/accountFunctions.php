@@ -50,7 +50,7 @@ function checkConnectionForm(): void
         // On récupère les données de l'utilisateur et on enregistre les données dans les variables de session
         $row = mysqli_fetch_assoc($result);
         $_SESSION['id'] = $row['id'];
-        $_SESSION['mail'] = $row['emailLogin'];
+        $_SESSION['mail'] = $row['mail'];
         $_SESSION['nom'] = $row['nom'];
         $_SESSION['prenom'] = $row['prenom'];
         $_SESSION['pseudo'] = $row['pseudo'];
