@@ -29,6 +29,10 @@ header h1 {
     text-shadow: 2px 2px #B1B1B1;
 }
 
+header a {
+    color: #FFFFFF;
+}
+
 /* Icônes, images du header */
 header img {
     width: 35px;
