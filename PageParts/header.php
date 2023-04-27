@@ -84,7 +84,7 @@ $users = getUsers();
         <?php
         }
         ?>
-        <form id="Recherche_generale" action="" method="get">
+        <form id="Recherche_generale" action="./index.php" method="get">
             <?php
             $keys = array('site', 'topic', 'jeu', 'message');
             foreach($keys as $name) {
