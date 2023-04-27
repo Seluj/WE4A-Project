@@ -4,7 +4,7 @@
 
 <?php if ($administrateur) {?>
     <div id="BoutonModifierJeu" class="linkBox">
-        <a class="police" href="./newGame.php?site=<?php echo $siteCourant ?>">Modifier Jeu</a>
+        <a class="police" href="./newGame.php?site=<?php echo $siteCourant ?>&jeu=<?php echo $idJeu; ?>">Modifier Jeu</a>
     </div>
 <?php } ?>
 

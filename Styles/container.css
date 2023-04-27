@@ -5,13 +5,12 @@
     display: flex;
     text-align: center;
     position:relative;
-    max-width:78%;
+    height: 39em;
+    min-height:39em;
 }
 
 /* Sous-partie d'un main_container */
 .container{
-    min-height:600px;
-    max-height: 100%;
     position:relative;
     padding: 15px 0 0 10px;
     text-align: center;
@@ -46,6 +45,7 @@
     margin: 100px 10px 0 10px;
     background-image:url(../images/fond_quadri.png);
     border-radius: 30px;
+    max-width:600px;
 }
 
 .interaction_container{
@@ -59,7 +59,8 @@
     text-align: center;
     position:relative;
     min-width: 500px;
-    width: 100%;
+    width: 90%;
+    max-width:1800px;
     margin: 6px 10px;
     padding: 20px 10px;
 }
@@ -90,7 +91,7 @@
 #utilisateurs {
     position:relative;
     min-width: 250px;
-    width: 300px;
+    width: 315px;
 }
 
 .deroulant {
@@ -102,7 +103,7 @@
 }
 
 #liste_users{
-    max-height:320px;
+    max-height:100%;
 }
 
 #default_div{

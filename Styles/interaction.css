@@ -28,7 +28,8 @@
 
 /* Div contenant les éléments permettant à l'utilisateur de saisir des données */
 .entrees {
-    width:370px;
+
+    width:450px;
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     position: relative;
@@ -88,15 +89,14 @@ input[type="checkbox"]{
 }
 
 #Revenir_accueil {
-    background-color: #333;
-    width:200px;
+    display:inline-block;
+    width:250px;
     margin:20px auto;
-    border-radius: 3px;
 
 }
 
 #Revenir_accueil a {
-    color: white;
+    color: black;
     text-shadow: none;
     margin-left: 7px;
 }
@@ -114,4 +114,17 @@ input[type="checkbox"]{
     display: inline-block;
     margin-right:40px;
     width:250px;
+}
+
+label[for="presentation"]{
+    float:right;
+    text-align:center;
+}
+
+#mini_avatar {
+    position:absolute;
+    left:50px;
+    bottom: 0;
+    width:50px;
+    height:50px;
 }

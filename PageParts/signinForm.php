@@ -1,5 +1,5 @@
 
-<div id="signin" class="container central">
+<div id="signin" class="container central deroulant">
 
     <img class="image_commentaire" src="<?php echo $littleImagePathLink."New_Player.png" ?>" alt="New Player !">
 
@@ -21,8 +21,8 @@
 
         <br><br>
         <div class="entrees">
-            <label for="emailSignin">Email :</label>
-            <input id="emailSignin" class="saisie" name="emailSignin" type="email" required="required" value="<?php echo $email ?>"/>
+            <label for="email">Email :</label>
+            <input id="email" class="saisie" name="email" type="email" required="required" value="<?php echo $email ?>"/>
         </div>
 
         <br><br>
@@ -33,14 +33,30 @@
 
         <br><br>
         <div class="entrees">
-            <label for="presentation">Présentation :</label>
-            <textarea class="zone_texte" id="presentation" name="presentation" placeholder="Presentation"></textarea>
+            <label for="presentation">Présentation :</label><br>
+            <textarea class="zone_texte" id="presentation" name="presentation" placeholder="Presentation"><?php echo $presentation ?></textarea>
         </div>
 
         <br><br>
         <div class="entrees">
+            <img id="mini_avatar" class="avatar" src="<?php echo $avatar ?>" alt="">
             <label for="avatar">Avatar :</label>
-            <input id="avatar" class="input_center" name="avatar" type="file" onchange="addFile()">
+            <script>
+                function addFile() {
+                    const fileInput = document.getElementById('avatar');
+                    if (fileInput.files.length > 0) {
+                        alert("Le fichier a été téléchargé !");
+                        <?php
+                        $class = "";
+                        ?>
+                    } else {
+                        <?php
+                        $class = "input_center";
+                        ?>
+                    }
+                }
+            </script>
+            <input id="avatar" class="<?php echo $class ?>" name="avatar" type="file" onchange="addFile()">
         </div>
 
         <br><br>
@@ -49,24 +65,26 @@
             <input id="affichage_nom" class="input_center" name="affichage_nom" type="checkbox" <?php if ($affichage_nom) {echo "checked";} ?>>
         </div>
 
-        <?php if ($connecte) {?>
+        <?php $required = 'required="required"';
+        if ($connecte) {
+            $required = "" ?>
             <br><br>
             <div class="entrees">
                 <label for="ancien_mdp">Ancien mot de passe :</label>
-                <input id="ancien_mdp" class="saisie" name="ancien_mdp" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
+                <input id="ancien_mdp" class="saisie" name="ancien_mdp" type="password" pattern="[a-zA-Z0-9-'--]{8,100}"/>
             </div>
         <?php }?>
 
             <br><br>
             <div class="entrees">
                 <label for="mdp1">Mot de passe :</label>
-                <input id="mdp1" class="saisie" name="mdp1" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
+                <input id="mdp1" class="saisie" name="mdp1" type="password" <?php echo $required ?> pattern="[a-zA-Z0-9-'--]{8,100}"/>
             </div>
 
             <br><br>
             <div class="entrees">
                 <label for="mdp2">Confirmation :</label>
-                <input id="mdp2" class="saisie" name="mdp2" type="password" required="required" pattern="[a-zA-Z0-9-'--]{8,100}"/>
+                <input id="mdp2" class="saisie" name="mdp2" type="password" <?php echo $required ?> pattern="[a-zA-Z0-9-'--]{8,100}"/>
             </div>
 
         <br><br>

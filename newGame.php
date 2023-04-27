@@ -17,6 +17,9 @@ $imageJeu = "";
 $reglesJeu="";
 $typeJeu = "";
 
+$site = checkSite('index.php');
+$siteCourant = $site;
+
 if(isset($_GET["jeu"])){
     $idJeu = $_GET["jeu"];
     $jeu = getJeux($siteCourant, $idJeu);
@@ -55,8 +58,8 @@ checkNewGame();
 
     <?php include('./PageParts/users.php') ?>
 
-    <div class="container central">
-        <?php if ($idJeu == 0) { ?>
+    <div class="container central deroulant" >
+        <?php if ($idJeu == -1) { ?>
             <img class="image_commentaire" src="<?php echo $littleImagePathLink . "New_Game.png" ?>" alt="New Game !">
         <?php } else {?>
             <img class="image_commentaire" src="<?php echo $littleImagePathLink . "Game_Changer.png" ?>" alt="Game Changer!">
@@ -87,7 +90,7 @@ checkNewGame();
 
             <div class="entrees">
                 <label for="saisie_image_jeu">Image du Jeu</label>
-                <input id="saisie_image_jeu" class="input_center" required="required" name="saisie_image_jeu" type="file">
+                <input id="saisie_image_jeu" class="input_center" name="saisie_image_jeu" type="file">
             </div>
             <br><br>
 

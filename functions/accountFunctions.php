@@ -15,7 +15,15 @@ function checkAccount(): void
             // Dans ce cas, on vérifie les données fournies avec la fonction checkNewAccountForm
             checkNewAccountForm();
         }
+    }else if(isset($_POST["modifier_profil"])){
+        updateAccount();
+        if($_POST["ancien_mdp"] != ""){
+            updatePassword();
+        }
+    } else if (isset($_POST["mettre_administrateur"])){
+        updateAdmin($id);
     }
+
 }
 
 // Fonction permettant de valider le formulaire de connexion
@@ -46,6 +54,7 @@ function checkConnectionForm(): void
         $_SESSION['nom'] = $row['nom'];
         $_SESSION['prenom'] = $row['prenom'];
         $_SESSION['pseudo'] = $row['pseudo'];
+        $_SESSION['presentation'] = $row['presentation'];
         $_SESSION['avatar'] = $row['avatar'];
         $_SESSION['affichage_nom'] = $row['affichage_nom'];
         $_SESSION['administrateur'] = $row['administrateur'];
@@ -92,7 +101,7 @@ function checkNewAccountForm(): void
     $prenom = securizeString_ForSQL($_POST["prenom"]);
     $email = securizeString_ForSQL($_POST["emailSignin"]);
     $pseudo = securizeString_ForSQL($_POST["pseudo"]);
-
+    $presentation = securizeString_ForSQL($_POST["presentation"]);
 
     // Création des requêtes
     $query_email = "SELECT * FROM utilisateurs WHERE mail = '$email'";
@@ -143,8 +152,8 @@ function checkNewAccountForm(): void
         }
 
         // Si aucune erreur n'a été trouvé, on insère les données de l'utilisateur dans la base de données
-        $query_insert = "INSERT INTO `utilisateurs` (`id`, `mail`, `mdp`, `nom`, `prenom`, `pseudo`, `avatar`, `affichage_nom`, `administrateur`) 
-                VALUES (NULL, '$email', '$mdp', '$nom', '$prenom', '$pseudo', '$image', '0', '0')";
+        $query_insert = "INSERT INTO `utilisateurs` (`id`, `mail`, `mdp`, `nom`, `prenom`, `pseudo`, `presentation`, `avatar`, `affichage_nom`, `administrateur`) 
+                VALUES (NULL, '$email', '$mdp', '$nom', '$prenom', '$pseudo', '$presentation', '$image', '0', '0')";
 
         // Execution de la requête et verification
         $result = $conn->query($query_insert);
@@ -180,10 +189,11 @@ function updateAccount(): void
     $prenom = securizeString_ForSQL($_POST["prenom"]);
     $email = $_POST["email"];
     $pseudo = securizeString_ForSQL($_POST["pseudo"]);
+    $presentation = securizeString_ForSQL($_POST["presentation"]);
     $id = $_SESSION['id'];
 
     // Création des requêtes
-    $update = "UPDATE `utilisateurs` SET `mail` = '$email', `nom` = '$nom', `prenom` = '$prenom', `pseudo` = '$pseudo' WHERE `utilisateurs`.`id` = $id";
+    $update = "UPDATE `utilisateurs` SET `mail` = '$email', `nom` = '$nom', `prenom` = '$prenom', `pseudo` = '$pseudo', `presentation` = '$presentation' WHERE `utilisateurs`.`id` = $id";
 
     // Execution des requêtes et verification
     $result = $conn->query($update);
@@ -209,45 +219,90 @@ function updateAccount(): void
  */
 function updatePassword(): void
 {
-    // On récupère les deux mots de passe pour les comparés
-    $mdp1 = $_POST["mdp1"];
-    $mdp2 = $_POST["mdp2"];
-
-    if ($mdp1 != $mdp2) { // Si les deux mots de passe ne correspondent pas, on affiche un message d'erreur et on quitte la fonction
-        ?>
-        <script>
-            alert("Les mots de passe ne correspondent pas.");
-        </script>
-        <?php
-        return;
-    }
-
-    // On sécurise le mot de passe
-    $mdp = md5($mdp1);
-
-    // On récupère la variable globale $conn pour exécuter les requêtes
     global $conn;
 
-    $id = $_SESSION['id'];
+    // On récupère les deux mots de passe pour les comparer
+    $mdp1 = $_POST["mdp1"];
+    $mdp2 = $_POST["mdp2"];
+    $email = $_POST["email"];
+    $ancien_mdp = md5($_POST["ancien_mdp"]);
 
-    // Création des requêtes
-    $update = "UPDATE `utilisateurs` SET `mdp` = '$mdp' WHERE `utilisateurs`.`id` = $id";
+    $query = "SELECT * FROM utilisateurs WHERE mail = '$email' AND mdp = '$ancien_mdp'";
+    // Execution de la requête et verification
+    $result = $conn->query($query);
 
-    // Execution des requêtes et verification
-    $result = $conn->query($update);
-    if ($result) { // Si la requête a fonctionné, on affiche un message de succès
+    if (mysqli_num_rows($result) == 0) {
         ?>
         <script>
-            alert("Votre mot de passe a bien été modifié.");
+            alert("Mauvais mot de passe.");
+        </script>
+        <?php
+    }else{
+        if ($mdp1 != $mdp2) { // Si les deux mots de passe ne correspondent pas, on affiche un message d'erreur et on quitte la fonction
+            ?>
+            <script>
+                alert("Les mots de passe ne correspondent pas.");
+            </script>
+            <?php
+            return;
+        }
+
+        // On sécurise le mot de passe
+        $mdp = md5($mdp1);
+
+        $id = $_SESSION['id'];
+
+        // Création des requêtes
+        $update = "UPDATE `utilisateurs` SET `mdp` = '$mdp' WHERE `utilisateurs`.`id` = $id";
+
+        // Execution des requêtes et verification
+        $result = $conn->query($update);
+        if ($result) { // Si la requête a fonctionné, on affiche un message de succès
+            ?>
+            <script>
+                alert("Votre mot de passe a bien été modifié.");
+            </script>
+            <?php
+        } else { // Si la requête n'a pas fonctionné, on affiche un message d'erreur
+            ?>
+            <script>
+                alert("Une erreur est survenue lors de la modification de votre mot de passe.");
+            </script>
+            <?php
+        }
+    }
+}
+
+function updateAdmin(string $id): void
+{
+    global $conn;
+
+    if (isset($_POST["administrateur"]))
+        $administrateur = 1;
+    else
+        $administrateur = 0;
+    ?>
+    <script>
+        alert("<?=$administrateur?>");
+    </script>
+<?php
+    $query_insert = "UPDATE `utilisateurs` SET `administrateur` = '$administrateur' WHERE `utilisateurs`.`id` = $id";
+
+    // Execution de la requête et verification
+    $result = $conn->query($query_insert);
+
+    if ($result) { // Si la requête a fonctionné, on affiche un message de succès et on redirige l'utilisateur vers la page de connexion
+        ?>
+        <script>
+            alert("L'utilisateur est bien passé administrateur.");
         </script>
         <?php
     } else { // Si la requête n'a pas fonctionné, on affiche un message d'erreur
         ?>
         <script>
-            alert("Une erreur est survenue lors de la modification de votre mot de passe.");
+            alert("Une erreur est survenue lors de la tentative de modification du statut de cet utilisateur.");
         </script>
         <?php
     }
 }
-
 ?>

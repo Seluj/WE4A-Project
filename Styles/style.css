@@ -265,8 +265,17 @@ input[type="checkbox"]{
 	height:150px;
 }
 
+#presentation_profil {
+	max-height:150px;
+	overflow: hidden;
+}
+
 .profil p {
 	text-align: center;
 	font-size:25px;
 	padding: 10px;
+}
+
+#profil_user p {
+	font-size: 20px;
 }

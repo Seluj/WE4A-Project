@@ -20,9 +20,9 @@ if (isset($_SESSION['id'])) {
     $prenom = $_SESSION['prenom'];
     $email = $_SESSION['mail'];
     $pseudo = $_SESSION['pseudo'];
-    $presentation = $_SESSION["presentation"];
+    $presentation = $_SESSION['presentation'];
 
-    $avatar = $_SESSION['avatar'];
+    $avatar = $imagePathLink . $_SESSION['avatar'];
    if ($_SESSION['affichage_nom'] == 0) {
        $utilisateur = $pseudo;
    } else {
