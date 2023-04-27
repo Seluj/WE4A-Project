@@ -7,6 +7,8 @@
     position:relative;
     height: 39em;
     min-height:39em;
+    width:100%;
+    max-width:125%;
 }
 
 /* Sous-partie d'un main_container */
@@ -45,7 +47,7 @@
     margin: 100px 10px 0 10px;
     background-image:url(../images/fond_quadri.png);
     border-radius: 30px;
-    max-width:600px;
+    width:70%;
 }
 
 .interaction_container{
@@ -59,7 +61,7 @@
     text-align: center;
     position:relative;
     min-width: 500px;
-    width: 90%;
+    width: 100%;
     max-width:1800px;
     margin: 6px 10px;
     padding: 20px 10px;
@@ -108,4 +110,10 @@
 
 #default_div{
     max-height: 700px;
+}
+
+#contientBouton {
+    width:100%;
+    text-align:center;
+    display:inline-block;
 }

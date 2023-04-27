@@ -51,9 +51,8 @@ input[type="checkbox"]{
 
 /* Div contenant un lien */
 .linkBox {
-
 	text-align: center;
-	padding: 5px;
+	padding: 5px 5px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -69,16 +68,12 @@ input[type="checkbox"]{
 
 /* Style des liens contenus dans une div de classe linkBox quand l'utilisateur passe sa souris dessus */
 .linkBox:hover {
-
 	text-align: center;
 	background-color: #6C6477;
 	border: #494254 solid 4px;
 	margin-left: 12px;
 	border-radius: 10px;
-}
-
-.linkBox:hover a{
-	color:white;
+	padding:1px 5px;
 }
 
 #utilisateurs {
@@ -108,8 +103,8 @@ input[type="checkbox"]{
 }
 
 .BoutonCreerTopicMessage{
+	display: inline-block;
 	text-align: center;
-	margin-right:100px;
 	padding:10px;
 }
 
@@ -217,7 +212,6 @@ input[type="checkbox"]{
 }
 
 #topics_list {
-	width: 75%;
 	margin-top: 20px;
 }
 
@@ -225,11 +219,12 @@ input[type="checkbox"]{
 	position:relative;
 	display: inline-block;
 	text-align:center;
-	width: 600px;
+	width:100%;
 }
 
-#message_topic{
+.message_topic{
 	overflow: hidden;
+	padding-left:40px;
 }
 
 .mini_image {

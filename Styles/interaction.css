@@ -28,8 +28,7 @@
 
 /* Div contenant les éléments permettant à l'utilisateur de saisir des données */
 .entrees {
-
-    width:450px;
+    width:75%;
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
     position: relative;
@@ -85,17 +84,17 @@ input[type="checkbox"]{
 .Boutons:hover {
     background-color: #B5A4CD;
     border: #494254 solid 3px;
-    margin-top:27px;
+    margin-bottom:8px;
 }
 
-#Revenir_accueil {
+.Revenir_accueil {
     display:inline-block;
     width:250px;
     margin:20px auto;
 
 }
 
-#Revenir_accueil a {
+.Revenir_accueil a {
     color: black;
     text-shadow: none;
     margin-left: 7px;
