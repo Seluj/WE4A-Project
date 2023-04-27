@@ -101,7 +101,7 @@ function getJeux(int $type, int|null $id = null, bool $user = false): bool|mysql
         $query = "SELECT * FROM `jeux` WHERE `jeux`.`type` = '$type'";
     } else if ($user) { // Si on veut récupérer les jeux où l'utilisateur a créé un topic
         // On force la récupération de l'id de l'utilisateur connecté si on ne précise pas d'id
-        $query = "SELECT `jeux`.*
+        $query = "SELECT DISTINCT `jeux`.*
                 FROM `jeux`
                 INNER JOIN `topics` ON `jeux`.`id` = `topics`.`jeux_id`
                 WHERE `topics`.`user_id` = '$id' 
