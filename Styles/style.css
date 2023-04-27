@@ -4,7 +4,6 @@
 .police {
 	font-family: 'Press Start 2P', cursive;
 	font-weight: bold;
-	color: #FFFFFF;
 	text-shadow: 1px 1px #B2B2B2;
 }
 
@@ -52,6 +51,8 @@ input[type="checkbox"]{
 
 /* Div contenant un lien */
 .linkBox {
+
+	text-align: center;
 	padding: 5px;
 	display: flex;
 	justify-content: space-between;
@@ -68,6 +69,8 @@ input[type="checkbox"]{
 
 /* Style des liens contenus dans une div de classe linkBox quand l'utilisateur passe sa souris dessus */
 .linkBox:hover {
+
+	text-align: center;
 	background-color: #6C6477;
 	border: #494254 solid 4px;
 	margin-left: 12px;
@@ -104,17 +107,17 @@ input[type="checkbox"]{
 	display:inline-block;
 }
 
-#BoutonCreerTopic{
-	position:absolute;
+.BoutonCreerTopicMessage{
+	text-align: center;
+	margin-right:100px;
 	padding:10px;
-	left:0;
-	top:235px;
+}
+
+.BoutonCreerTopicMessage a{
+	color:#2A1660;
 }
 
 #BoutonModifierJeu a{
-	color:black;
-}
-#BoutonCreerTopic a{
 	color:black;
 }
 #BoutonModifierProfil a{
@@ -201,8 +204,8 @@ input[type="checkbox"]{
 	text-align: justify;
 	margin:0 15px;
 	padding: 10px 0;
-	border-top: solid black 3px;
-	border-bottom: solid black 3px;
+	border-top: solid #2C83FF 3px;
+	border-bottom: solid #2C83FF 3px;
 }
 
 * {
@@ -215,6 +218,7 @@ input[type="checkbox"]{
 
 #topics_list {
 	width: 75%;
+	margin-top: 20px;
 }
 
 #one_topic {
@@ -250,4 +254,19 @@ input[type="checkbox"]{
 #titre_topic{
 	margin-top:15%;
 	display:inline-block;
+	margin-right: 15%;
+}
+
+#avatar_profil {
+	position: absolute;
+	top: 50px;
+	right:50px;
+	width:150px;
+	height:150px;
+}
+
+.profil p {
+	text-align: center;
+	font-size:25px;
+	padding: 10px;
 }

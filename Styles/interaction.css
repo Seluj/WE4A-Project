@@ -21,16 +21,6 @@
     border-bottom: black solid 2px;
 }
 
-/* Zone de texte dans laquelle l'utilisateur peut saisir un message */
-#message {
-    margin-top:20px;
-    width: 720px;
-    max-width: 720px;
-    min-width: 720px;
-    min-height: 300px;
-    max-height: 500px;
-}
-
 /* Div contenant les éléments permettant à l'utilisateur de saisir le titre d'un topic */
 #entrer_titre {
     max-width:600px;
@@ -76,6 +66,7 @@ input[type="checkbox"]{
 
 /* Style des boutons */
 .Boutons {
+    cursor: pointer;
     white-space: nowrap;
     font-size: 20px;
     font-weight: bold;
@@ -108,4 +99,19 @@ input[type="checkbox"]{
     color: white;
     text-shadow: none;
     margin-left: 7px;
+}
+
+.zone_texte{
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    width:340px;
+    min-width: 340px;
+    max-width: 340px;
+}
+
+#saisie_topic {
+    display: inline-block;
+    margin-right:40px;
+    width:250px;
 }

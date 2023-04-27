@@ -5,10 +5,12 @@
     display: flex;
     text-align: center;
     position:relative;
+    max-width:1500px;
 }
 
 /* Sous-partie d'un main_container */
 .container{
+    min-height:600px;
     max-height: 610px;
     position:relative;
     padding: 15px 0 0 10px;
@@ -78,11 +80,13 @@
 }
 
 .central h3 {
-
+    display:inline-block;
     padding: 10px 0 0 10px;
-    border-top: black solid 2px;
 }
 
+.central h4 {
+    margin-bottom: 0;
+}
 #utilisateurs {
     position:relative;
     min-width: 250px;
