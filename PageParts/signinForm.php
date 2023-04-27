@@ -39,7 +39,7 @@
 
         <br><br>
         <div class="entrees">
-            <img id="mini_avatar" class="avatar" src="<?php echo $avatar ?>" alt="">
+            <?php if($connecte){ ?><img id="mini_avatar" class="avatar" src="<?php echo $avatar ?>" alt=""><?php } ?>
             <label for="avatar">Avatar :</label>
             <script>
                 function addFile() {
@@ -94,9 +94,9 @@
         <?php } else {?>
             <input class="Boutons" type="submit" name="modifier_profil" value="Modifier Profil" />
         <?php } ?>
-    </form>
+    </form><br>
 
-    <div id="Revenir_accueil" class="linkBox">
+    <div class="Boutons Revenir_accueil">
         <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
     </div>
 </div>

@@ -41,7 +41,7 @@
         <?php } ?>
     </div><br>
 
-    <div id="Revenir_accueil" class="Boutons">
+    <div class="Boutons Revenir_accueil">
         <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
     </div>
 </div>
