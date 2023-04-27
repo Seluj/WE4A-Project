@@ -9,7 +9,9 @@
             <div id="presentation_profil">
                 <?php echo $presentation ?>
             </div>
-            <?php if (!$pageNewAccount) { ?>
+
+            <?php // Si l'utilisateur est sur la page de modificationd e profil, on n'affiche pas le bouton
+            if (!$pageNewAccount) { ?>
                 <div id="BoutonModifierProfil" class="linkBox">
                     <a class="police" href="./newAccount.php">Modifier Profil</a>
                 </div>

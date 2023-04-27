@@ -1,46 +1,29 @@
-/* Fichier style.css contenant les éléments généraux utilisés dans toutes les pages */
+/* Fichier style.css contenant les éléments généraux utilisés dans toutes les pages
+/* et les petits éléments de détail*/
 
-/* Liens */
-.police {
-	font-family: 'Press Start 2P', cursive;
-	font-weight: bold;
-	text-shadow: 1px 1px #B2B2B2;
+/* Tous les éléments du site */
+* {
+	box-sizing: border-box;
 }
 
-a {
-	color:black;
-	text-decoration:none;
-}
-
-/* Listes */
-ul {
-	list-style: none;
-}
-
-/* Corps de toutes les pages */
+/* Corps du site */
 body {
 	margin-top: 0;
 	margin-bottom:0;
 	background-color: #C5DDFF;
 }
 
-/* Titres de la page */
-h1 {
-	max-width: 400px;
-	font-size: 24px;
+/* Éléments dont on souhaite aplliquer la police suivante (boutons en général) */
+.police {
+	font-family: 'Press Start 2P', cursive;
 	font-weight: bold;
-	margin-top: 0;
-	color: #221146;
 	text-shadow: 1px 1px #B2B2B2;
 }
 
-/* Boîtes de saisie de données*/
-.saisie{
-	margin-right: 10px;
-	padding: 5px;
-	border-radius: 3px;
-	border: none;
-	box-shadow: inset 0 0 2px #000000;
+/* Liens du site */
+a {
+	color:black;
+	text-decoration:none;
 }
 
 /* Style des checkboxes */
@@ -49,44 +32,7 @@ input[type="checkbox"]{
 	height: 20px;
 }
 
-/* Div contenant un lien */
-.linkBox {
-	text-align: center;
-	padding: 5px 5px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-left: 20px
-}
-
-/* Lien contenu dans une div de classe linkBox */
-.linkBox a {
-	white-space: nowrap;
-	font-size: 17px;
-	text-decoration:none;
-}
-
-/* Style des liens contenus dans une div de classe linkBox quand l'utilisateur passe sa souris dessus */
-.linkBox:hover {
-	text-align: center;
-	background-color: #6C6477;
-	border: #494254 solid 4px;
-	margin-left: 12px;
-	border-radius: 10px;
-	padding:1px 5px;
-}
-
-#utilisateurs {
-	position:relative;
-	min-width: 250px;
-	width: 300px;
-}
-
-#telecharger_regle:hover{
-	margin-top: 5px;
-	margin-bottom: 0;
-}
-
+/* Image du jeu dans les pages de jeu et de topic */
 .image_jeu {
 	float:left;
 	min-height: 50px;
@@ -96,35 +42,14 @@ input[type="checkbox"]{
 	margin: 0 20px 10px 0;
 }
 
-
-#BoutonModifierJeu {
-	position:relative;
-	display:inline-block;
-}
-
-.BoutonCreerTopicMessage{
-	display: inline-block;
-	text-align: center;
-	padding:10px;
-}
-
-.BoutonCreerTopicMessage a{
-	color:#2A1660;
-}
-
-#BoutonModifierJeu a{
-	color:black;
-}
-#BoutonModifierProfil a{
-	color:black;
-}
-
+/* Conteneur de la description d'un jeu dans la page d'un jeu */
 #description_jeu{
 	border-top: black solid 2px;
 	border-bottom: black solid 2px;
 	margin: 60px 20px 20px 20px;
 }
 
+/* Description d'un jeu dans la page d'un jeu */
 #description_jeu p {
 	text-align: justify;
 	margin: 0 20px 20px 20px;
@@ -132,61 +57,12 @@ input[type="checkbox"]{
 	display: none;
 }
 
+/* Affichage de la description du jeu lors du passage de la souris */
 #description_jeu:hover p {
 	display: block;
 }
 
-#jeux{
-	margin-right: 0;
-	min-width: 250px;
-	width: 450px;
-}
-
-#profil {
-	max-width: 250px;
-	flex-direction: column;
-	display: flex;
-	margin: 0 auto;
-}
-
-.avatar {
-	display: inline-block;
-	height:85px;
-	width: 85px;
-	border-radius: 100px;
-}
-
-#profil h1 {
-	font-size: 30px;
-	text-align: center;
-	margin: 0 20px;
-}
-
-#profil h1 a {
-	text-decoration:none;
-	color: black;
-}
-
-#profil div {
-	max-width: 250px;
-	padding-top: 10px;
-	display: flex;
-	margin: 10px auto 0 auto;
-	text-align: center;
-	border-top: black solid 2px;
-}
-
-#profil h2 {
-	display: inline-block;
-	text-align: center;
-	width: 110px;
-	max-width: 130px;
-	max-height: 100px;
-	font-size: 17px;
-	margin: auto 20px auto 20px;
-	overflow-wrap: break-word;
-}
-
+/* Image de fond dans la page d'accueil */
 #image_titre {
 	position:relative;
 	max-width: 100%;
@@ -195,6 +71,7 @@ input[type="checkbox"]{
 	margin-bottom: 10px;
 }
 
+/* Texte dans la page d'accueil */
 .texte_accueil {
 	text-align: justify;
 	margin:0 15px;
@@ -203,18 +80,7 @@ input[type="checkbox"]{
 	border-bottom: solid #2C83FF 3px;
 }
 
-* {
-	box-sizing: border-box;
-}
-
-.titre_topic {
-	font-weight: bold;
-}
-
-#topics_list {
-	margin-top: 20px;
-}
-
+/* Topics des listes */
 #one_topic {
 	position:relative;
 	display: inline-block;
@@ -222,11 +88,13 @@ input[type="checkbox"]{
 	width:100%;
 }
 
+/* Messages des topics dans les listes de topics */
 .message_topic{
 	overflow: hidden;
 	padding-left:40px;
 }
 
+/* Petites images dans les listes de topics / messages */
 .mini_image {
 	min-height: 50px;
 	min-width: 50px;
@@ -234,24 +102,21 @@ input[type="checkbox"]{
 	border-radius: 50px;
 }
 
+/* Petites images des jeux dans les listes de topics */
 #mini_image_jeu {
 	position:absolute;
 	right: 5px;
 	top:10px;
 }
 
+/* Petites images des users dans les listes de topics / messages */
 #mini_image_avatar {
 	position:absolute;
 	left: 5px;
 	top:10px;
 }
 
-#titre_topic{
-	margin-top:15%;
-	display:inline-block;
-	margin-right: 15%;
-}
-
+/* Image de l'avatar de l'utilisateur dans la page de profil */
 #avatar_profil {
 	position: absolute;
 	top: 50px;
@@ -260,17 +125,7 @@ input[type="checkbox"]{
 	height:150px;
 }
 
-#presentation_profil {
-	max-height:150px;
-	overflow: hidden;
-}
-
-.profil p {
-	text-align: center;
-	font-size:25px;
-	padding: 10px;
-}
-
+/* Présentation de l'utilisateur dans la page de profil */
 #profil_user p {
 	font-size: 20px;
 }

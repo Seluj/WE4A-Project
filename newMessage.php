@@ -1,26 +1,44 @@
+<!-- newMessage.php -->
+<!-- Fichier permettant à l'utilisateur de saisir un nouveau topic ou un nouveau message -->
+
 <?php
-session_start();
+
+session_start(); // Lancement de la session
+
+// Inclusion des pages contenant les fonctions et variables utiles
 include('./PageParts/variables.php');
 include('./functions/databaseFunctions.php');
 include('./functions/accessFunctions.php');
 include("./functions/postFunctions.php");
 
+// Connexion à la base de données
 connectDatabase();
 
+// Vérification de connexion : si l'utilisateur n'est pas connecté et tente d'aller sur cette page, on le redirige vers index.php
 if (!isset($_SESSION['id'])) {
     header("Location: ./index.php");
 }
 
+/* Vérification : si aucune des deux variables topic ou jeu ne sont présentes dans l'url de la page,
+elle ne peut pas fonctionner : on redirige donc vers l'accueil */
 if (!checkParameter("topic") && !checkParameter("jeu")) {
     header("Location: ./index.php");
 }
 
-$postType = "";
-$titreTopic = "";
-$jeuID = "";
-$topicID = "";
+//Déclaration et initialisation des variables utiles dans la page
+$postType = "";    // Type de post à créer (topic ou message)
+$titreTopic = "";  // Titre du topic
+$topicID = "";     // ID du topic
+$jeuID = "";       // ID du jeu associé
 
-if (isset($_GET['topic'])) {
+// On récupère le site courant et on le sauvegarde puisque la valeur de $site va être modifiée dans le header
+$site = checkSite('newMessage.php');
+$siteCourant = $site;
+
+// On identifie les parametres dans l'URL et on initialise les variables en fonction
+if (isset($_GET['topic'])) { // Si on a un topic dans l'URL
+
+    // On récupère l'identifiant du topic et on récupère les informations du topic
     $topicID = $_GET['topic'];
     $row = getTopics($topicID, "one");
 

@@ -1,4 +1,7 @@
-/* Conteneur principal abritant le contenu de la page */
+/* Fichier container.css contenant les styles des principaux éléments conteneurs du site */
+
+
+/* Conteneur principal abritant le contenu de la page (les trois parties principales) */
 .main_container {
     margin: 10px auto;
     padding: 5px 0;
@@ -11,8 +14,9 @@
     max-width:125%;
 }
 
-/* Sous-partie d'un main_container */
+/* Sous-partie d'un main_container (les trois parties principales)*/
 .container{
+    display:inline-block;
     position:relative;
     padding: 15px 0 0 10px;
     text-align: center;
@@ -21,42 +25,8 @@
     font-family: 'Press Start 2P', cursive;
     border-radius: 15px;
 }
-.container ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
 
-.container li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.container ul li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
-
-/* Formulaires des fenêtres d'interaction */
-.container_list {
-    padding: 30px 50px;
-    display: inline-block;
-    text-align: center;
-    margin: 100px 10px 0 10px;
-    background-image:url(../images/fond_quadri.png);
-    border-radius: 30px;
-    width:70%;
-}
-
-.interaction_container{
-    position:relative;
-    margin: 0 20px 0 20px;
-    max-width: 1000px;
-    min-width: 770px;
-}
-
+/* Conteneur central */
 .central {
     text-align: center;
     position:relative;
@@ -67,51 +37,84 @@
     padding: 20px 10px;
 }
 
-.central h1{
-    display: inline-block;
-    width: auto;
-    font-size: 30px;
-    text-align: center;
-    margin: auto;
-    position:absolute;
-    left:10%;
-    right:10%;
-}
-
-.central h2 a{
-    margin: 0 auto;
-}
-
-.central h3 {
-    display:inline-block;
-    padding: 10px 0 0 10px;
-}
-
-.central h4 {
-    margin-bottom: 0;
-}
+/* Conteneur de la partie gauche (utilisateurs)*/
 #utilisateurs {
     position:relative;
     min-width: 250px;
     width: 315px;
 }
 
+/* Conteneur de la partie droite (jeux) */
+#jeux{
+    margin-right: 0;
+    min-width: 250px;
+    width: 450px;
+}
+
+/* Conteneur des listes */
+.container_list {
+    padding: 30px 50px;
+    display: inline-block;
+    text-align: center;
+    margin: 100px 10px 0 10px;
+    background-image:url(../images/fond_quadri.png);
+    border-radius: 30px;
+    width:70%;
+}
+
+/* Conteneur des formulaires d'interaction */
+.interaction_container{
+    position:relative;
+    margin: 0 20px 0 20px;
+    max-width: 1000px;
+    min-width: 770px;
+}
+
+/* Conteneur déroulant */
 .deroulant {
     overflow: hidden;
 }
 
+/* Conteneur déroulant quand la souris passe dessus */
 .deroulant:hover {
     overflow: auto;
 }
 
+/* Conteneur du profil dans la partie gauche */
+#profil {
+    max-width: 250px;
+    flex-direction: column;
+    display: flex;
+    margin: 0 auto;
+}
+
+/* Différentes parties du conteneur du profil */
+#profil div {
+    max-width: 250px;
+    padding-top: 10px;
+    display: flex;
+    margin: 10px auto 0 auto;
+    text-align: center;
+    border-top: black solid 2px;
+}
+
+/* Conteneur abritant la présentation de l'utilisateur */
+#presentation_profil {
+    max-height:150px;
+    overflow: hidden;
+}
+
+/* Liste des utilisateurs de la partie gauche */
 #liste_users{
     max-height:100%;
 }
 
+/* Conteneur central de la page d'accueil */
 #default_div{
     max-height: 700px;
 }
 
+/* Conteneur de bouton de création de topic / message */
 #contientBouton {
     width:100%;
     text-align:center;

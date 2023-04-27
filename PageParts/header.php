@@ -62,6 +62,12 @@ if (isset($siteCourant)) {
     $jeuxVisites = getJeux($siteCourant, (int)$id_user, true);
 }
 $users = getUsers();
+
+if ($siteCourant) {       // Permet de choisir l'icône à afficher dans le header en fonction du type de jeu courant
+    $icone = "background-image: url(./images/carte.png)";
+} else {
+    $icone = "background-image: url(./images/manette.png)";
+}
 ?>
 
 <header>

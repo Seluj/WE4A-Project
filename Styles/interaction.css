@@ -1,5 +1,6 @@
-/* Fichier intercation.css contenant le style des fenêtres d'interaction avec l'utilisateur */
+/* Fichier interaction.css contenant le style des fenêtres d'interaction avec l'utilisateur */
 
+/* Conteneur du formulaire d'inscription */
 #signin{
     display:none;
 }
@@ -42,64 +43,35 @@
     box-shadow: 0 5px 5px #E1D9F4;
     text-align: right;
 }
+
+/* Éléments contenus dans les conteneurs de classe entrees */
 .saisie {
     float:right;
 }
 
+/* Les input de type checkbox */
 input[type="checkbox"]{
     margin-top:5px;
 }
 
+/* Les inputs contenu dans les conteneurs de classe entrees */
 .entrees input{
     margin-left:15px;
 }
 
+/* Les inputs devant être centrés */
 .input_center{
     color:transparent;
     width:125px;
     margin:0 60px 0 15px;
 }
 
+/* Conteneur de l'élément permettant de choisir d'afficher son nom ou pas */
 #div_affiche_nom{
     text-align:center;
 }
 
-/* Style des boutons */
-.Boutons {
-    cursor: pointer;
-    white-space: nowrap;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 28px;
-    padding: 10px;
-    margin-bottom: 10px;
-    display: inline-block;
-    background-color: #F7F7F7;
-    border-radius: 5px;
-    border: #756099 solid 2px;
-    font-family: 'Times New Roman', cursive;
-}
-
-/* Style des boutons quand l'utilisateur passe la souris dessus */
-.Boutons:hover {
-    background-color: #B5A4CD;
-    border: #494254 solid 3px;
-    margin-bottom:8px;
-}
-
-.Revenir_accueil {
-    display:inline-block;
-    width:250px;
-    margin:20px auto;
-
-}
-
-.Revenir_accueil a {
-    color: black;
-    text-shadow: none;
-    margin-left: 7px;
-}
-
+/* Les zone pour la saisie de texte par l'utilisateur */
 .zone_texte{
     height: 300px;
     min-height: 300px;
@@ -109,20 +81,23 @@ input[type="checkbox"]{
     max-width: 340px;
 }
 
+/* Élément permettant de saisir un nouveau topic */
 #saisie_topic {
     display: inline-block;
     margin-right:40px;
     width:250px;
 }
 
+/* Style du label de l'élément permettant la saisie de la présentation */
 label[for="presentation"]{
     float:right;
     text-align:center;
 }
 
+/* Image de l'avatar du joueur lorsqu'il souhaite modifier son profil */
 #mini_avatar {
     position:absolute;
-    left:50px;
+    left:-20px;
     bottom: 0;
     width:50px;
     height:50px;

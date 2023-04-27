@@ -50,10 +50,14 @@ if($type!="default"){ ?>
                                 <p class="titre_topic"><?php echo $row["titre"] ?></p>
                                 <p class="message_topic"><?php echo getMessages($row["id"],"first")["contenu"] ?></p>
                             </a>
-                        <?php } else {?>
+
+                        <?php } else {
+                            //...sinon on liste des messages, on n'affiche donc qu'un message?>
                             <p class="message_topic"><?php echo $row["contenu"]; ?></p>
                         <?php }
 
+                        //Si on est sur la page d'accueil, on affiche une image du jeu lié au topic courant;
+                        // avec un lien dirigeant vers la page du jeu
                         if($type == "default"){ ?>
                             <a href="./index.php?site=<?php echo $siteCourant?>&jeu=
                             <?php echo getJeux($siteCourant,$row["jeux_id"])["id"] ?>">

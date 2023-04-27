@@ -5,7 +5,7 @@
 
     <h1 class="titre_interaction"><?php if (!$connecte) { ?>Créer un compte<?php } else { ?>Modifier Profil<?php } ?></h1>
 
-
+    <!-- Formulaire -->
     <form class="container_list" method="post" action="#" enctype="multipart/form-data">
 
         <div class="entrees">
