@@ -8,7 +8,6 @@ include("./functions/gamesFunctions.php");
 session_start();
 
 connectDatabase();
-checkAccount();
 
 $idJeu="";
 $nomJeu = "";

@@ -4,7 +4,7 @@
  * Fonction permettant de vérifier si un utilisateur est connecté, s'il veut se connecter ou s'enregistrer
  * @return void Ne retourne rien
  */
-function checkAccount(): void
+function checkAccount(string $id): void
 {
     // Si l'utilisateur n'est pas connecté, on vérifie :
     if (!isset($_SESSION['id'])) {

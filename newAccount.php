@@ -7,7 +7,6 @@ include("./functions/accessFunctions.php");
 session_start();
 
 connectDatabase();
-checkAccount();
 
 $pageNewAccount = true;
 
@@ -18,6 +17,7 @@ if(isset($_GET["util"])){
     $util = $_GET["util"];
 }
 
+checkAccount($util);
 ?>
 
 <!DOCTYPE html>
