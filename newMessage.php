@@ -59,7 +59,7 @@ checkEntry();
     <!-- Reste de la page -->
     <div class="main_container">
         <?php include('./PageParts/users.php') ?>
-        <div class="container central">
+        <div class="container central deroulant">
             <img class="image_commentaire" src="./images/Welcome_in_the_chat.png" alt="Start a new Game">
 
             <h1 class="titre_interaction">Nouveau <?php echo $postType ?></h1>
@@ -71,7 +71,7 @@ checkEntry();
 
                     <?php if ($postType == "Topic") {?>
                         <label for="choix_titre">Saisissez un titre pour votre Topic :</label>
-                        <br><input type="text" name="choix_titre" placeholder="Titre"/>
+                        <br><input id="saisie_topic" type="text" name="choix_titre" placeholder="Titre"/>
 
 
                     <?php } else {?>
@@ -86,7 +86,7 @@ checkEntry();
                 <div id="saisir_message" class="entrees">
                     <label for="choix_message">Saisissez votre <?php if ($postType == "Topic") { echo "premier "; }?>message :</label>
                     <br>
-                    <textarea id="message" name="choix_message" placeholder="Message"></textarea>
+                    <textarea class="zone_texte" id="message" name="choix_message" placeholder="Message"></textarea>
 
                 </div>
 

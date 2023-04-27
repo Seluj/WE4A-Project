@@ -74,7 +74,7 @@ checkNewGame();
 
             <div id="saisir_description" class="entrees">
                 <label for="description">Saisissez la description du jeu</label>
-                <textarea id="description" name="choix_description" required="required" placeholder="Description" ><?php echo $descriptionJeu ?></textarea>
+                <textarea class="zone_texte" id="description" name="choix_description" required="required" placeholder="Description" ><?php echo $descriptionJeu ?></textarea>
 
             </div>
             <br><br>
