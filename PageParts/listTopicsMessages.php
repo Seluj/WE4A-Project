@@ -1,14 +1,34 @@
 <?php
 if($type == "Topic"){
+    $creer = "Créer Message";
     $liste = $messages;
+    if ($connecte) {
+        $lien = "./newMessage.php?topic=" . $idTopic;
+    } else {
+        $lien = "./newAccount.php";
+    }
 }else{
     $liste = $topics;
+    $creer = "Créer Topic";
+    if ($connecte) {
+        $lien = "./newMessage.php?site=" . $siteCourant . "&jeu=" . $idJeu;
+    } else {
+        $lien = "./newAccount.php";
+    }
 }
 
-if($liste != false){?>
+if($type!="default"){ ?>
+    <div class="BoutonCreerTopicMessage Boutons">
+        <a class="police" href="<?php echo $lien ?>"><?php echo $creer ?></a>
+    </div><br>
+<?php } ?>
+
+
+
+<?php if($liste != false){?>
 
     <h3><?php if($type=="Jeu"){ echo "Topics associés à ".$nomJeu; }else if($type=="Topic"){echo "Messages associés";}
-        else{ echo "Quelques Topics"; } ?></h3>
+        else{ echo "Voici quelques Topics récents :"; } ?></h3><br>
 
     <div id="topics_list" class="container_list">
         <ul>

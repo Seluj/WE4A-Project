@@ -16,10 +16,6 @@
 <?php if($regles != $rulesGamesPathLink."-1"){ ?>
     <h2 id="telecharger_regle" class="linkBox"><a href="<?php echo $regles ?>" download="<?php echo 'regles_' . $nomJeu ?>.pdf">>> Télécharger les règles de <?php echo $nomJeu ?></a></h2>
 <?php } ?>
-<?php if ($connecte) {?>
-    <div id="BoutonCreerTopic" class="linkBox">
-        <a class="police" href="./newMessage.php?site=<?php echo $siteCourant ?>&jeu=<?php echo $idJeu ?>">Créer Topic</a>
-    </div>
-<?php } ?>
+
 
 <?php include("./PageParts/listTopicsMessages.php") ?>
