@@ -19,3 +19,7 @@
 
 
 <?php include("./PageParts/listTopicsMessages.php") ?>
+
+<div class="Boutons Revenir_accueil">
+    <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
+</div>
