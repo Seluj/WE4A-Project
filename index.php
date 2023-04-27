@@ -83,11 +83,6 @@ if (isset($_GET['search'])) {
         case "default":
             $typeSearch = "All";
             break;
-        /*
-        case "message":
-
-                break;
-        */
         default:
             break;
     }
