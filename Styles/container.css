@@ -5,13 +5,13 @@
     display: flex;
     text-align: center;
     position:relative;
-    max-width:1500px;
+    max-width:78%;
 }
 
 /* Sous-partie d'un main_container */
 .container{
     min-height:600px;
-    max-height: 610px;
+    max-height: 100%;
     position:relative;
     padding: 15px 0 0 10px;
     text-align: center;
