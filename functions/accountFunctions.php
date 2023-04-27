@@ -67,7 +67,7 @@ function checkConnectionForm(): void
  */
 function checkNewAccountForm(): void
 {
-    // On récupère les deux mots de passe pour les comparés
+    // On récupère les deux mots de passe pour les comparer
     $mdp1 = $_POST["mdp1"];
     $mdp2 = $_POST["mdp2"];
 
@@ -130,7 +130,7 @@ function checkNewAccountForm(): void
         <?php
     } else {
 
-        // On récupère le nom de l'image final en vérifiant ses données pour l'insérer dans la base de données
+        // On récupère le nom de l'image finale en vérifiant ses données pour l'insérer dans la base de données
         $image = securizeFile_ForSQL($_FILES, "avatar", 'img', $imagePath);
 
         if (!$image) { // Si l'image n'a pas été sauvegardée, on affiche un message d'erreur et on quitte la fonction
