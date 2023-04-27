@@ -3,6 +3,7 @@ session_start();
 include('./PageParts/variables.php');
 include('./functions/databaseFunctions.php');
 include('./functions/accessFunctions.php');
+include('./functions/searchFunctions.php');
 
 connectDatabase();
 
