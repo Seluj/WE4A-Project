@@ -40,7 +40,7 @@ checkAccount($util);
         <?php include('./PageParts/users.php');
 
         if($util != -1) {
-            include('./PageParts/profile.php');
+            include('./PageParts/CentralDiv/profile.php');
         }else{
             include('./PageParts/signinForm.php');
             include('./PageParts/loginForm.php') ?>
