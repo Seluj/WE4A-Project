@@ -15,7 +15,8 @@
             d'un aspect d'un jeu avec d'autres personnes, il te suffit d'aller sur la page du jeu et de créer un topic sur le sujet, et tout le monde
             pourra venir y participer !</p>
 
-    <?php }
-    include("./PageParts/listTopicsMessages.php") ?>
+    <?php } ?>
+    <h4>Choisissez un jeu pour créer un Topic à propos de ce jeu !</h4><br>
+    <?php include("./PageParts/listTopicsMessages.php") ?>
 
 </div>
