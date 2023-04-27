@@ -134,7 +134,6 @@ if (isset($_GET['search'])) {
                     break;
             }
             ?>
-
         </div>
         <?php include('./PageParts/proposedGames.php') ?>
 

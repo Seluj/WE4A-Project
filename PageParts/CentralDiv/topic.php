@@ -5,6 +5,6 @@
     <img class="image_jeu" src="<?php echo $imageJeu ?>" alt="avatar" title="<?php echo $nomJeu ?>">
 </a>
 
-<h2 id="titre_topic" >Sujet : <?php echo $nomTopic ?> </h2>
+<h2 id="titre_topic" >Sujet : <?php echo $nomTopic ?> </h2><br>
 
 <?php include("./PageParts/listTopicsMessages.php") ?>

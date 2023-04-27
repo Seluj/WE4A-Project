@@ -21,7 +21,13 @@
 
 </script>
 
-<h1>Résultat de la recherche : <?php $search ?> </h1>
-<div id="ShowPosts">
-    <!-- les posts seront écrits là par AJAX/fetch -->
+<h1>Résultat de la recherche : "<?php echo $search ?>" </h1>
+<div class="container_list">
+    <div id="ShowPosts">
+        <!-- les posts seront écrits là par AJAX/fetch -->
+    </div>
+</div><br>
+
+<div class="Boutons Revenir_accueil">
+    <a href="./index.php" class="backlink police"><< Revenir à l'accueil</a>
 </div>
