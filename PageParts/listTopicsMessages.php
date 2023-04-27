@@ -18,9 +18,12 @@ if($type == "Topic"){
 }
 
 if($type!="default"){ ?>
-    <div class="BoutonCreerTopicMessage Boutons">
-        <a class="police" href="<?php echo $lien ?>"><?php echo $creer ?></a>
-    </div><br>
+    <div id="contientBouton">
+        <div class="BoutonCreerTopicMessage Boutons">
+            <a class="police" href="<?php echo $lien ?>"><?php echo $creer ?></a>
+        </div>
+    </div>
+
 <?php } ?>
 
 
