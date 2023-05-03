@@ -1,3 +1,7 @@
+<!-- functions/gamesFunctions.php -->
+<!-- Fichier contenant les fonctions relatives aux jeux -->
+
+
 <?php
 
 /**
@@ -7,7 +11,6 @@
 function checkNewGame(): void
 {
 
-    
     // Si le bouton de création n'a pas été cliqué, on ne fait rien
     if (!isset($_POST['creer_jeu']))
         return;
@@ -25,7 +28,8 @@ function checkNewGame(): void
     // récupération des fichiers et sécurisation
     $image = securizeFile_ForSQL($_FILES, "saisie_image_jeu", 'img', $imagesGamesPath);
 
-    if (!$image) { // Si l'image n'a pas été ajoutée, on arrête la fonction et on affiche un message d'erreur
+    if (!$image) {
+        // Si l'image n'a pas été ajoutée, on affiche un message d'erreur et on arrête la fonction
         ?>
         <script>
             alert("Problème avec l'image.");
@@ -41,7 +45,8 @@ function checkNewGame(): void
         $regle = securizeFile_ForSQL($_FILES, "saisie_regles_jeu", 'pdf', $rulesGamesPath, "regles_" . $nom);
     }
 
-    if (!$regle) { // Si les règles n'ont pas été ajoutées, on affiche un message d'erreur et on met la variable à -1 pour bien l'identifier dans la base de données
+    if ($regle == NULL) {
+        // Si les règles n'ont pas été ajoutées, on affiche un message d'information et on met la variable à -1 pour bien l'identifier dans la base de données
         ?>
         <script>
             alert("Règles non ajoutées.");
@@ -76,13 +81,5 @@ function checkNewGame(): void
         </script>
         <?php
     }
-}
-
-function showDate($date){
-    setlocale(LC_TIME, 'fr_FR.utf8');
-    $timestamp = strtotime($date);
-    $formattedDate = strftime('%e %B %Y - %H:%M', $timestamp);
-    return $formattedDate;
-
 }
 ?>

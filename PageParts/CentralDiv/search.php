@@ -1,3 +1,7 @@
+<!-- PageParts/CentralDiv/search.php -->
+<!-- Fichier contenant l'affichage d'une recherche lorsqu'un utilisateur recherche quelque chose -->
+
+<!-- Utilisation de javascript pour utiliser de l'AJAX -->
 <script type="application/javascript">
 
     //Pour utiliser fetch, la fonction doit être "asynchrone"
@@ -21,7 +25,7 @@
 
 </script>
 
-<h1>Résultat de la recherche : "<?php echo $search ?>" </h1>
+<h1>Résultat de la recherche : "<?php echo $search; ?>" </h1>
 <div class="container_list">
     <div id="ShowPosts">
         <!-- les posts seront écrits là par AJAX/fetch -->

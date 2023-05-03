@@ -1,9 +1,12 @@
-<?php
+<!-- functions/postFunctions.php -->
+<!-- Fichier contenant les fonctions relatives aux posts : topics et messages -->
 
+
+<?php
 
 /**
  * Fonction permettant de vérifier si l'utilisateur veut ajouter un nouveau topic ou un nouveau message
- * @return void
+ * @return void Ne retourne rien
  */
 function checkEntry(): void
 {
@@ -48,7 +51,7 @@ function checkNewMessage(): void
 
 /**
  * Fonction permettant de vérifier les données fournies par l'utilisateur lors de la création d'un nouveau topic
- * @return void
+ * @return void Ne retourne rien
  */
 function checkNewTopic(): void
 {
@@ -73,7 +76,7 @@ function checkNewTopic(): void
         WHERE `topics`.`jeux_id` = '$idJeux' AND `topics`.`titre` = '$titre' AND `topics`.`user_id` = '$idAuteur';";
 
     // Execution des requêtes et verification
-    $result = $conn->query($insert_topic);
+    $conn->query($insert_topic);
 
     $result = $conn->query($query_topic);
 
@@ -82,8 +85,8 @@ function checkNewTopic(): void
         $row = mysqli_fetch_assoc($result);
         $idTopic = $row['id'];
         $insert_message = "INSERT INTO `messages` (`id`, `contenu`, `user_id`, `topics_id`) 
-            VALUES (NULL, '$message', '$idAuteur', '$idTopic')";
-        $result = $conn->query($insert_message);
+                        VALUES (NULL, '$message', '$idAuteur', '$idTopic')";
+        $conn->query($insert_message);
         header("Location: ./index.php?topic=" . $idTopic);
     } else {
         echo "Error: " . $insert_topic . "<br>" . $conn->error;

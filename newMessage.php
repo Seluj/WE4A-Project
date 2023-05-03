@@ -42,19 +42,22 @@ if (isset($_GET['topic'])) { // Si on a un topic dans l'URL
     $topicID = $_GET['topic'];
     $row = getTopics($topicID, "one");
 
-    if ($row) {
+    // On vérifie si le topic existe
+    if ($row) { // Si le topic existe
+        // On récupère le titre du topic
         $titreTopic = $row['titre'];
+        // On attribue le type avec "Message" car on est dans un topic et on va créer un message
         $postType = "Message";
-    } else {
+    } else { // Sinon
+        // on attribue le type avec "Topic" car on est dans un jeu et on va créer un topic
         $postType = "Topic";
     }
-} else {
+} else { // Sinon
+    // On attribue le type avec "Topic" car on est dans un jeu et on va créer un topic
     $postType = "Topic";
 }
 
-$site = checkSite('newMessage.php');
-$siteCourant = $site;
-
+// On appelle la fonction de vérification de saisie
 checkEntry();
 ?>
 
@@ -65,6 +68,7 @@ checkEntry();
 
 
 <head>
+    <!-- En-tête de la page -->
     <?php include('./PageParts/head.php') ?>
 </head>
 
@@ -76,7 +80,11 @@ checkEntry();
 
     <!-- Reste de la page -->
     <div class="main_container">
+
+        <!-- Colonne de gauche pour affichage des utilisateurs du site -->
         <?php include('./PageParts/users.php') ?>
+
+        <!-- Colonne centrale pour affichage des messages -->
         <div class="container central deroulant">
             <img class="image_commentaire" src="./images/Welcome_in_the_chat.png" alt="Start a new Game">
 
@@ -92,17 +100,15 @@ checkEntry();
                         <br><input id="saisie_topic" type="text" name="choix_titre" placeholder="Titre"/>
 
 
-                    <?php } else {?>
-
-                        <p>Topic : <?php echo $titreTopic ?></p>
+                    <?php } else { ?>
+                        <p>Topic : <?php echo $titreTopic; ?></p>
                     <?php } ?>
 
                 </div>
 
                 <br><br>
-
                 <div id="saisir_message" class="entrees">
-                    <label for="choix_message">Saisissez votre <?php if ($postType == "Topic") { echo "premier "; }?>message :</label>
+                    <label for="choix_message">Saisissez votre <?php if ($postType == "Topic") {echo "premier "; }?>message :</label>
                     <br>
                     <textarea class="zone_texte" id="message" name="choix_message" placeholder="Message"></textarea>
 

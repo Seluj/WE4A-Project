@@ -1,3 +1,7 @@
+<!-- functions/accessFunctions.php -->
+<!-- Fichier contenant les fonctions permettant de récupérer des informations dans la base de données -->
+
+
 <?php
 
 /**
@@ -44,6 +48,8 @@ function getMessages(int $id, String $type): bool|mysqli_result|array
  * Fonction permettant de récupérer un topic ou l'ensemble des topics d'un jeu en fonction des paramètres
  * @param int|null $id L'id du jeu, l'id d'un topic ou null si on veut récupérer l'ensemble les topics
  * @param String $type Le type de requête à effectuer entre "all" ou "one"
+ *                    All permet de récupérer l'ensemble des topics d'un jeu
+ *                    One permet de récupérer un seul topic
  * @return bool|mysqli_result|array Retourne un tableau pour tous les topics, le résultat d'une requête pour un seul topic ou false en cas d'erreur
  */
 function getTopics(int|null $id, String $type): bool|mysqli_result|array
@@ -117,7 +123,7 @@ function getJeux(int $type, int|null $id = null, bool $user = false): bool|mysql
     if (mysqli_num_rows($result) != 0) { // Si la requête a fonctionné
         if ($id != null && $user == null) { // Si on a récupéré un seul jeu, on retourne un tableau associatif
             return mysqli_fetch_assoc($result);
-        } else { // Sinon on retourne le résultat de la requête
+        } else { // Sinon, on retourne le résultat de la requête
             return $result;
         }
     } else { // Si la requête n'a pas fonctionné, on retourne false

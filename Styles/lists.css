@@ -1,0 +1,49 @@
+/* Fichier lists.css contenant les styles des listes et éléments des listes du site */
+
+/* Listes du site */
+ul {
+    list-style: none;
+}
+
+/* Boîtes de saisie de données*/
+.saisie{
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: inset 0 0 2px #000000;
+}
+
+/* Liste des topics */
+#topics_list {
+    margin-top: 20px;
+}
+
+/* Listes contenu dans les containers */
+.container ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+/* Éléments des liste contenues dans les containers */
+.container li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Image des éléments des liste contenues dans les containers */
+.container ul li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+/* Images des jeux et des utilisateurs dasn les listes */
+.avatar {
+    display: inline-block;
+    height:85px;
+    width: 85px;
+    border-radius: 100px;
+}

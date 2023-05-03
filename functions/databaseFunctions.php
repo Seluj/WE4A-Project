@@ -1,8 +1,8 @@
+<!-- functions/databaseFunctions.php -->
+<!-- Fichier contenant les fonctions liées à la base de données et les fonctions utilisées régulièrement -->
+
+
 <?php
-
-// Fichier contenant les fonctions permettant de se connecter à la base de données et de faire des requêtes
-
-
 
 /**
  * Fonction permettant de se connecter à la base de données
@@ -130,7 +130,6 @@ function securizeFile_ForSQL(array $file, string $name, string $type, string $sa
     } catch (RuntimeException $e) { // Si une erreur est survenue, on affiche un message d'erreur
         echo $e->getMessage();
     }
-    // echo 'File is uploaded successfully.';
     return $image;
 }
 
@@ -143,16 +142,31 @@ function securizeFile_ForSQL(array $file, string $name, string $type, string $sa
  */
 function checkSite(string $name): int
 {
+    // On initialise la variable $redirect qui contient le lien de redirection en fonction des paramètres de l'URL
+    // Si les paramètres ne contiennent pas de & ou s'il y a plus de 6 &, on redirige vers la page avec le paramètre site=0
+    // Sinon, on redirige vers la page avec le paramètre site=0 et les autres paramètres
+    if (substr_count($_SERVER['QUERY_STRING'], '&') >= 6 || $_SERVER['QUERY_STRING'] == "") {
+        $redirect = "./$name?site=0";
+    } else {
+        $redirect = "./$name?site=0&" . $_SERVER['QUERY_STRING'];
+    }
+
+    // On vérifie si le paramètre site est bien renseigné dans l'URL
     if (!isset($_GET['site'])) {
-        header("Location: ./$name?site=0&" . $_SERVER['QUERY_STRING']);
+        // Si le paramètre n'est pas renseigné, on redirige vers la page avec le paramètre site=0
+        header("Location: $redirect");
         return 0;
     }
 
+    // On vérifie si le paramètre site est bien égal à 0 ou 1
     $site = $_GET['site'];
     if ($site != 0 && $site != 1) {
-        header("Location: ./$name?site=0&" . $_SERVER['QUERY_STRING']);
+        // Si le paramètre n'est pas égal à 0 ou 1, on redirige vers la page avec le paramètre site=0
+        header("Location: $redirect");
         return 0;
     }
+
+    // Si le paramètre est bien renseigné et qu'il est bien égal à 0 ou 1, on retourne sa valeur
     return $site;
 }
 

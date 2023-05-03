@@ -1,3 +1,7 @@
+<!-- functions/accountFunctions.php -->
+<!-- Fichier contenant les fonctions relatives aux comptes utilisateurs -->
+
+
 <?php
 
 /**
@@ -15,12 +19,12 @@ function checkAccount(string $id): void
             // Dans ce cas, on vérifie les données fournies avec la fonction checkNewAccountForm
             checkNewAccountForm();
         }
-    }else if(isset($_POST["modifier_profil"])){
+    } else if (isset($_POST["modifier_profil"])) {
         updateAccount();
-        if($_POST["ancien_mdp"] != ""){
+        if ($_POST["ancien_mdp"] != "") {
             updatePassword();
         }
-    } else if (isset($_POST["mettre_administrateur"])){
+    } else if (isset($_POST["mettre_administrateur"])) {
         updateAdmin($id);
     }
 
@@ -48,17 +52,7 @@ function checkConnectionForm(): void
     $result = $conn->query($query);
     if (mysqli_num_rows($result) != 0) { // Si la requête a fonctionné
         // On récupère les données de l'utilisateur et on enregistre les données dans les variables de session
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['mail'] = $row['mail'];
-        $_SESSION['nom'] = $row['nom'];
-        $_SESSION['prenom'] = $row['prenom'];
-        $_SESSION['pseudo'] = $row['pseudo'];
-        $_SESSION['presentation'] = $row['presentation'];
-        $_SESSION['avatar'] = $row['avatar'];
-        $_SESSION['affichage_nom'] = $row['affichage_nom'];
-        $_SESSION['administrateur'] = $row['administrateur'];
-        header("Location: ./index.php");
+        updateSessionVariables($result);
     } else { // Si la requête n'a pas fonctionné, on affiche un message d'erreur
         ?>
         <script>
@@ -99,14 +93,14 @@ function checkNewAccountForm(): void
     // récupération des données et sécurisation
     $nom = securizeString_ForSQL($_POST["nom"]);
     $prenom = securizeString_ForSQL($_POST["prenom"]);
-    $email = securizeString_ForSQL($_POST["emailSignin"]);
+    $email = securizeString_ForSQL($_POST["email"]);
     $pseudo = securizeString_ForSQL($_POST["pseudo"]);
     $presentation = securizeString_ForSQL($_POST["presentation"]);
 
     // Création des requêtes
-    $query_email = "SELECT * FROM utilisateurs WHERE mail = '$email'";
-    $query_pseudo = "SELECT * FROM utilisateurs WHERE pseudo = '$pseudo'";
-    $query_nom_prenom = "SELECT * FROM utilisateurs WHERE nom = '$nom' AND prenom = '$prenom'";
+    $queryEmail = "SELECT * FROM utilisateurs WHERE mail = '$email'";
+    $queryPseudo = "SELECT * FROM utilisateurs WHERE pseudo = '$pseudo'";
+    $queryNomPrenom = "SELECT * FROM utilisateurs WHERE nom = '$nom' AND prenom = '$prenom'";
 
     /**
      * Execution des requêtes de verification
@@ -114,24 +108,24 @@ function checkNewAccountForm(): void
      * - Vérification du pseudo
      * - Vérification du nom et du prénom
      * Dans chacun des cas, si la requête a fonctionné, on affiche un message d'erreur pour éviter les doublons
-     * Si aucune erreur n'a été trouvé, on continue le traitement. C'est à dire que l'on vérifie l'image et on la sauvegarde, et on insère les données dans la base de données
+     * Si aucune erreur n'a été trouvé, on continue le traitement. C'est-à-dire que l'on vérifie l'image et on la sauvegarde, et on insère les données dans la base de données
      */
-    $result_email = $conn->query($query_email);
-    $result_pseudo = $conn->query($query_pseudo);
-    $result_nom_prenom = $conn->query($query_nom_prenom);
-    if (mysqli_num_rows($result_email) != 0) {
+    $resultEmail = $conn->query($queryEmail);
+    $resultPseudo = $conn->query($queryPseudo);
+    $resultNomPrenom = $conn->query($queryNomPrenom);
+    if (mysqli_num_rows($resultEmail) != 0) {
         ?>
         <script>
             alert("Cet email est déjà utilisé.");
         </script>
         <?php
-    } else if (mysqli_num_rows($result_pseudo) != 0) {
+    } else if (mysqli_num_rows($resultPseudo) != 0) {
         ?>
         <script>
             alert("Ce pseudo est déjà utilisé.");
         </script>
         <?php
-    } else if (mysqli_num_rows($result_nom_prenom) != 0) {
+    } else if (mysqli_num_rows($resultNomPrenom) != 0) {
         ?>
         <script>
             alert("Ces nom et prénom sont déjà utilisés.");
@@ -155,24 +149,9 @@ function checkNewAccountForm(): void
         $query_insert = "INSERT INTO `utilisateurs` (`id`, `mail`, `mdp`, `nom`, `prenom`, `pseudo`, `presentation`, `avatar`, `affichage_nom`, `administrateur`) 
                 VALUES (NULL, '$email', '$mdp', '$nom', '$prenom', '$pseudo', '$presentation', '$image', '0', '0')";
 
-        // Execution de la requête et verification
-        $result = $conn->query($query_insert);
-        if ($result) { // Si la requête a fonctionné, on affiche un message de succès et on redirige l'utilisateur vers la page de connexion
-            ?>
-            <script>
-                alert("Votre compte a bien été créé.\nVous pouvez maintenant vous connecter.");
-            </script>
-            <?php
-        } else { // Si la requête n'a pas fonctionné, on affiche un message d'erreur
-            ?>
-            <script>
-                alert("Une erreur est survenue lors de la création de votre compte.");
-            </script>
-            <?php
-        }
+        executeQuery($query_insert);
     }
 }
-
 
 /**
  * Fonction permettant de vérifier les données fournies par l'utilisateur lors de la modification de son compte
@@ -180,23 +159,111 @@ function checkNewAccountForm(): void
  */
 function updateAccount(): void
 {
-    // On récupère la variable globale $conn pour exécuter les requêtes
-    global $conn;
-
+    // On récupère la variable globale $conn pour exécuter les requêtes et la variable $imagePath pour récupérer le chemin de sauvegarde des images
+    global $conn, $imagePath;
 
     // récupération des données et sécurisation
     $nom = securizeString_ForSQL($_POST["nom"]);
     $prenom = securizeString_ForSQL($_POST["prenom"]);
-    $email = $_POST["email"];
+    $email = securizeString_ForSQL($_POST["email"]);
     $pseudo = securizeString_ForSQL($_POST["pseudo"]);
     $presentation = securizeString_ForSQL($_POST["presentation"]);
     $id = $_SESSION['id'];
 
     // Création des requêtes
-    $update = "UPDATE `utilisateurs` SET `mail` = '$email', `nom` = '$nom', `prenom` = '$prenom', `pseudo` = '$pseudo', `presentation` = '$presentation' WHERE `utilisateurs`.`id` = $id";
+    $queryEmail = "SELECT * FROM utilisateurs WHERE mail = '$email' AND NOT `utilisateurs`.`id` = $id";
+    $queryPseudo = "SELECT * FROM utilisateurs WHERE pseudo = '$pseudo' AND NOT `utilisateurs`.`id` = $id";
+    $queryNomPrenom = "SELECT * FROM utilisateurs WHERE nom = '$nom' AND prenom = '$prenom' AND NOT `utilisateurs`.`id` = $id";
+
+    /**
+     * Execution des requêtes de verification
+     * - Vérification de l'adresse mail
+     * - Vérification du pseudo
+     * - Vérification du nom et du prénom
+     * Dans chacun des cas, si la requête a fonctionné, on affiche un message d'erreur pour éviter les doublons
+     * Si aucune erreur n'a été trouvé, on continue le traitement. C'est-à-dire que l'on vérifie l'image et on la sauvegarde, et on insère les données dans la base de données
+     */
+    $resultEmail = $conn->query($queryEmail);
+    $resultPseudo = $conn->query($queryPseudo);
+    $resultNomPrenom = $conn->query($queryNomPrenom);
+    if (mysqli_num_rows($resultEmail) != 0) {
+        ?>
+        <script>
+            alert("Cet email est déjà utilisé.");
+        </script>
+        <?php
+    } else if (mysqli_num_rows($resultPseudo) != 0) {
+        ?>
+        <script>
+            alert("Ce pseudo est déjà utilisé.");
+        </script>
+        <?php
+    } else if (mysqli_num_rows($resultNomPrenom) != 0) {
+        ?>
+        <script>
+            alert("Ces nom et prénom sont déjà utilisés.");
+        </script>
+        <?php
+    } else {
+
+        // On récupère le nom de l'image finale en vérifiant ses données pour l'insérer dans la base de données
+        $image = securizeFile_ForSQL($_FILES, "avatar", 'img', $imagePath);
+
+        if (!$image) { // Si l'image n'a pas été sauvegardée, on affiche un message d'erreur et on quitte la fonction
+            ?>
+            <script>
+                alert("Problème avec l'image.");
+            </script>
+            <?php
+            return;
+        }
+
+        // Si aucune erreur n'a été trouvé, on modifie les données de l'utilisateur dans la base de données
+        $update = "UPDATE `utilisateurs` SET `mail` = '$email', `nom` = '$nom', `prenom` = '$prenom', `pseudo` = '$pseudo', `presentation` = '$presentation', `avatar` = '$image'
+                      WHERE `utilisateurs`.`id` = $id";
+
+        executeQuery($update);
+
+        $query = "SELECT * FROM utilisateurs WHERE mail = '$email'";
+        $result = $conn->query($query);
+
+        updateSessionVariables($result);
+    }
+
+}
+
+/**
+ * Fonction permettant de mettre à jour les variables de session
+ * @param mysqli_result $result Résultat de la requête
+ * @return void Ne retourne rien
+ */
+function updateSessionVariables(mysqli_result $result): void
+{
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['id'] = $row['id'];
+    $_SESSION['mail'] = $row['mail'];
+    $_SESSION['nom'] = $row['nom'];
+    $_SESSION['prenom'] = $row['prenom'];
+    $_SESSION['pseudo'] = $row['pseudo'];
+    $_SESSION['presentation'] = $row['presentation'];
+    $_SESSION['avatar'] = $row['avatar'];
+    $_SESSION['affichage_nom'] = $row['affichage_nom'];
+    $_SESSION['administrateur'] = $row['administrateur'];
+    header("Location: ./index.php");
+}
+
+/**
+ * Fonction permettant d'exécuter une requête et d'afficher un message de succès ou d'erreur
+ * @param String $query Requête à exécuter
+ * @return mysqli_result|bool Résultat de la requête
+ */
+function executeQuery(string $query): mysqli_result|bool
+{
+
+    global $conn;
 
     // Execution des requêtes et verification
-    $result = $conn->query($update);
+    $result = $conn->query($query);
     if ($result) { // Si la requête a fonctionné, on affiche un message de succès
         ?>
         <script>
@@ -210,8 +277,8 @@ function updateAccount(): void
         </script>
         <?php
     }
+    return $result;
 }
-
 
 /**
  * Fonction permettant de vérifier les données fournies par l'utilisateur lors de la modification de son mot de passe
@@ -273,6 +340,11 @@ function updatePassword(): void
     }
 }
 
+/**
+ * Fonction permettant de modifier le champ administrateur de la base de données
+ * @param string $id ID de l'utilisateur à modifier
+ * @return void Ne retourne rien
+ */
 function updateAdmin(string $id): void
 {
     global $conn;
@@ -281,11 +353,7 @@ function updateAdmin(string $id): void
         $administrateur = 1;
     else
         $administrateur = 0;
-    ?>
-    <script>
-        alert("<?=$administrateur?>");
-    </script>
-<?php
+
     $query_insert = "UPDATE `utilisateurs` SET `administrateur` = '$administrateur' WHERE `utilisateurs`.`id` = $id";
 
     // Execution de la requête et verification

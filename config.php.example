@@ -1,3 +1,8 @@
+<!-- config.php -->
+<!-- Fichier contenant les identifiants de connexion à la base de données -->
+<!-- A modifier pour changer les identifiants de connexion à la base de données -->
+
+
 <?php
 return array(
     'host' => 'localhost',

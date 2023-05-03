@@ -1,0 +1,78 @@
+/* Fichier title.css contenant les style des titres et éléments des titres du site */
+
+/* Titre de la partie centrale */
+.central h1{
+    display: inline-block;
+    width: auto;
+    font-size: 30px;
+    text-align: center;
+    margin: auto;
+    position:absolute;
+    left:10%;
+    right:10%;
+}
+
+/* Titre secondaire de la partie centrale */
+.central h2 a{
+    margin: 0 auto;
+}
+
+/* Titre tertiaire de la partie centrale */
+.central h3 {
+    display:inline-block;
+    padding: 10px 0 0 10px;
+}
+
+/* Quatrième titre de la partie centrale */
+.central h4 {
+    margin-bottom: 0;
+}
+
+
+/* Titres principaux du site */
+h1 {
+    max-width: 400px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 0;
+    color: #221146;
+    text-shadow: 1px 1px #B2B2B2;
+}
+
+/* Titre du profil dans la partie gauche */
+#profil h1 {
+    font-size: 30px;
+    text-align: center;
+    margin: 0 20px;
+}
+
+/* Lien du titre du profil dans la partie gauche (Profil) */
+#profil h1 a {
+    text-decoration:none;
+    color: black;
+}
+
+/* Titre secondaire du profil dans la partie gauche (nom de l'utilisateur) */
+#profil h2 {
+    display: inline-block;
+    text-align: center;
+    width: 110px;
+    max-width: 130px;
+    max-height: 100px;
+    font-size: 17px;
+    margin: auto 20px auto 20px;
+    overflow-wrap: break-word;
+}
+
+/* Titre des topics dans les listes de topics */
+.titre_topic {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Titre des topics dans les résultats de recherche */
+#titre_topic{
+    margin-top:15%;
+    display:inline-block;
+    margin-right: 15%;
+}

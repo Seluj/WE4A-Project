@@ -1,3 +1,7 @@
+<!-- functions/searchFunctions.php -->
+<!-- Fichier contenant les fonctions de recherche dans la base de données -->
+
+
 <?php
 
 /**
@@ -6,6 +10,7 @@
  * Sinon, la fonction retourne false.
  * @param string $idJeu L'id du jeu dans lequel on veut rechercher
  * @param string $search Objet de la recherche
+ * @param int $offset Offset de la recherche
  * @return false|mysqli_result Retourne le résultat de la requête ou false si aucun résultat
  */
 function searchInGame(string $idJeu, string $search, int $offset): bool|mysqli_result
@@ -28,7 +33,8 @@ function searchInGame(string $idJeu, string $search, int $offset): bool|mysqli_r
               AND (LOWER(`messages`.`contenu`)
                         LIKE LOWER('%$search%') 
                     OR LOWER(`topics`.`titre`) 
-                        LIKE LOWER('%$search%'))
+                        LIKE LOWER('%$search%')
+                  )
             ORDER BY `topics`.titre ASC, `messages`.`date_ajout` DESC
             LIMIT 5 OFFSET $offset";
 
@@ -47,6 +53,7 @@ function searchInGame(string $idJeu, string $search, int $offset): bool|mysqli_r
  * Fonction permettant de rechercher dans un topic les messages contenant la recherche
  * @param string $idTopic L'id du topic dans lequel on veut rechercher
  * @param string $search Objet de la recherche
+ * @param int $offset Offset de la recherche
  * @return false|mysqli_result Retourne le résultat de la requête ou false si aucun résultat
  */
 function searchInTopic(string $idTopic, string $search, int $offset): bool|mysqli_result
@@ -83,6 +90,7 @@ function searchInTopic(string $idTopic, string $search, int $offset): bool|mysql
 /**
  * Fonction permettant de rechercher partout dans la base de données les jeux, topics et messages contenant la recherche
  * @param string $search Objet de la recherche
+ * @param int $offset Offset de la recherche
  * @return false|mysqli_result Retourne le résultat de la requête ou false si aucun résultat
  */
 function searchInAll(string $search, int $offset): bool|mysqli_result
